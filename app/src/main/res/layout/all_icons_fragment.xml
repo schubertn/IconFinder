@@ -24,18 +24,21 @@
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
         </TableRow>
 
@@ -47,18 +50,21 @@
                 android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
         </TableRow>
 
@@ -70,18 +76,21 @@
                 android:id="@+id/imageButton9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@null"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
         </TableRow>
 

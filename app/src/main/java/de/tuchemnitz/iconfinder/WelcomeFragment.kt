@@ -15,7 +15,7 @@ class WelcomeFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val view = inflater?.inflate(R.layout.all_icons_fragment,
+        val view = inflater?.inflate(R.layout.welcome_fragment,
             container, false)
 
         return view
