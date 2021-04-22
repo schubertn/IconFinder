@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/main_activity_layout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_activity_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/first_paragraph"
+        style="@style/IconFinder.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/first_paragraph_text"
-        style="@style/IconFinder.TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/second_paragraph"
+        style="@style/IconFinder.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/second_paragraph_text"
-        style="@style/IconFinder.TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/first_paragraph" />
 
     <TextView
         android:id="@+id/third_paragraph"
+        style="@style/IconFinder.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/third_paragraph_text"
-        style="@style/IconFinder.TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/second_paragraph" />
@@ -40,14 +40,14 @@
         android:id="@+id/start_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Start"
-        android:backgroundTint="@color/green_light"
-        app:layout_constraintTop_toBottomOf="@id/third_paragraph"
+        android:text="@string/start"
+        app:backgroundTint="@color/green_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/third_paragraph" />
 
-    ></androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
