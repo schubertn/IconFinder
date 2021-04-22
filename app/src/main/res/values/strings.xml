@@ -24,5 +24,8 @@
         Vielen Dank für Ihre Teilnahme!
     </string>
     <string name="start">Start</string>
+    <string name="welcome">Willkommen</string>
+    <string name="icon_text">Icon</string>
+    <string name="icons_text">Icons</string>
 
 </resources>
