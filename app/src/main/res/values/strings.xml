@@ -27,5 +27,7 @@
     <string name="welcome">Willkommen</string>
     <string name="icon_text">Icon</string>
     <string name="icons_text">Icons</string>
+    <string name="next">Weiter</string>
+    <string name="top_bar_label">Icon Finder</string>
 
 </resources>

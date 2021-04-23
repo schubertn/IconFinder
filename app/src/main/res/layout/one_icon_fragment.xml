@@ -25,6 +25,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/img_1" />
 
+        <Button
+            android:id="@+id/show_icons_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/next"
+            app:backgroundTint="@color/green_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
+
         <!--
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"

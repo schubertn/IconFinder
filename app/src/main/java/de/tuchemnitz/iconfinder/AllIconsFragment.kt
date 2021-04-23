@@ -5,15 +5,50 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
 
 class AllIconsFragment : Fragment() {
 
+    private var binding: AllIconsFragmentBinding? = null
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
-        return view
+        val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.apply {
+            // Set up the button click listeners
+            iconButtonOne.setOnClickListener { showOneIcon() }
+            iconButtonTwo.setOnClickListener { showOneIcon() }
+            iconButtonThree.setOnClickListener { showOneIcon() }
+            iconButtonFour.setOnClickListener { showOneIcon() }
+            iconButtonFive.setOnClickListener { showOneIcon() }
+            iconButtonSix.setOnClickListener { showOneIcon() }
+            iconButtonSeven.setOnClickListener { showOneIcon() }
+            iconButtonEight.setOnClickListener { showOneIcon() }
+            iconButtonNine.setOnClickListener { showOneIcon() }
+        }
+    }
+
+    private fun showOneIcon() {
+        findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+
 }
