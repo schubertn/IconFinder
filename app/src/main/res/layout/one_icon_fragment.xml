@@ -6,9 +6,10 @@
     tools:context=".OneIconFragment">
 
     <data>
+
         <variable
             name="item"
-            type="de.tuchemnitz.iconfinder.OneIconFragment"/>
+            type="de.tuchemnitz.iconfinder.OneIconFragment" />
 
     </data>
 
@@ -18,18 +19,18 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/one_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/img_2" />
-            <!-- app:imageResource="@{dr}"
-            app:imageResource="@{test.selectImage()" />
-             app:srcCompat="@drawable/img_1" -->
+            app:layout_constraintTop_toTopOf="parent" />
+        <!-- tools:src="@drawable/img_2" />
+         app:imageResource="@{dr}"
+        app:imageResource="@{test.selectImage()" />
+         app:srcCompat="@drawable/img_1" -->
 
 
         <Button
@@ -41,9 +42,9 @@
             android:layout_marginEnd="20dp"
             android:text="@string/next"
             app:backgroundTint="@color/green_light"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!--
         <RelativeLayout

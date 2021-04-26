@@ -7,9 +7,10 @@
 
 
     <data>
+
         <variable
             name="welcomeFragment"
-            type="de.tuchemnitz.iconfinder.WelcomeFragment"/>
+            type="de.tuchemnitz.iconfinder.WelcomeFragment" />
 
     </data>
 

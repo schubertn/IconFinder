@@ -1,9 +1,5 @@
 <resources>
-    <string name="app_name">IconFinder</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="change_text">Change Text</string>
-    <string name="fragment_two">Fragment Two</string>
+    <string name="top_bar_label">Icon Finder</string>
 
     <string name="first_paragraph_text">
         Herzlich willkommen zu meiner Studie! \n
@@ -23,11 +19,8 @@
     <string name="third_paragraph_text">
         Vielen Dank für Ihre Teilnahme!
     </string>
+
     <string name="start">Start</string>
-    <string name="welcome">Willkommen</string>
-    <string name="icon_text">Icon</string>
-    <string name="icons_text">Icons</string>
     <string name="next">Weiter</string>
-    <string name="top_bar_label">Icon Finder</string>
 
 </resources>

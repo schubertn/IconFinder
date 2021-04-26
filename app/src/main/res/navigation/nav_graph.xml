@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="de.tuchemnitz.iconfinder.WelcomeFragment"
-        android:label="@string/welcome" >
+        android:name="de.tuchemnitz.iconfinder.WelcomeFragment">
         <action
             android:id="@+id/action_welcomeFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/oneIconFragment"
-        android:name="de.tuchemnitz.iconfinder.OneIconFragment"
-        android:label="@string/icon_text" >
+        android:name="de.tuchemnitz.iconfinder.OneIconFragment">
         <action
             android:id="@+id/action_oneIconFragment_to_allIconsFragment"
             app:destination="@id/allIconsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/allIconsFragment"
-        android:name="de.tuchemnitz.iconfinder.AllIconsFragment"
-        android:label="@string/icons_text" >
+        android:name="de.tuchemnitz.iconfinder.AllIconsFragment">
         <action
             android:id="@+id/action_allIconsFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
