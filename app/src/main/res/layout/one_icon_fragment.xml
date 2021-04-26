@@ -6,6 +6,9 @@
     tools:context=".OneIconFragment">
 
     <data>
+        <variable
+            name="item"
+            type="de.tuchemnitz.iconfinder.OneIconFragment"/>
 
     </data>
 
@@ -23,7 +26,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_1" />
+            tools:src="@drawable/img_2" />
+            <!-- app:imageResource="@{dr}"
+            app:imageResource="@{test.selectImage()" />
+             app:srcCompat="@drawable/img_1" -->
+
 
         <Button
             android:id="@+id/show_icons_button"
@@ -36,7 +43,7 @@
             app:backgroundTint="@color/green_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <!--
         <RelativeLayout
