@@ -18,11 +18,6 @@
         <action
             android:id="@+id/action_oneIconFragment_to_allIconsFragment"
             app:destination="@id/allIconsFragment" />
-        <action
-            android:id="@+id/action_oneIconFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -31,10 +26,12 @@
         <action
             android:id="@+id/action_allIconsFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
-        <action
-            android:id="@+id/action_allIconsFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_to_welcome_fragment"
+        app:destination="@id/welcomeFragment"
+        app:popUpTo="@id/welcomeFragment"
+        app:popUpToInclusive="true" />
+
 </navigation>

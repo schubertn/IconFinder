@@ -29,18 +29,16 @@ class AllIconsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.onBackPressedDispatcher?.
-        addCallback(this, object : OnBackPressedCallback(true) {
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
                 // reset list of shown icons
                 sharedViewModel.shownIcons.clear()
-                // go back to welcome fragment
-                findNavController().navigate(R.id.action_allIconsFragment_to_welcomeFragment)
+                // go back to WelcomeFragment
+                findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
         })
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,6 +57,10 @@ class AllIconsFragment : Fragment() {
         }
     }
 
+    /**
+     * Navigation to previous fragment to show only one icon. The user has to look at it
+     * for a certain amount of time.
+     */
     private fun showOneIcon() {
         findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
     }
@@ -67,6 +69,4 @@ class AllIconsFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
-
-
 }

@@ -39,16 +39,16 @@ class OneIconFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.onBackPressedDispatcher?.
-        addCallback(this, object : OnBackPressedCallback(true) {
+
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
                 // stop delay
                 iconHandler.removeCallbacksAndMessages(null)
                 // reset list of shown icons
                 sharedViewModel.shownIcons.clear()
-                // go back to welcome fragment
-                findNavController().navigate(R.id.action_oneIconFragment_to_welcomeFragment)
+                // go back to WelcomeFragment
+                findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
         })
     }
@@ -77,24 +77,17 @@ class OneIconFragment : Fragment() {
     }
 
     /**
-     * Navigation to next fragment.
+     * Navigation to next fragment to show all icons. The user has to click the icon
+     * shown in this fragment.
      */
     private fun showAllIcons() {
         findNavController().navigate(R.id.action_oneIconFragment_to_allIconsFragment)
     }
 
-    /** that's how a binding adapter would work
-    @BindingAdapter("android:src")
-    fun setImageViewResource(imageView: ImageView, resource: Int) {
-    val rnd = (1..3).random()
-    val resName = "img_" + rnd
-    var newIcon = allIcons[0]
-    binding?.imageView?.setImageResource(newIcon.imgId)
-    }
-     **/
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+        // after pressing the home button, delay has to be stopped
+        iconHandler.removeCallbacksAndMessages(null)
     }
 }

@@ -1,10 +1,15 @@
 package de.tuchemnitz.iconfinder
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import de.tuchemnitz.iconfinder.model.IconViewModel
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    private val sharedViewModel: IconViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,16 +20,26 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         // setupActionBarWithNavController(navController)
         // setContentView(R.layout.activity_main)
+    }
 
-        // DONE: Make return button on phone work properly (Disable/return to WelcomeFragment)
-        // TODO: Handle home button of phone (same as return button?)
-        // TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
-        // DONE: Implement timer
-        // TODO: Change colors for dark theme
-        // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
-        // DONE: Make OneIconFragment nicer
-        // DONE: Set default (no) image in one_icon_fragment.xml
-
-
+    /**
+     * Navigates back to WelcomeFragment when home button on phone is pressed and
+     * resets list of shown icons.
+     */
+    override fun onPause() {
+        super.onPause()
+        sharedViewModel.shownIcons.clear()
+        this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_welcome_fragment)
     }
 }
+
+// DONE: Make return button on phone work properly (Disable/return to WelcomeFragment)
+// DONE: Handle home button of phone (same as return button?)
+// TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
+// TODO: Check if shownIcons in IconViewModel should be private/add functions
+// DONE: Implement timer
+// TODO: Change colors for dark theme
+// TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
+// TODO: Design shown icons
+// DONE: Make OneIconFragment nicer
+// DONE: Set default (no) image in one_icon_fragment.xml
