@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
-import de.tuchemnitz.iconfinder.model.OrderViewModel
+import de.tuchemnitz.iconfinder.model.IconViewModel
 
 class AllIconsFragment : Fragment() {
 
     private var binding: AllIconsFragmentBinding? = null
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val sharedViewModel: IconViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,

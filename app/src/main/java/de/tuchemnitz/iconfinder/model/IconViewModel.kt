@@ -3,7 +3,7 @@ package de.tuchemnitz.iconfinder.model
 import androidx.lifecycle.ViewModel
 import de.tuchemnitz.iconfinder.R
 
-class OrderViewModel : ViewModel() {
+class IconViewModel : ViewModel() {
 
     data class Icon(val imgId: Int)
     val allIcons = listOf(

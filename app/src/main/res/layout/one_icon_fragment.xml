@@ -7,10 +7,6 @@
 
     <data>
 
-        <variable
-            name="item"
-            type="de.tuchemnitz.iconfinder.OneIconFragment" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,45 +23,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!-- tools:src="@drawable/img_2" />
-         app:imageResource="@{dr}"
-        app:imageResource="@{test.selectImage()" />
-         app:srcCompat="@drawable/img_1" -->
-
-
-        <Button
-            android:id="@+id/show_icons_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/next"
-            app:backgroundTint="@color/green_light"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!--
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            tools:context=".MainActivity"
-            >
-            <ImageView
-                android:id="@+id/imgRandom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                />
-        </RelativeLayout>
-        -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

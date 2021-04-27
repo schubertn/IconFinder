@@ -1,6 +1,8 @@
 package de.tuchemnitz.iconfinder
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.OneIconFragmentBinding
-import de.tuchemnitz.iconfinder.model.OrderViewModel
+import de.tuchemnitz.iconfinder.model.IconViewModel
 
 class OneIconFragment : Fragment() {
 
     private var binding: OneIconFragmentBinding? = null
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val sharedViewModel: IconViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -24,7 +26,11 @@ class OneIconFragment : Fragment() {
         val fragmentBinding = OneIconFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
+        // show one random icon
         showRandomIcon()
+
+        // navigate to next fragment after 3 seconds
+        Handler(Looper.getMainLooper()).postDelayed({ showAllIcons() }, 3000)
 
         return fragmentBinding.root
     }
@@ -34,7 +40,7 @@ class OneIconFragment : Fragment() {
      */
     private fun showRandomIcon() {
         var rnd = (0..2).random()  // later: (0..8)
-        val currentIcon: OrderViewModel.Icon
+        val currentIcon: IconViewModel.Icon
 
         if (sharedViewModel.shownIcons.size < 3) { // not all icons have been shown
             while (sharedViewModel.shownIcons.contains(rnd)){
@@ -52,16 +58,9 @@ class OneIconFragment : Fragment() {
         binding?.oneIcon?.setImageResource(currentIcon.imgId)
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            // Set up the button click listeners
-            showIconsButton.setOnClickListener { showAllIcons() }
-        }
-    }
-
+    /**
+     * Navigation to next fragment.
+     */
     private fun showAllIcons() {
         findNavController().navigate(R.id.action_oneIconFragment_to_allIconsFragment)
     }

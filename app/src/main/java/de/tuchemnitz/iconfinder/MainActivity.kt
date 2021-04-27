@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         // TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
         // TODO: Implement timer
         // TODO: Change colors for dark theme
+        // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
         // DONE: Make OneIconFragment nicer
         // DONE: Set default (no?) image in one_icon_fragment.xml
 
