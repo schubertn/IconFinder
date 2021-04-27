@@ -49,6 +49,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/second_paragraph" />
 
+        <TextView
+            android:id="@+id/fourth_paragraph"
+            style="@style/IconFinder.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fourth_paragraph_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/third_paragraph" />
+
         <Button
             android:id="@+id/start_button"
             android:layout_width="match_parent"
@@ -60,7 +70,7 @@
             app:backgroundTint="@color/green_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/third_paragraph" />
+            app:layout_constraintTop_toBottomOf="@id/fourth_paragraph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

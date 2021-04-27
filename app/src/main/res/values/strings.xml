@@ -17,6 +17,11 @@
     </string>
 
     <string name="third_paragraph_text">
+        Wenn Sie den Home-Button oder den Zurück-Button Ihres Gerätes betätigen, gelangen Sie
+        zu diesem Bildschirm zurück und jeglicher Fortschritt wird gelöscht.
+    </string>
+
+    <string name="fourth_paragraph_text">
         Vielen Dank für Ihre Teilnahme!
     </string>
 

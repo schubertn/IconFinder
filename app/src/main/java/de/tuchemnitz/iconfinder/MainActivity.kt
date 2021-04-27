@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Handle home button of phone (same as return button?)
 // TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
 // TODO: Check if shownIcons in IconViewModel should be private/add functions
+// TODO: Lifecycleowner?
+// TODO: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Change colors for dark theme
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
