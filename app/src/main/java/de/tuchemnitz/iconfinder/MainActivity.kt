@@ -16,13 +16,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         // setupActionBarWithNavController(navController)
         // setContentView(R.layout.activity_main)
 
-        // TODO: Make return button on phone work properly (Disable/return to WelcomeFragment)
+        // DONE: Make return button on phone work properly (Disable/return to WelcomeFragment)
+        // TODO: Handle home button of phone (same as return button?)
         // TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
-        // TODO: Implement timer
+        // DONE: Implement timer
         // TODO: Change colors for dark theme
         // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
         // DONE: Make OneIconFragment nicer
-        // DONE: Set default (no?) image in one_icon_fragment.xml
+        // DONE: Set default (no) image in one_icon_fragment.xml
 
 
     }

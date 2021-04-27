@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,7 @@ class OneIconFragment : Fragment() {
 
     private var binding: OneIconFragmentBinding? = null
     private val sharedViewModel: IconViewModel by activityViewModels()
+    private val iconHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -30,9 +32,25 @@ class OneIconFragment : Fragment() {
         showRandomIcon()
 
         // navigate to next fragment after 3 seconds
-        Handler(Looper.getMainLooper()).postDelayed({ showAllIcons() }, 3000)
+        iconHandler.postDelayed({ showAllIcons() }, 3000)
 
         return fragmentBinding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.
+        addCallback(this, object : OnBackPressedCallback(true) {
+            // pressing the back button deletes all progress
+            override fun handleOnBackPressed() {
+                // stop delay
+                iconHandler.removeCallbacksAndMessages(null)
+                // reset list of shown icons
+                sharedViewModel.shownIcons.clear()
+                // go back to welcome fragment
+                findNavController().navigate(R.id.action_oneIconFragment_to_welcomeFragment)
+            }
+        })
     }
 
     /**
@@ -43,7 +61,7 @@ class OneIconFragment : Fragment() {
         val currentIcon: IconViewModel.Icon
 
         if (sharedViewModel.shownIcons.size < 3) { // not all icons have been shown
-            while (sharedViewModel.shownIcons.contains(rnd)){
+            while (sharedViewModel.shownIcons.contains(rnd)) {
                 rnd = (0..2).random()
             }
             currentIcon = sharedViewModel.allIcons[rnd]
@@ -68,12 +86,12 @@ class OneIconFragment : Fragment() {
     /** that's how a binding adapter would work
     @BindingAdapter("android:src")
     fun setImageViewResource(imageView: ImageView, resource: Int) {
-        val rnd = (1..3).random()
-        val resName = "img_" + rnd
-        var newIcon = allIcons[0]
-        binding?.imageView?.setImageResource(newIcon.imgId)
+    val rnd = (1..3).random()
+    val resName = "img_" + rnd
+    var newIcon = allIcons[0]
+    binding?.imageView?.setImageResource(newIcon.imgId)
     }
-    **/
+     **/
 
     override fun onDestroyView() {
         super.onDestroyView()
