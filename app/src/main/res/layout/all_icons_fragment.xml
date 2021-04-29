@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="allIconsFragment"
+            type="de.tuchemnitz.iconfinder.AllIconsFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +21,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -31,8 +32,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
-                    <!-- app:srcCompat="@android:drawable/btn_star_big_on" /> -->
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_two"
@@ -40,7 +41,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_three"
@@ -48,7 +50,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
             </TableRow>
 
             <TableRow
@@ -62,7 +65,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_five"
@@ -70,7 +74,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null"/>
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_six"
@@ -78,7 +83,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
             </TableRow>
 
             <TableRow
@@ -92,7 +98,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_eight"
@@ -100,7 +107,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_nine"
@@ -108,7 +116,8 @@
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
             </TableRow>
 
         </TableLayout>

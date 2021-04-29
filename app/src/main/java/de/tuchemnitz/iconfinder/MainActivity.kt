@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 // DONE: Make return button on phone work properly (Disable/return to WelcomeFragment)
 // DONE: Handle home button of phone (same as return button?)
-// TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
-// TODO: Check if shownIcons in IconViewModel should be private/add functions
-// TODO: Lifecycleowner?
+// DONE: Continue 'Shared ViewModel Across Fragments' Tutorial
+// DONE: Check if shownIcons in IconViewModel should be private/add functions
+// DONE: Lifecycleowner? (used with LiveData)
 // DONE: Make nine icons appear randomly
 // TODO: Check if clicked icon is shown icon
 // DONE: Praktikumsbericht Stichpunkte

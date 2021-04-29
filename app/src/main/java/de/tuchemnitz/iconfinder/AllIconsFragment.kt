@@ -25,6 +25,7 @@ class AllIconsFragment : Fragment() {
         val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
+        // show all icons in random order
         showRandomOrderIcons()
 
         return fragmentBinding.root
@@ -45,23 +46,12 @@ class AllIconsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            // Set up the button click listeners
-            iconButtonOne.setOnClickListener { showOneIcon() }
-            iconButtonTwo.setOnClickListener { showOneIcon() }
-            iconButtonThree.setOnClickListener { showOneIcon() }
-            iconButtonFour.setOnClickListener { showOneIcon() }
-            iconButtonFive.setOnClickListener { showOneIcon() }
-            iconButtonSix.setOnClickListener { showOneIcon() }
-            iconButtonSeven.setOnClickListener { showOneIcon() }
-            iconButtonEight.setOnClickListener { showOneIcon() }
-            iconButtonNine.setOnClickListener { showOneIcon() }
-        }
+        // used to bind button click listeners in this class to xml
+        binding?.allIconsFragment = this
     }
 
     /**
-     * Shows the nine icons in random order.
+     * Shows the nine icons in random order on the 3x3 grid.
      */
     private fun showRandomOrderIcons() {
 
@@ -84,8 +74,12 @@ class AllIconsFragment : Fragment() {
      * Navigation to previous fragment to show only one icon. The user has to look at it
      * for a certain amount of time.
      */
-    private fun showOneIcon() {
+    fun showOneIcon() {
         findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+        /**
+         * vielleicht neue funktion onButtonPressed(buttonNumber), die diese hier aufruft und
+         * außerdem testet und speichert ob geklickter button der richtige war
+         */
     }
 
     override fun onDestroyView() {
