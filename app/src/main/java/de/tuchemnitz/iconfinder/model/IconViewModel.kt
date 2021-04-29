@@ -10,6 +10,11 @@ class IconViewModel : ViewModel() {
             Icon(R.drawable.img_1),
             Icon(R.drawable.img_2),
             Icon(R.drawable.img_3),
+            Icon(R.drawable.ic_launcher_foreground),
+            Icon(R.drawable.ic_launcher_foreground),
+            Icon(R.drawable.ic_launcher_foreground),
+            Icon(R.drawable.ic_launcher_foreground),
+            Icon(R.drawable.ic_launcher_foreground),
             Icon(R.drawable.ic_launcher_foreground)
     )
 

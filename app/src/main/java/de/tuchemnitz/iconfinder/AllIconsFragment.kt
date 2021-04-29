@@ -24,6 +24,9 @@ class AllIconsFragment : Fragment() {
 
         val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+
+        showRandomOrderIcons()
+
         return fragmentBinding.root
     }
 
@@ -54,6 +57,26 @@ class AllIconsFragment : Fragment() {
             iconButtonSeven.setOnClickListener { showOneIcon() }
             iconButtonEight.setOnClickListener { showOneIcon() }
             iconButtonNine.setOnClickListener { showOneIcon() }
+        }
+    }
+
+    /**
+     * Shows the nine icons in random order.
+     */
+    private fun showRandomOrderIcons() {
+
+        val randomizedList = sharedViewModel.allIcons.shuffled()
+
+        binding?.apply {
+            iconButtonOne.setImageResource(randomizedList[0].imgId)
+            iconButtonTwo.setImageResource(randomizedList[1].imgId)
+            iconButtonThree.setImageResource(randomizedList[2].imgId)
+            iconButtonFour.setImageResource(randomizedList[3].imgId)
+            iconButtonFive.setImageResource(randomizedList[4].imgId)
+            iconButtonSix.setImageResource(randomizedList[5].imgId)
+            iconButtonSeven.setImageResource(randomizedList[6].imgId)
+            iconButtonEight.setImageResource(randomizedList[7].imgId)
+            iconButtonNine.setImageResource(randomizedList[8].imgId)
         }
     }
 

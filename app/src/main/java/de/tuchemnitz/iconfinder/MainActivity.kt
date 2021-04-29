@@ -38,10 +38,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Continue 'Shared ViewModel Across Fragments' Tutorial
 // TODO: Check if shownIcons in IconViewModel should be private/add functions
 // TODO: Lifecycleowner?
-// TODO: Praktikumsbericht Stichpunkte
+// DONE: Make nine icons appear randomly
+// TODO: Check if clicked icon is shown icon
+// DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Change colors for dark theme
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
-// TODO: Design shown icons
+// TODO: Design shown icons (Sun beams as triangles, no color transitions?)
 // DONE: Make OneIconFragment nicer
 // DONE: Set default (no) image in one_icon_fragment.xml
