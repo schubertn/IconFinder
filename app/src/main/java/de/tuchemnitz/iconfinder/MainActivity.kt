@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Lifecycleowner? (used with LiveData)
 // DONE: Make nine icons appear randomly
 // DONE: Check if clicked icon is shown icon
-// TODO: Calculate time the user needed to click icon (list with shown icon - correct? - time)
+// DONE: Calculate time the user needed to click icon (list with shown icon - correct? - time)
+// TODO: Goodybye Fragment with result and thank you message
+// TODO: Use provisional icons to test
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Change colors for dark theme

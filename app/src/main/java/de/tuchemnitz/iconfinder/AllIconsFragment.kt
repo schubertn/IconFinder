@@ -16,6 +16,9 @@ class AllIconsFragment : Fragment() {
 
     private var binding: AllIconsFragmentBinding? = null
     private val sharedViewModel: IconViewModel by activityViewModels()
+    private var startTime: Long = 0 // used to calculate the time the user needs to click the icon
+    private var timeInSeconds: Double = 0.0
+    private var correctIcon: Boolean = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -47,8 +50,12 @@ class AllIconsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // used to bind button click listeners in this class to xml
         binding?.allIconsFragment = this
+
+        // used to calculate the time the user needs to click the icon
+        startTime = System.nanoTime()
     }
 
     /**
@@ -77,11 +84,23 @@ class AllIconsFragment : Fragment() {
      * For now only prints the result to the LogCat.
      */
     fun onIconClicked(buttonNumber: Int) {
+        // calculate the time until the user clicked the icon
+        val elapsedTime = System.nanoTime() - startTime
+        timeInSeconds = elapsedTime / 1_000_000_000.0
+        Log.d("TESTING", "time in nanoseconds: $elapsedTime")
+        Log.d("TESTING", "time in seconds: $timeInSeconds")
+
+        // check if user clicked the right icon
         if (sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()) {
             Log.d("TESTING", "correct icon")
+            correctIcon = true
         } else {
             Log.d("TESTING", "wrong icon")
+            correctIcon = false
         }
+
+        // save data in a list
+        saveData()
 
         // go back to previous fragment
         showOneIcon()
@@ -93,6 +112,28 @@ class AllIconsFragment : Fragment() {
      */
     private fun showOneIcon() {
         findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+    }
+
+    /**
+     * Save data in every iteration to one list.
+     * The list contains objects with the type StudyData.
+     * In there the shown icon, the correctness and needed time are saved.
+     */
+    private fun saveData() {
+        val data = IconViewModel.StudyData(sharedViewModel.getShownIcon(), correctIcon, timeInSeconds)
+        sharedViewModel.addData(data)
+        printMyData()
+    }
+
+    /**
+     * Temporary function to print the data for testing purposes.
+     */
+    private fun printMyData() {
+        for (data in sharedViewModel.getData()) {
+            println("Icon shown: " + (context?.resources?.getResourceName(data.shownIcon.imgId)))
+            println("Icon was correct: " + data.correctness)
+            println("Time needed: " + data.timeNeeded + " seconds")
+        }
     }
 
     override fun onDestroyView() {

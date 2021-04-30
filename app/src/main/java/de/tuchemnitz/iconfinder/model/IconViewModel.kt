@@ -60,4 +60,20 @@ class IconViewModel : ViewModel() {
     fun getShownIcon(): Icon {
         return shownIcon
     }
+
+    // collect the data for study
+    // shownIcon: the icon the user saw
+    // correctness: if the user clicked the right icon
+    // timeNeeded: time until the user clicked an icon
+    data class StudyData(val shownIcon: Icon, val correctness: Boolean, val timeNeeded: Double)
+
+    private val dataList = mutableListOf<StudyData>()
+
+    fun addData(data: StudyData) {
+        dataList.add(data)
+    }
+
+    fun getData(): MutableList<StudyData> {
+        return dataList
+    }
 }
