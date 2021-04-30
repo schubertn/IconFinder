@@ -1,6 +1,7 @@
 package de.tuchemnitz.iconfinder
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class AllIconsFragment : Fragment() {
             // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
                 // reset list of shown icons
-                sharedViewModel.shownIcons.clear()
+                sharedViewModel.clearShownIconsList()
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
@@ -54,32 +55,44 @@ class AllIconsFragment : Fragment() {
      * Shows the nine icons in random order on the 3x3 grid.
      */
     private fun showRandomOrderIcons() {
+        // set shuffle list to random order list of elements from all icon list
+        sharedViewModel.setShuffleList(sharedViewModel.getAllIcons().shuffled().toMutableList())
 
-        val randomizedList = sharedViewModel.allIcons.shuffled()
-
+        //  alternative: create array containing all buttons and then loop over array ?
         binding?.apply {
-            iconButtonOne.setImageResource(randomizedList[0].imgId)
-            iconButtonTwo.setImageResource(randomizedList[1].imgId)
-            iconButtonThree.setImageResource(randomizedList[2].imgId)
-            iconButtonFour.setImageResource(randomizedList[3].imgId)
-            iconButtonFive.setImageResource(randomizedList[4].imgId)
-            iconButtonSix.setImageResource(randomizedList[5].imgId)
-            iconButtonSeven.setImageResource(randomizedList[6].imgId)
-            iconButtonEight.setImageResource(randomizedList[7].imgId)
-            iconButtonNine.setImageResource(randomizedList[8].imgId)
+            iconButtonZero.setImageResource(sharedViewModel.getShuffleList()[0].imgId)
+            iconButtonOne.setImageResource(sharedViewModel.getShuffleList()[1].imgId)
+            iconButtonTwo.setImageResource(sharedViewModel.getShuffleList()[2].imgId)
+            iconButtonThree.setImageResource(sharedViewModel.getShuffleList()[3].imgId)
+            iconButtonFour.setImageResource(sharedViewModel.getShuffleList()[4].imgId)
+            iconButtonFive.setImageResource(sharedViewModel.getShuffleList()[5].imgId)
+            iconButtonSix.setImageResource(sharedViewModel.getShuffleList()[6].imgId)
+            iconButtonSeven.setImageResource(sharedViewModel.getShuffleList()[7].imgId)
+            iconButtonEight.setImageResource(sharedViewModel.getShuffleList()[8].imgId)
         }
     }
 
     /**
-     * Navigation to previous fragment to show only one icon. The user has to look at it
+     * Tests if the clicked icon is the same as the shown icon.
+     * For now only prints the result to the LogCat.
+     */
+    fun onIconClicked(buttonNumber: Int) {
+        if (sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()) {
+            Log.d("TESTING", "correct icon")
+        } else {
+            Log.d("TESTING", "wrong icon")
+        }
+
+        // go back to previous fragment
+        showOneIcon()
+    }
+
+    /**
+     * Navigation to previous fragment to show only one icon. The user will have to look at it
      * for a certain amount of time.
      */
-    fun showOneIcon() {
+    private fun showOneIcon() {
         findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
-        /**
-         * vielleicht neue funktion onButtonPressed(buttonNumber), die diese hier aufruft und
-         * außerdem testet und speichert ob geklickter button der richtige war
-         */
     }
 
     override fun onDestroyView() {

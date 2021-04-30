@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
      */
     override fun onPause() {
         super.onPause()
-        sharedViewModel.shownIcons.clear()
+        sharedViewModel.clearShownIconsList()
         this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_welcome_fragment)
     }
 }
@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Check if shownIcons in IconViewModel should be private/add functions
 // DONE: Lifecycleowner? (used with LiveData)
 // DONE: Make nine icons appear randomly
-// TODO: Check if clicked icon is shown icon
+// DONE: Check if clicked icon is shown icon
+// TODO: Calculate time the user needed to click icon (list with shown icon - correct? - time)
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Change colors for dark theme

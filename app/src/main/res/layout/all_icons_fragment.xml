@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="allIconsFragment"
             type="de.tuchemnitz.iconfinder.AllIconsFragment" />
@@ -27,64 +28,64 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:id="@+id/icon_button_zero"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(0)}"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
                     android:id="@+id/icon_button_one"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(1)}"
+                    android:scaleType="fitCenter" />
 
                 <ImageButton
                     android:id="@+id/icon_button_two"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(2)}"
+                    android:scaleType="fitCenter" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
                 <ImageButton
                     android:id="@+id/icon_button_three"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(3)}"
+                    android:scaleType="fitCenter" />
 
                 <ImageButton
                     android:id="@+id/icon_button_four"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(4)}"
+                    android:scaleType="fitCenter" />
 
                 <ImageButton
                     android:id="@+id/icon_button_five"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
-
-                <ImageButton
-                    android:id="@+id/icon_button_six"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(5)}"
+                    android:scaleType="fitCenter" />
             </TableRow>
 
             <TableRow
@@ -93,31 +94,31 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:id="@+id/icon_button_six"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(6)}"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
                     android:id="@+id/icon_button_seven"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(7)}"
+                    android:scaleType="fitCenter" />
 
                 <ImageButton
                     android:id="@+id/icon_button_eight"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
-
-                <ImageButton
-                    android:id="@+id/icon_button_nine"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.showOneIcon()}" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(8)}"
+                    android:scaleType="fitCenter" />
             </TableRow>
 
         </TableLayout>

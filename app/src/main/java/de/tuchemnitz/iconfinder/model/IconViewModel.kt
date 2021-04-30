@@ -6,7 +6,9 @@ import de.tuchemnitz.iconfinder.R
 class IconViewModel : ViewModel() {
 
     data class Icon(val imgId: Int)
-    private val _allIcons = listOf(
+
+    // list of all icons
+    private val allIcons = listOf(
             Icon(R.drawable.img_1),
             Icon(R.drawable.img_2),
             Icon(R.drawable.img_3),
@@ -17,25 +19,45 @@ class IconViewModel : ViewModel() {
             Icon(R.drawable.ic_launcher_foreground),
             Icon(R.drawable.ic_launcher_foreground)
     )
-    val allIcons = _allIcons
 
-    private val _shownIcons = mutableListOf<Int>()
-    val shownIcons = _shownIcons
+    fun getAllIcons(): List<Icon> {
+        return allIcons
+    }
+
+    // list of numbers of already shown icons
+    private val shownIconsList = mutableListOf<Int>()
+
+    fun getShownIcons(): MutableList<Int> {
+        return shownIconsList
+    }
+
     fun addShownIcon(numberOfIcon: Int) {
-        _shownIcons.add(numberOfIcon)
+        shownIconsList.add(numberOfIcon)
     }
 
-
-    /**
-    // this is not correct (clicked icon would have to be allIconsRandomized[button number]
-    // also not sure about _clickedIcon type
-    // also not used yet in any way
-    private var _clickedIcon = Icon(0)
-    val clickedIcon = _clickedIcon
-
-    fun onIconClicked(buttonNumber: Int) {
-        _clickedIcon = allIcons [ buttonNumber ]
+    fun clearShownIconsList() {
+        shownIconsList.clear()
     }
-    **/
 
+    // list that can be shuffled to contain all icons in random order
+    private var shuffleList = mutableListOf<Icon>()
+
+    fun setShuffleList(shuffledList: MutableList<Icon>) {
+        shuffleList = shuffledList
+    }
+
+    fun getShuffleList(): MutableList<Icon> {
+        return shuffleList
+    }
+
+    // icon that was shown to user
+    private var shownIcon = Icon(0)
+
+    fun setShownIcon(icon: Icon) {
+        shownIcon = icon
+    }
+
+    fun getShownIcon(): Icon {
+        return shownIcon
+    }
 }

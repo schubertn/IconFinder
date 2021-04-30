@@ -46,7 +46,7 @@ class OneIconFragment : Fragment() {
                 // stop delay
                 iconHandler.removeCallbacksAndMessages(null)
                 // reset list of shown icons
-                sharedViewModel.shownIcons.clear()
+                sharedViewModel.clearShownIconsList()
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
@@ -58,27 +58,30 @@ class OneIconFragment : Fragment() {
      */
     private fun showRandomIcon() {
         var rnd = (0..2).random()  // later: (0..8)
-        val currentIcon: IconViewModel.Icon
+        val currentIcon: IconViewModel.Icon // currently displayed icon
 
-        if (sharedViewModel.shownIcons.size < 3) { // not all icons have been shown
-            while (sharedViewModel.shownIcons.contains(rnd)) {
+        if (sharedViewModel.getShownIcons().size < 3) { // not all icons have been shown
+            // generate new number if icon associated with generated number was already shown
+            while (sharedViewModel.getShownIcons().contains(rnd)) {
                 rnd = (0..2).random()
             }
-            currentIcon = sharedViewModel.allIcons[rnd]
+            currentIcon = sharedViewModel.getAllIcons()[rnd]
             sharedViewModel.addShownIcon(rnd)
         } else {
-            currentIcon = sharedViewModel.allIcons[3]
+            currentIcon = sharedViewModel.getAllIcons()[3]
             // now show icons from second list with different icons
             // use e.g. var secondSet = true
         }
 
+        // shown icon to later compare with clicked icon
+        sharedViewModel.setShownIcon(currentIcon)
         // bind current icon to one_icon image view
         binding?.oneIcon?.setImageResource(currentIcon.imgId)
     }
 
     /**
-     * Navigation to next fragment to show all icons. The user has to click the icon
-     * shown in this fragment.
+     * Navigation to next fragment to show all icons. The user will have to click the icon
+     * seen in this fragment.
      */
     private fun showAllIcons() {
         findNavController().navigate(R.id.action_oneIconFragment_to_allIconsFragment)
