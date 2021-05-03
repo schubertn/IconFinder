@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
 
     <fragment
@@ -33,5 +36,9 @@
         app:destination="@id/welcomeFragment"
         app:popUpTo="@id/welcomeFragment"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="de.tuchemnitz.iconfinder.ResultFragment"
+        android:label="ResultFragment" />
 
 </navigation>

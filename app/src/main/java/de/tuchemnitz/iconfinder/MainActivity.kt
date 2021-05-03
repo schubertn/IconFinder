@@ -41,8 +41,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Make nine icons appear randomly
 // DONE: Check if clicked icon is shown icon
 // DONE: Calculate time the user needed to click icon (list with shown icon - correct? - time)
-// TODO: Goodybye Fragment with result and thank you message
-// TODO: Use provisional icons to test
+// TODO: Save everything
+// DONE: Fragment with results
+// TODO: Use provisional icons (drafts of icons) to test everything
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Change colors for dark theme

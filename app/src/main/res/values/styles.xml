@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Style for text in WelcomeFragment -->
-    <style name="IconFinder.TextView" parent="Widget.MaterialComponents.TextView">
+    <style name="IconFinder.WelcomeText" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="IconFinder.TableText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:minHeight">18dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="IconFinder.TableHeadText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:minHeight">24dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 </resources>

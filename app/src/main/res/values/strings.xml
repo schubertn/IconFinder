@@ -28,4 +28,17 @@
     <string name="start">Start</string>
     <string name="next">Weiter</string>
 
+    <string name="thank_you_text">
+        Vielen Dank für Ihre Teilnahme! \n
+        Unterhalb können Sie Ihre Ergebnisse einsehen.
+    </string>
+
+    <string name="table_head_column1">Gesehenes Icon</string>
+    <string name="table_head_column2">Korrekt erkannt?</string>
+    <string name="table_head_column3">Benötigte Zeit</string>
+
+    <string name="correct">Icon wurde korrekt erkannt</string>
+    <string name="wrong">Icon wurde nicht korrekt erkannt</string>
+    <string name="time">Time</string>
+
 </resources>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--
+        <TextView
+            android:id="@+id/thank_you_message"
+            style="@style/IconFinder.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thank_you_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+            -->
+
+        <TableLayout
+            android:id="@+id/result_table"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_column1" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_column2" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_column3" />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_1" />
+
+                <TextView
+                    android:id="@+id/correct1"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct"/>
+
+                <TextView
+                    android:id="@+id/time1"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_2" />
+
+                <TextView
+                    android:id="@+id/correct2"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/wrong" />
+
+                <TextView
+                    android:id="@+id/time2"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_3" />
+
+                <TextView
+                    android:id="@+id/correct3"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time3"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_1" />
+
+                <TextView
+                    android:id="@+id/correct4"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time4"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_1" />
+
+                <TextView
+                    android:id="@+id/correct5"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time5"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_2" />
+
+                <TextView
+                    android:id="@+id/correct6"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time6"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_2" />
+
+                <TextView
+                    android:id="@+id/correct7"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time7"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_1" />
+
+                <TextView
+                    android:id="@+id/correct8"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time8"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/img_2" />
+
+                <TextView
+                    android:id="@+id/correct9"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/correct" />
+
+                <TextView
+                    android:id="@+id/time9"
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/time" />
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

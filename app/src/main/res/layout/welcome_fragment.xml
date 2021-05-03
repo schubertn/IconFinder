@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/first_paragraph"
-            style="@style/IconFinder.TextView"
+            style="@style/IconFinder.WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_paragraph_text"
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/second_paragraph"
-            style="@style/IconFinder.TextView"
+            style="@style/IconFinder.WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/second_paragraph_text"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/third_paragraph"
-            style="@style/IconFinder.TextView"
+            style="@style/IconFinder.WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/third_paragraph_text"
@@ -51,7 +51,7 @@
 
         <TextView
             android:id="@+id/fourth_paragraph"
-            style="@style/IconFinder.TextView"
+            style="@style/IconFinder.WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fourth_paragraph_text"
