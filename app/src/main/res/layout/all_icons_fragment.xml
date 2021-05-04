@@ -29,30 +29,21 @@
 
                 <ImageButton
                     android:id="@+id/icon_button_zero"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(0)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(0)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_one"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(1)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(1)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_two"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(2)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(2)}" />
             </TableRow>
 
             <TableRow
@@ -62,30 +53,21 @@
 
                 <ImageButton
                     android:id="@+id/icon_button_three"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(3)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(3)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_four"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(4)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(4)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_five"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(5)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(5)}" />
             </TableRow>
 
             <TableRow
@@ -95,30 +77,21 @@
 
                 <ImageButton
                     android:id="@+id/icon_button_six"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(6)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(6)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_seven"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(7)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(7)}" />
 
                 <ImageButton
                     android:id="@+id/icon_button_eight"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
+                    style="@style/IconFinder.IconButtons"
                     android:contentDescription="@null"
-                    android:onClick="@{() -> allIconsFragment.onIconClicked(8)}"
-                    android:scaleType="fitCenter" />
+                    android:onClick="@{() -> allIconsFragment.onIconClicked(8)}" />
             </TableRow>
 
         </TableLayout>

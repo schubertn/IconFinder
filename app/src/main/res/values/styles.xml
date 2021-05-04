@@ -10,6 +10,15 @@
         <item name="android:layout_marginTop">20dp</item>
     </style>
 
+    <style name="IconFinder.IconButtons" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="background">@color/white</item>
+        <item name="enforceMaterialTheme">false</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
     <style name="IconFinder.TableText" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">18dp</item>
         <item name="android:layout_gravity">center</item>

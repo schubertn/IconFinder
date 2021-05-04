@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -27,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TableRow
-                android:layout_marginTop="10dp">
+            <TableRow android:layout_marginTop="10dp">
 
                 <TextView
                     style="@style/IconFinder.TableHeadText"
@@ -49,8 +48,6 @@
                     android:text="@string/table_head_column3" />
             </TableRow>
 
-
-
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -67,7 +64,7 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@string/correct"/>
+                    android:text="@string/correct" />
 
                 <TextView
                     android:id="@+id/time1"
@@ -100,7 +97,7 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@string/time"/>
+                    android:text="@string/time" />
             </TableRow>
 
             <TableRow
@@ -288,7 +285,7 @@
                     android:layout_weight="1"
                     android:text="@string/time" />
             </TableRow>
-        </TableLayout>
 
+        </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

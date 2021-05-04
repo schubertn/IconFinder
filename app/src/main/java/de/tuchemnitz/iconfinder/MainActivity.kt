@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Fragment with results
 // DONE: Use provisional icons (drafts of icons) to test everything
 // DONE: Complete navigation
+// DONE: Make layout of AllIconsFragment nicer (remove grey borders)
 // TODO: Show actual results in ResultFragment
 // TODO: Add black-white icons (layout of ResultFragment?)
-// TODO: Set image size in OneIconFragment and AllIconsFragment depending on screen size (not dp)
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
