@@ -41,13 +41,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Make nine icons appear randomly
 // DONE: Check if clicked icon is shown icon
 // DONE: Calculate time the user needed to click icon (list with shown icon - correct? - time)
-// TODO: Save everything
+// DONE: Save everything
 // DONE: Fragment with results
-// TODO: Use provisional icons (drafts of icons) to test everything
+// DONE: Use provisional icons (drafts of icons) to test everything
+// DONE: Complete navigation
+// TODO: Show actual results in ResultFragment
+// TODO: Add black-white icons (layout of ResultFragment?)
+// TODO: Set image size in OneIconFragment and AllIconsFragment depending on screen size (not dp)
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
-// TODO: Change colors for dark theme
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
 // TODO: Design shown icons (Sun beams as triangles, no color transitions?)
 // DONE: Make OneIconFragment nicer
 // DONE: Set default (no) image in one_icon_fragment.xml
+
+// Additional stuff
+// TODO: Result icons sorted by needed time
+// TODO: Change colors for dark theme
+// TODO: Goodbye Fragment with buttons (back to welcome - show results)

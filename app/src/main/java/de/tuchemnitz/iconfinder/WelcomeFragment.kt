@@ -32,8 +32,8 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun startStudy() {
-        // findNavController().navigate(R.id.action_welcomeFragment_to_oneIconFragment)
-        findNavController().navigate(R.id.action_welcomeFragment_to_resultFragment)
+        findNavController().navigate(R.id.action_welcomeFragment_to_oneIconFragment)
+        // findNavController().navigate(R.id.action_welcomeFragment_to_resultFragment)
     }
 
     override fun onDestroyView() {

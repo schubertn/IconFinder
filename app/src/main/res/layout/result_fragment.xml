@@ -60,7 +60,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_1" />
+                    app:srcCompat="@drawable/icon_0" />
 
                 <TextView
                     android:id="@+id/correct1"
@@ -86,7 +86,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_2" />
+                    app:srcCompat="@drawable/icon_1" />
 
                 <TextView
                     android:id="@+id/correct2"
@@ -112,7 +112,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_3" />
+                    app:srcCompat="@drawable/icon_2" />
 
                 <TextView
                     android:id="@+id/correct3"
@@ -138,7 +138,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_1" />
+                    app:srcCompat="@drawable/icon_3" />
 
                 <TextView
                     android:id="@+id/correct4"
@@ -164,7 +164,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_1" />
+                    app:srcCompat="@drawable/icon_4" />
 
                 <TextView
                     android:id="@+id/correct5"
@@ -191,7 +191,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_2" />
+                    app:srcCompat="@drawable/icon_5" />
 
                 <TextView
                     android:id="@+id/correct6"
@@ -218,7 +218,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_2" />
+                    app:srcCompat="@drawable/icon_6" />
 
                 <TextView
                     android:id="@+id/correct7"
@@ -245,7 +245,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_1" />
+                    app:srcCompat="@drawable/icon_7" />
 
                 <TextView
                     android:id="@+id/correct8"
@@ -272,7 +272,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:srcCompat="@drawable/img_2" />
+                    app:srcCompat="@drawable/icon_8" />
 
                 <TextView
                     android:id="@+id/correct9"
@@ -288,7 +288,6 @@
                     android:layout_weight="1"
                     android:text="@string/time" />
             </TableRow>
-
         </TableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

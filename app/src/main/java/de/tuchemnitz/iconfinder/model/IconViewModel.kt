@@ -9,15 +9,15 @@ class IconViewModel : ViewModel() {
 
     // list of all icons
     private val allIcons = listOf(
-            Icon(R.drawable.img_1),
-            Icon(R.drawable.img_2),
-            Icon(R.drawable.img_3),
-            Icon(R.drawable.ic_launcher_foreground),
-            Icon(R.drawable.ic_launcher_foreground),
-            Icon(R.drawable.ic_launcher_foreground),
-            Icon(R.drawable.ic_launcher_foreground),
-            Icon(R.drawable.ic_launcher_foreground),
-            Icon(R.drawable.ic_launcher_foreground)
+            Icon(R.drawable.icon_0),
+            Icon(R.drawable.icon_1),
+            Icon(R.drawable.icon_2),
+            Icon(R.drawable.icon_3),
+            Icon(R.drawable.icon_4),
+            Icon(R.drawable.icon_5),
+            Icon(R.drawable.icon_6),
+            Icon(R.drawable.icon_7),
+            Icon(R.drawable.icon_8)
     )
 
     fun getAllIcons(): List<Icon> {

@@ -57,18 +57,18 @@ class OneIconFragment : Fragment() {
      * Shows a random icon. Every icon is only shown once.
      */
     private fun showRandomIcon() {
-        var rnd = (0..2).random()  // later: (0..8)
+        var rnd = (0..8).random()
         val currentIcon: IconViewModel.Icon // currently displayed icon
 
-        if (sharedViewModel.getShownIcons().size < 3) { // not all icons have been shown
+        if (sharedViewModel.getShownIcons().size < 10) { // not all icons have been shown
             // generate new number if icon associated with generated number was already shown
             while (sharedViewModel.getShownIcons().contains(rnd)) {
-                rnd = (0..2).random()
+                rnd = (0..8).random()
             }
             currentIcon = sharedViewModel.getAllIcons()[rnd]
             sharedViewModel.addShownIcon(rnd)
         } else {
-            currentIcon = sharedViewModel.getAllIcons()[3]
+            currentIcon = sharedViewModel.getAllIcons()[0] // only placeholder
             // now show icons from second list with different icons
             // use e.g. var secondSet = true
         }

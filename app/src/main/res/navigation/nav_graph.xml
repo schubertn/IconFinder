@@ -10,9 +10,6 @@
         <action
             android:id="@+id/action_welcomeFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
     </fragment>
 
     <fragment
@@ -29,6 +26,9 @@
         <action
             android:id="@+id/action_allIconsFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
+        <action
+            android:id="@+id/action_allIconsFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
 
     <action

@@ -18,7 +18,7 @@ class AllIconsFragment : Fragment() {
     private val sharedViewModel: IconViewModel by activityViewModels()
     private var startTime: Long = 0 // used to calculate the time the user needs to click the icon
     private var timeInSeconds: Double = 0.0
-    private var correctIcon: Boolean = false
+    private var correctIconClicked: Boolean = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -86,32 +86,34 @@ class AllIconsFragment : Fragment() {
     fun onIconClicked(buttonNumber: Int) {
         // calculate the time until the user clicked the icon
         val elapsedTime = System.nanoTime() - startTime
-        timeInSeconds = elapsedTime / 1_000_000_000.0
+        timeInSeconds = elapsedTime / 1_000_000_000.0 // conversion from nanoseconds to seconds
         Log.d("TESTING", "time in nanoseconds: $elapsedTime")
         Log.d("TESTING", "time in seconds: $timeInSeconds")
 
-        // check if user clicked the right icon
-        if (sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()) {
-            Log.d("TESTING", "correct icon")
-            correctIcon = true
-        } else {
-            Log.d("TESTING", "wrong icon")
-            correctIcon = false
-        }
+        // check if user clicked the right icon (the one shown before)
+        correctIconClicked = sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()
 
         // save data in a list
         saveData()
 
-        // go back to previous fragment
-        showOneIcon()
+        // next fragment to be shown is either OneIconFragment or ResultFragment
+        navigateToNextFragment()
     }
 
+
     /**
-     * Navigation to previous fragment to show only one icon. The user will have to look at it
-     * for a certain amount of time.
+     * Navigates to the next fragment.
+     * If the user has already seen all nine icons, the results will be shown.
+     * If not, the next icon is shown.
      */
-    private fun showOneIcon() {
-        findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+    private fun navigateToNextFragment() {
+        if (sharedViewModel.getShownIcons().size > 8) { // if all icons have been shown
+            // show the results
+            findNavController().navigate(R.id.action_allIconsFragment_to_resultFragment)
+        } else {
+            // show another icon the user has to look at
+            findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+        }
     }
 
     /**
@@ -120,7 +122,7 @@ class AllIconsFragment : Fragment() {
      * In there the shown icon, the correctness and needed time are saved.
      */
     private fun saveData() {
-        val data = IconViewModel.StudyData(sharedViewModel.getShownIcon(), correctIcon, timeInSeconds)
+        val data = IconViewModel.StudyData(sharedViewModel.getShownIcon(), correctIconClicked, timeInSeconds)
         sharedViewModel.addData(data)
         printMyData()
     }
