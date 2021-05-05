@@ -32,7 +32,7 @@ class OneIconFragment : Fragment() {
         showRandomIcon()
 
         // navigate to next fragment after 3 seconds
-        iconHandler.postDelayed({ showAllIcons() }, 3000)
+        iconHandler.postDelayed({ showAllIcons() }, 1000)
 
         return fragmentBinding.root
     }
