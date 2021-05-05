@@ -31,9 +31,11 @@ class WelcomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Navigation to next fragment. User will see one icon for a few seconds.
+     */
     private fun startStudy() {
         findNavController().navigate(R.id.action_welcomeFragment_to_oneIconFragment)
-        // findNavController().navigate(R.id.action_welcomeFragment_to_resultFragment)
     }
 
     override fun onDestroyView() {

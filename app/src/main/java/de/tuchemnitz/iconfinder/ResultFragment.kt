@@ -22,34 +22,55 @@ class ResultFragment : Fragment() {
         val fragmentBinding = ResultFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
+        // convert data to a format suitable for result table
         generateResultData()
-
 
         return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            iconViewModel = sharedViewModel
-        }
+        // needed to bind data to xml file
+        binding?.apply { iconViewModel = sharedViewModel }
     }
 
+    /**
+     * Convert data to a format suitable for result table.
+     * Instead of Icon use Int containing icon id to show the corresponding image.
+     * Instead of a Boolean value use a String to indicate correctness.
+     * Instead of a Double use a String for the time in seconds.
+     */
     private fun generateResultData() {
         for (data in sharedViewModel.getData()) {
             sharedViewModel.addResultData(IconViewModel.ResultData(
                 data.shownIcon.imgId,
-                data.correctness.toString(),
-                data.timeNeeded.toString()
+                data.correctness.toCustomString(),
+                data.timeNeeded.toCustomString()
             ))
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
-
 }
+
+/**
+ * Custom toString() function to return time with added "Sekunden".
+ */
+private fun Double.toCustomString(): String {
+    return "$this Sekunden"
+}
+
+/**
+ * Custom toString() function to either return "ja" or "nein" instead of true/false.
+ */
+private fun Boolean.toCustomString(): String {
+    return if(this){
+        "ja"
+    } else {
+        "nein"
+    }
+}
+

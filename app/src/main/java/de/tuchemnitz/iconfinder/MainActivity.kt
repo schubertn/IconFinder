@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Handle home button of phone (same as return button?)
 // DONE: Continue 'Shared ViewModel Across Fragments' Tutorial
 // DONE: Check if shownIcons in IconViewModel should be private/add functions
-// DONE: Lifecycleowner? (used with LiveData)
 // DONE: Make nine icons appear randomly
 // DONE: Check if clicked icon is shown icon
 // DONE: Calculate time the user needed to click icon (list with shown icon - correct? - time)
@@ -46,16 +45,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Use provisional icons (drafts of icons) to test everything
 // DONE: Complete navigation
 // DONE: Make layout of AllIconsFragment nicer (remove grey borders)
-// TODO: Show actual results in ResultFragment
+// DONE: Show actual results in ResultFragment
 // TODO: Add black-white icons (layout of ResultFragment?)
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
-// TODO: Design shown icons (Sun beams as triangles, no color transitions?)
+// TODO: Design shown icons
 // DONE: Make OneIconFragment nicer
 // DONE: Set default (no) image in one_icon_fragment.xml
 
 // Additional stuff
-// TODO: Result icons sorted by needed time
 // TODO: Change colors for dark theme
 // TODO: Goodbye Fragment with buttons (back to welcome - show results)
+// TODO: Make everything uniform
+// TODO: Order of icons in result table? (ordered by showing order - ordered by number - ordered by time)
+// TODO: Should OnClickListener in WelcomeFragment be changed to use DataBinding?
+// TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?

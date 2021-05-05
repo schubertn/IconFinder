@@ -77,21 +77,19 @@ class IconViewModel : ViewModel() {
         return dataList
     }
 
-    val test = "testest"
+    // data as used in result table
+    // iconId: id of the icon
+    // correct: String containing either "true" or "false"
+    // time: time in seconds as a String
+    data class ResultData(val iconId: Int, val correct: String, val time: String)
 
-
-    data class StringData(val icon: String, val correct: String, val time: String)
-    var dataTest = StringData(Icon(R.drawable.icon_0).imgId.toString(), true.toString(), 1.00.toString())
-
-    val datatest2 = StudyData(Icon(R.drawable.icon_0), true, 1.00)
-
-    data class ResultData(val icon: Int, val correct: String, val time: String)
     private val resultData = mutableListOf<ResultData>()
+
     fun addResultData(data: ResultData) {
         resultData.add(data)
     }
+
     fun getResultData(): MutableList<ResultData> {
         return resultData
     }
-
 }
