@@ -50,27 +50,29 @@ class ResultFragment : Fragment() {
         }
     }
 
+    /**
+     * Custom toString() function to return time with added "Sekunden".
+     */
+    private fun Double.toCustomString(): String {
+        return "$this Sekunden"
+    }
+
+    /**
+     * Custom toString() function to either return "ja" or "nein" instead of true/false.
+     */
+    private fun Boolean.toCustomString(): String {
+        return if(this){
+            "ja"
+        } else {
+            "nein"
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
 }
 
-/**
- * Custom toString() function to return time with added "Sekunden".
- */
-private fun Double.toCustomString(): String {
-    return "$this Sekunden"
-}
 
-/**
- * Custom toString() function to either return "ja" or "nein" instead of true/false.
- */
-private fun Boolean.toCustomString(): String {
-    return if(this){
-        "ja"
-    } else {
-        "nein"
-    }
-}
 
