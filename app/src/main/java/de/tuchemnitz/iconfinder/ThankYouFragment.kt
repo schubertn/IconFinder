@@ -11,8 +11,16 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.ThankYouFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+/**
+ * This is the fourth screen of the IconFinder app.
+ * The user sees a thank you message and can click on one of two buttons.
+ * One brings the user back to the first screen, the other shows the results.
+ */
 class ThankYouFragment : Fragment() {
+
+    // Binding object instance corresponding to the thank_you_fragment.xml layout
     private var binding: ThankYouFragmentBinding? = null
+
     private val sharedViewModel: IconViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -20,7 +28,6 @@ class ThankYouFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         val fragmentBinding = ThankYouFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -28,7 +35,6 @@ class ThankYouFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // used to bind button click listeners in this class to xml
         binding?.thankYouFragment = this
     }
 
@@ -51,7 +57,8 @@ class ThankYouFragment : Fragment() {
     }
 
     /**
-     * Navigation back to the WelcomeFragment and clears data if the user wants to try again.
+     * Navigation back to the WelcomeFragment and clears data if the user wants to go back to
+     * the first screen.
      */
     fun navigateToStart() {
         sharedViewModel.clearData()
@@ -59,7 +66,7 @@ class ThankYouFragment : Fragment() {
     }
 
     /**
-     * Show results, including shown icon, correctness of clicked icon and needed time.
+     * Show results in a table, including shown icon, correctness of clicked icon and needed time.
      */
     fun navigateToResults() {
         findNavController().navigate(R.id.action_thankYouFragment_to_resultFragment)

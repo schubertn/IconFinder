@@ -9,8 +9,17 @@ import androidx.fragment.app.activityViewModels
 import de.tuchemnitz.iconfinder.databinding.ResultFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+/**
+ * This is the last screen of the IconFinder app.
+ * The user sees as table containing the results of the study.
+ * Every row consists of the shown icon, whether the correct icon was clicked in the next screen
+ * and the time needed to do so.
+ */
 class ResultFragment : Fragment() {
+
+    // binding object instance corresponding to the result_fragment.xml layout
     private var binding: ResultFragmentBinding? = null
+
     private val sharedViewModel: IconViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -18,11 +27,9 @@ class ResultFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         val fragmentBinding = ResultFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
-        // convert data to a format suitable for result table
         generateResultData()
 
         return fragmentBinding.root
@@ -30,7 +37,6 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // needed to bind data to xml file
         binding?.apply { iconViewModel = sharedViewModel }
     }
 
@@ -75,6 +81,3 @@ class ResultFragment : Fragment() {
         binding = null
     }
 }
-
-
-

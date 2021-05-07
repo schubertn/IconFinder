@@ -13,10 +13,18 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.OneIconFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+/**
+ * This is the second screen of the IconFinder app.
+ * The user sees one icon for a certain time and has to remember it.
+ */
 class OneIconFragment : Fragment() {
 
+    // Binding object instance corresponding to the one_icon_fragment.xml layout
     private var binding: OneIconFragmentBinding? = null
+
     private val sharedViewModel: IconViewModel by activityViewModels()
+
+    // handler needed to show the next fragment after a certain time
     private val iconHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
@@ -24,14 +32,10 @@ class OneIconFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         val fragmentBinding = OneIconFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
-        // show one random icon
         showRandomIcon()
-
-        // navigate to next fragment after 3 seconds
         iconHandler.postDelayed({ showAllIcons() }, 1000)
 
         return fragmentBinding.root
@@ -39,15 +43,12 @@ class OneIconFragment : Fragment() {
 
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
-     * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the WelcomeFragment,
-     * stops the delay and deletes all data.
+     * which would falsify the study data. Therefore, a back button press navigates the user
+     * back to the WelcomeFragment, stops the delay and deletes all data.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
                 // stop delay
                 iconHandler.removeCallbacksAndMessages(null)
@@ -64,24 +65,27 @@ class OneIconFragment : Fragment() {
      */
     private fun showRandomIcon() {
         var rnd = (0..8).random()
-        val currentIcon: IconViewModel.Icon // currently displayed icon
+        // currently displayed icon
+        val currentIcon: IconViewModel.Icon
 
-        if (sharedViewModel.getShownIcons().size < 10) { // not all icons have been shown
+        if (sharedViewModel.getShownIcons().size < 10) {
             // generate new number if icon associated with generated number was already shown
             while (sharedViewModel.getShownIcons().contains(rnd)) {
                 rnd = (0..8).random()
             }
+            // set the current icon and add it to the list of shown icons
             currentIcon = sharedViewModel.getAllIcons()[rnd]
             sharedViewModel.addShownIcon(rnd)
         } else {
-            currentIcon = sharedViewModel.getAllIcons()[0] // only placeholder
+            currentIcon = sharedViewModel.getAllIcons()[0]
+            // only placeholder
             // now show icons from second list with different icons
-            // use e.g. var secondSet = true
+            // e.g. use var secondSet = true
         }
 
-        // shown icon to later compare with clicked icon
+        // set shown icon to later compare it with clicked icon
         sharedViewModel.setShownIcon(currentIcon)
-        // bind current icon to one_icon image view
+        // bind current icon to image view in one_icon_fragment.xml
         binding?.oneIcon?.setImageResource(currentIcon.imgId)
     }
 

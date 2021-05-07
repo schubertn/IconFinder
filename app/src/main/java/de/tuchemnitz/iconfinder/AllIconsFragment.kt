@@ -12,11 +12,22 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+/**
+ * This is the third screen of the IconFinder app.
+ * The user sees a 3x3 grid with nine different icons and has to click on the one shown before,
+ * the time needed to click the icon is saved.
+ * After clicking the icon, the user either sees the previous screen again with a different icon
+ * or the next screen, depending on if all icons have already been shown.
+ */
 class AllIconsFragment : Fragment() {
 
+    // Binding object instance corresponding to the all_icons_fragment.xml layout
     private var binding: AllIconsFragmentBinding? = null
+
     private val sharedViewModel: IconViewModel by activityViewModels()
-    private var startTime: Long = 0 // used to calculate the time the user needs to click the icon
+
+    // values needed for study with default values
+    private var startTime: Long = 0
     private var timeInSeconds: Double = 0.0
     private var correctIconClicked: Boolean = false
 
@@ -25,11 +36,9 @@ class AllIconsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
-        // show all icons in random order
         showRandomOrderIcons()
 
         return fragmentBinding.root
@@ -63,13 +72,13 @@ class AllIconsFragment : Fragment() {
     }
 
     /**
-     * Shows the nine icons in random order on the 3x3 grid.
+     * Shows all nine icons in random order on the 3x3 grid.
      */
     private fun showRandomOrderIcons() {
         // set shuffle list to random order list of elements from all icon list
         sharedViewModel.setShuffleList(sharedViewModel.getAllIcons().shuffled().toMutableList())
 
-        //  alternative: create array containing all buttons and then loop over array ?
+        // alternative: create array containing all buttons and then loop over array ?
         binding?.apply {
             iconButtonZero.setImageResource(sharedViewModel.getShuffleList()[0].imgId)
             iconButtonOne.setImageResource(sharedViewModel.getShuffleList()[1].imgId)
@@ -100,7 +109,6 @@ class AllIconsFragment : Fragment() {
 
         // save data in a list
         saveData()
-
         // next fragment to be shown is either OneIconFragment or ResultFragment
         navigateToNextFragment()
     }

@@ -8,7 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.WelcomeFragmentBinding
 
+/**
+ * This is the first screen of the IconFinder app.
+ * The user is introduced to the app and instructed on how to use it.
+ * A button can be pressed to start the study.
+ */
 class WelcomeFragment : Fragment() {
+
+    // Binding object instance corresponding to the welcome_fragment.xml layout
     private var binding: WelcomeFragmentBinding? = null
 
     override fun onCreateView(
@@ -16,7 +23,6 @@ class WelcomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         val fragmentBinding = WelcomeFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -24,12 +30,11 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // used to bind button click listeners in this class to xml
         binding?.welcomeFragment = this
     }
 
     /**
-     * Navigation to next fragment. User will see one icon for a few seconds.
+     * Navigation to next fragment. User will there see one icon for a few seconds.
      */
     fun startStudy() {
         findNavController().navigate(R.id.action_welcomeFragment_to_oneIconFragment)
