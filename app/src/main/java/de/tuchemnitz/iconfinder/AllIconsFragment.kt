@@ -21,9 +21,9 @@ class AllIconsFragment : Fragment() {
     private var correctIconClicked: Boolean = false
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
@@ -38,16 +38,16 @@ class AllIconsFragment : Fragment() {
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
      * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the WelcomeFragment.
+     * Therefore, a back button press navigates the user back to the WelcomeFragment
+     * and clear all data.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
-                // reset list of shown icons
-                sharedViewModel.clearShownIconsList()
-                // TODO: clear the other data
+                // reset data
+                sharedViewModel.clearData()
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
@@ -56,10 +56,8 @@ class AllIconsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // used to bind button click listeners in this class to xml
         binding?.allIconsFragment = this
-
         // used to calculate the time the user needs to click the icon
         startTime = System.nanoTime()
     }
@@ -97,7 +95,8 @@ class AllIconsFragment : Fragment() {
         Log.d("TESTING", "time in seconds: $timeInSeconds")
 
         // check if user clicked the right icon (the one shown before)
-        correctIconClicked = sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()
+        correctIconClicked =
+            sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()
 
         // save data in a list
         saveData()
@@ -128,7 +127,11 @@ class AllIconsFragment : Fragment() {
      * In there the shown icon, the correctness and needed time are saved.
      */
     private fun saveData() {
-        val data = IconViewModel.StudyData(sharedViewModel.getShownIcon(), correctIconClicked, timeInSeconds)
+        val data = IconViewModel.StudyData(
+            sharedViewModel.getShownIcon(),
+            correctIconClicked,
+            timeInSeconds
+        )
         sharedViewModel.addData(data)
         printMyData()
     }

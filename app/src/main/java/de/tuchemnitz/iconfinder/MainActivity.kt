@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     /**
-     * Navigates back to WelcomeFragment when home button on phone is pressed and
-     * resets list of shown icons.
+     * Deletes the data from the incomplete study and navigates back to WelcomeFragment
+     * when home button on phone is pressed.
      */
     override fun onPause() {
         super.onPause()
-        sharedViewModel.clearShownIconsList()
-        // TODO: clear other data
+        sharedViewModel.clearData()
         this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_welcome_fragment)
     }
 }
@@ -49,6 +48,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Show actual results in ResultFragment
 // TODO: Add black-white icons (layout of ResultFragment?)
 // TODO: Clear data on back/home button press
+// TODO: ThankYouFragment navigation back to start - do study again would falsify results
+// TODO: Make user unable to do study again?
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))

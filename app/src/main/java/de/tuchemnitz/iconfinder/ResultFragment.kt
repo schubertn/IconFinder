@@ -14,9 +14,9 @@ class ResultFragment : Fragment() {
     private val sharedViewModel: IconViewModel by activityViewModels()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val fragmentBinding = ResultFragmentBinding.inflate(inflater, container, false)
@@ -42,11 +42,13 @@ class ResultFragment : Fragment() {
      */
     private fun generateResultData() {
         for (data in sharedViewModel.getData()) {
-            sharedViewModel.addResultData(IconViewModel.ResultData(
-                data.shownIcon.imgId,
-                data.correctness.toCustomString(),
-                data.timeNeeded.toCustomString()
-            ))
+            sharedViewModel.addResultData(
+                IconViewModel.ResultData(
+                    data.shownIcon.imgId,
+                    data.correctness.toCustomString(),
+                    data.timeNeeded.toCustomString()
+                )
+            )
         }
     }
 
@@ -61,7 +63,7 @@ class ResultFragment : Fragment() {
      * Custom toString() function to either return "ja" or "nein" instead of true/false.
      */
     private fun Boolean.toCustomString(): String {
-        return if(this){
+        return if (this) {
             "ja"
         } else {
             "nein"

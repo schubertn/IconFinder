@@ -20,9 +20,9 @@ class OneIconFragment : Fragment() {
     private val iconHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val fragmentBinding = OneIconFragmentBinding.inflate(inflater, container, false)
@@ -40,7 +40,8 @@ class OneIconFragment : Fragment() {
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
      * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the WelcomeFragment.
+     * Therefore, a back button press navigates the user back to the WelcomeFragment,
+     * stops the delay and deletes all data.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,9 +51,8 @@ class OneIconFragment : Fragment() {
             override fun handleOnBackPressed() {
                 // stop delay
                 iconHandler.removeCallbacksAndMessages(null)
-                // reset list of shown icons
-                sharedViewModel.clearShownIconsList()
-                // TODO: clear the other data
+                // reset data
+                sharedViewModel.clearData()
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
@@ -96,7 +96,7 @@ class OneIconFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        // after pressing the home button, delay has to be stopped
+        // after pressing the home button, delay has to be stopped, otherwise the app will crash
         iconHandler.removeCallbacksAndMessages(null)
     }
 }

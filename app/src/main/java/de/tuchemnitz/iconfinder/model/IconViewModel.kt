@@ -20,6 +20,9 @@ class IconViewModel : ViewModel() {
             Icon(R.drawable.icon_8)
     )
 
+    /**
+     *
+     */
     fun getAllIcons(): List<Icon> {
         return allIcons
     }
@@ -35,9 +38,6 @@ class IconViewModel : ViewModel() {
         shownIconsList.add(numberOfIcon)
     }
 
-    fun clearShownIconsList() {
-        shownIconsList.clear()
-    }
 
     // list that can be shuffled to contain all icons in random order
     private var shuffleList = mutableListOf<Icon>()
@@ -65,10 +65,19 @@ class IconViewModel : ViewModel() {
     // shownIcon: the icon the user saw
     // correctness: if the user clicked the right icon
     // timeNeeded: time until the user clicked an icon
+    /**
+     * Data as collected in the study. Every data-set consists of
+     * the object [shownIcon] with the type [Icon], representing the icon the user saw,
+     * the Boolean value [correctness] indicating whether the user clicked the right icon and
+     * the Double [timeNeeded] containing the time the user needed to click the icon.
+     */
     data class StudyData(val shownIcon: Icon, val correctness: Boolean, val timeNeeded: Double)
 
     private val dataList = mutableListOf<StudyData>()
 
+    /**
+     *
+     */
     fun addData(data: StudyData) {
         dataList.add(data)
     }
@@ -77,21 +86,39 @@ class IconViewModel : ViewModel() {
         return dataList
     }
 
-    // data as used in result table
-    // iconId: id of the icon
-    // correct: String containing either "true" or "false"
-    // time: time in seconds as a String
+    /**
+     * Data as used in table with results in ResultFragment. Every data-set consists of
+     * an Integer containing the [iconId] of the icon the user saw,
+     * the String [correct] indicating whether the user clicked the right icon and
+     * the String [time] representing the time the user needed to click the icon.
+     */
     data class ResultData(val iconId: Int, val correct: String, val time: String)
 
-    private val resultData = mutableListOf<ResultData>()
+    private val resultDataList = mutableListOf<ResultData>()
 
+    /**
+     * Adds new a [data] object to [resultDataList].
+     */
     fun addResultData(data: ResultData) {
-        resultData.add(data)
+        resultDataList.add(data)
     }
 
+    /**
+     * Returns a list containing [ResultData]. Used in table with results.
+     */
     fun getResultData(): MutableList<ResultData> {
-        return resultData
+        return resultDataList
     }
 
-    // TODO: clearAllData() to handle back/home button presses
+    /**
+     * Deletes the collected data.
+     * Clears [shownIconsList], [dataList] and [resultDataList].
+     * Sets [shownIcon] back to its default value.
+     */
+    fun clearData() {
+        shownIconsList.clear()
+        shownIcon = Icon(0)
+        dataList.clear()
+        resultDataList.clear()
+    }
 }
