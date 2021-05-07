@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="thankYouFragment"
+            type="de.tuchemnitz.iconfinder.ThankYouFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/thank_you_message"
+            style="@style/IconFinder.AppText"
+            android:text="@string/thank_you_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/results_button"
+            style="@style/IconFinder.AppButtons"
+            android:onClick="@{() -> thankYouFragment.navigateToResults()}"
+            android:text="@string/show_results"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/thank_you_message" />
+
+        <Button
+            android:id="@+id/back_to_start_button"
+            style="@style/IconFinder.AppButtons"
+            android:onClick="@{() -> thankYouFragment.navigateToStart()}"
+            android:text="@string/back_to_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/results_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

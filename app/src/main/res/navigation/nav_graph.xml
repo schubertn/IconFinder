@@ -27,8 +27,8 @@
             android:id="@+id/action_allIconsFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
         <action
-            android:id="@+id/action_allIconsFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            android:id="@+id/action_allIconsFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
     </fragment>
 
     <action
@@ -40,5 +40,16 @@
         android:id="@+id/resultFragment"
         android:name="de.tuchemnitz.iconfinder.ResultFragment"
         android:label="ResultFragment" />
+    <fragment
+        android:id="@+id/thankYouFragment"
+        android:name="de.tuchemnitz.iconfinder.ThankYouFragment"
+        android:label="ThankYouFragment" >
+        <action
+            android:id="@+id/action_thankYouFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
 
 </navigation>

@@ -24,17 +24,14 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.apply {
-            // Set up the button click listeners
-            startButton.setOnClickListener { startStudy() }
-        }
+        // used to bind button click listeners in this class to xml
+        binding?.welcomeFragment = this
     }
 
     /**
      * Navigation to next fragment. User will see one icon for a few seconds.
      */
-    private fun startStudy() {
+    fun startStudy() {
         findNavController().navigate(R.id.action_welcomeFragment_to_oneIconFragment)
     }
 

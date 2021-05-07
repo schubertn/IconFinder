@@ -1,6 +1,7 @@
 <resources>
     <string name="top_bar_label">Icon Finder</string>
 
+    <!-- Strings used in welcome_fragment.xml -->
     <string name="first_paragraph_text">
         Herzlich willkommen zu meiner Studie! \n
         Es soll ermittelt werden, wie schnell Icons erkannt werden.
@@ -28,17 +29,18 @@
     <string name="start">Start</string>
     <string name="next">Weiter</string>
 
+    <!-- Strings used in thank_you_fragment.xml -->
     <string name="thank_you_text">
         Vielen Dank für Ihre Teilnahme! \n
-        Unterhalb können Sie Ihre Ergebnisse einsehen.
+        Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten
+        oder zum Start der App zurückkehren möchten.
     </string>
 
+    <string name="show_results">Ergebnisse anzeigen</string>
+    <string name="back_to_start">Zurück zum Start</string>
+
+    <!-- Strings used in result_fragment.xml -->
     <string name="table_head_column1">Gesehenes Icon</string>
     <string name="table_head_column2">Korrekt erkannt?</string>
     <string name="table_head_column3">Benötigte Zeit</string>
-
-    <string name="correct">Icon wurde korrekt erkannt</string>
-    <string name="wrong">Icon wurde nicht korrekt erkannt</string>
-    <string name="time">Time</string>
-
 </resources>

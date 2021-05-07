@@ -37,6 +37,11 @@ class OneIconFragment : Fragment() {
         return fragmentBinding.root
     }
 
+    /**
+     * Handles back button press. If not handled, the user would see previous fragment again,
+     * which would falsify the study data.
+     * Therefore, a back button press navigates the user back to the WelcomeFragment.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +52,7 @@ class OneIconFragment : Fragment() {
                 iconHandler.removeCallbacksAndMessages(null)
                 // reset list of shown icons
                 sharedViewModel.clearShownIconsList()
+                // TODO: clear the other data
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }

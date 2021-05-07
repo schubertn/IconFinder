@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onPause() {
         super.onPause()
         sharedViewModel.clearShownIconsList()
+        // TODO: clear other data
         this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_welcome_fragment)
     }
 }
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // DONE: Make layout of AllIconsFragment nicer (remove grey borders)
 // DONE: Show actual results in ResultFragment
 // TODO: Add black-white icons (layout of ResultFragment?)
+// TODO: Clear data on back/home button press
 // DONE: Praktikumsbericht Stichpunkte
 // DONE: Implement timer
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
@@ -56,8 +58,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 // Additional stuff
 // TODO: Change colors for dark theme
-// TODO: Goodbye Fragment with buttons (back to welcome - show results)
+// DONE: Goodbye Fragment with buttons (back to welcome - show results)
 // TODO: Make everything uniform
 // TODO: Order of icons in result table? (ordered by showing order - ordered by number - ordered by time)
-// TODO: Should OnClickListener in WelcomeFragment be changed to use DataBinding?
+// DONE: Should OnClickListener in WelcomeFragment be changed to use DataBinding?
 // TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?
+// DONE: Sort string.xml by usage
+// TODO: Remove Databinding from OneIcon.xml?
+// DONE: Better Fragment names (also change those in comments!)
+// DONE: Styles for buttons
+// TODO: Make layout of ThankYouFragment nicer
+// TODO: Rewrite the texts
+// TODO: Build warning: Please remove usages of jcenter()

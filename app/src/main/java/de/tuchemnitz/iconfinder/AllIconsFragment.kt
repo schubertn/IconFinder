@@ -35,6 +35,11 @@ class AllIconsFragment : Fragment() {
         return fragmentBinding.root
     }
 
+    /**
+     * Handles back button press. If not handled, the user would see previous fragment again,
+     * which would falsify the study data.
+     * Therefore, a back button press navigates the user back to the WelcomeFragment.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
@@ -42,6 +47,7 @@ class AllIconsFragment : Fragment() {
             override fun handleOnBackPressed() {
                 // reset list of shown icons
                 sharedViewModel.clearShownIconsList()
+                // TODO: clear the other data
                 // go back to WelcomeFragment
                 findNavController().navigate(R.id.action_global_to_welcome_fragment)
             }
@@ -109,7 +115,7 @@ class AllIconsFragment : Fragment() {
     private fun navigateToNextFragment() {
         if (sharedViewModel.getShownIcons().size > 8) { // if all icons have been shown
             // show the results
-            findNavController().navigate(R.id.action_allIconsFragment_to_resultFragment)
+            findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
         } else {
             // show another icon the user has to look at
             findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)

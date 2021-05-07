@@ -92,4 +92,6 @@ class IconViewModel : ViewModel() {
     fun getResultData(): MutableList<ResultData> {
         return resultData
     }
+
+    // TODO: clearAllData() to handle back/home button presses
 }

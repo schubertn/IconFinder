@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Style for text in WelcomeFragment -->
-    <style name="IconFinder.WelcomeText" parent="Widget.MaterialComponents.TextView">
+    <!-- Style for all blocks of text in the app. -->
+    <style name="IconFinder.AppText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
@@ -10,6 +12,17 @@
         <item name="android:layout_marginTop">20dp</item>
     </style>
 
+    <!-- Style for all Buttons in the app. -->
+    <style name="IconFinder.AppButtons" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="backgroundTint">@color/green_light</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <!-- Style for the ImageButtons in all_icons_fragment.xml containing images of the icons. -->
     <style name="IconFinder.IconButtons" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">100dp</item>
@@ -19,6 +32,7 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
+    <!-- Style for text in the table in result_fragment.xml. -->
     <style name="IconFinder.TableText" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">18dp</item>
         <item name="android:layout_gravity">center</item>
@@ -26,6 +40,7 @@
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
+    <!-- Style for the text in the head of the table in result_fragment.xml. -->
     <style name="IconFinder.TableHeadText" parent="Widget.MaterialComponents.TextView">
         <item name="android:minHeight">24dp</item>
         <item name="android:textStyle">bold</item>

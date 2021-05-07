@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="iconViewModel"
             type="de.tuchemnitz.iconfinder.model.IconViewModel" />
@@ -11,18 +12,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <!-- can be used in ThankYouFragment
-        <TextView
-            android:id="@+id/thank_you_message"
-            style="@style/IconFinder.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/thank_you_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-            -->
 
         <TableLayout
             android:id="@+id/result_table"
@@ -198,7 +187,7 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.resultData[5].correct}"/>
+                    android:text="@{iconViewModel.resultData[5].correct}" />
 
                 <TextView
                     android:id="@+id/time6"
