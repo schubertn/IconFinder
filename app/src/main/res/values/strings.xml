@@ -33,7 +33,9 @@
     <string name="thank_you_text">
         Vielen Dank für Ihre Teilnahme! \n
         Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten
-        oder zum Start der App zurückkehren möchten.
+        oder zum Start der App zurückkehren möchten. \n
+        Falls Sie die Studie erneut durchführen möchten, werden Ihre Ergebnisse nicht
+        gespeichert, um die Studie nicht zu verfälschen.
     </string>
 
     <string name="show_results">Ergebnisse anzeigen</string>

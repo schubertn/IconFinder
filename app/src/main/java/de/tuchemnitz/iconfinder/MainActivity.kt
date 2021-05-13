@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 // TODO: Add black-white icons (layout of ResultFragment?)
-// (ThankYouFragment navigation back to start - do study again would falsify results) ->
-// TODO: Make user unable to do study again?
+// TODO: Do not save the data to the db if the study is done again (see IconViewModel)
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
 // TODO: Design shown icons
+// TODO: Set time for delay (2 seconds in BA)
 
 // Additional stuff
 // TODO: Change colors for dark theme

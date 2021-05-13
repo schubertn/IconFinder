@@ -10,6 +10,23 @@ import de.tuchemnitz.iconfinder.R
  */
 class IconViewModel : ViewModel() {
 
+    /** will be used to not save data to db if study is done again
+    // is true if the user already reached the ThankYouFragment once
+    private var studyAlreadyDone = false
+
+    fun getStudyAlreadyDone(): Boolean {
+        return studyAlreadyDone
+    }
+
+    /**
+     * Changes the value of [ studyAlreadyDone] to true to indicate that the user has already
+     * done the study (reached the ThankYouFragment once).
+     */
+    fun setStudyAlreadyDone() {
+        studyAlreadyDone = true
+    }
+    **/
+
     /**
      * Every icon is identified by an unique Integer [imgId].
      */
