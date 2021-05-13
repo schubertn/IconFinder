@@ -13,7 +13,7 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val sharedViewModel: IconViewModel by viewModels()
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // disable night mode for this app to avoid differences because of the background color
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)
 // TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
+// TODO: Background of app icon as image not color
 // TODO: Design shown icons
 
 // Additional stuff
@@ -54,10 +55,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?
 // TODO: Remove Databinding from OneIcon.xml?
 // TODO: Make layout of ThankYouFragment nicer
-// TODO: Rewrite the texts
 // TODO: Build warning - Please remove usages of jcenter()
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)
 // TODO: Check for spelling errors
 // TODO: Read through comments
+// TODO: Rewrite texts
