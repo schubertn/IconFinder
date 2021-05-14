@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?
 // TODO: Remove Databinding from OneIcon.xml?
 // TODO: Make layout of ThankYouFragment nicer
-// TODO: Build warning - Please remove usages of jcenter()
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)
