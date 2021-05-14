@@ -42,12 +42,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-// TODO: Add black-white icons (layout of ResultFragment?)
+// TODO: Check if there are any unnecessary style attributes in xml files
+// TODO: Add instruction fragments between phases
+// TODO: Rework ResultFragment
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)
-// TODO: Design app icon (lupe als foreground, icons als background (bewegungseffekt))
-// TODO: Background of app icon as image not color
+// TODO: Design app icon (background as image not color!)
 // TODO: Design shown icons
+// TODO: Rename icons and fragments
 
 // Additional stuff
 // TODO: Make everything uniform

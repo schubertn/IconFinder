@@ -16,6 +16,8 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
  * This is the third screen of the IconFinder app.
  * The user sees a 3x3 grid with nine different icons and has to click on the one shown before,
  * the time needed to click the icon is saved.
+ * Those icons can either be colorful or black and white, depending on the phase of the study.
+ * Phases 1 and 3 show colorful icons, phases 2 and 4 black and white icons.
  * After clicking the icon, the user either sees the previous screen again with a different icon
  * or the next screen, depending on if all icons have already been shown.
  */
@@ -73,10 +75,20 @@ class AllIconsFragment : Fragment() {
 
     /**
      * Shows all nine icons in random order on the 3x3 grid.
+     * If the study is in phase 1 or 3, colorful icons are shown,
+     * if the study is in phase 2 or 4, black and white icons are shown.
      */
     private fun showRandomOrderIcons() {
-        // set shuffle list to random order list of elements from all icon list
-        sharedViewModel.setShuffleList(sharedViewModel.getAllIcons().shuffled().toMutableList())
+        // set shuffle list to random order list of elements from icon lists
+        if (sharedViewModel.getPhase() == 1 || sharedViewModel.getPhase() == 3) {
+            sharedViewModel.setShuffleList(
+                sharedViewModel.getColorIcons().shuffled().toMutableList()
+            )
+        } else {
+            sharedViewModel.setShuffleList(
+                sharedViewModel.getBlackWhiteIcons().shuffled().toMutableList()
+            )
+        }
 
         // alternative: create array containing all buttons and then loop over array ?
         binding?.apply {
@@ -115,16 +127,32 @@ class AllIconsFragment : Fragment() {
 
 
     /**
-     * Navigates to the next fragment.
-     * If the user has already seen all nine icons, the results will be shown.
-     * If not, the next icon is shown.
+     * Navigation to the next fragment.
+     * If the user has already seen all nine icons, the next phase is started by resetting the
+     * list of shown icons and showing instructions for this phase.
+     * If all four phases are done, the results will be shown.
+     * If the user has not seen all nine icons, the next icon is shown.
      */
     private fun navigateToNextFragment() {
-        if (sharedViewModel.getShownIcons().size > 8) { // if all icons have been shown
-            // show the results
-            findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
+        if (sharedViewModel.getShownIcons().size > 8) {
+            sharedViewModel.clearShownIcons()
+            when (sharedViewModel.getPhase()) {
+                1 -> {
+                    sharedViewModel.setPhase(2)
+                    // add individual navigation to instruction fragments here
+                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                }
+                2 -> {
+                    sharedViewModel.setPhase(3)
+                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                }
+                3 -> {
+                    sharedViewModel.setPhase(4)
+                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                }
+                4 -> findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
+            }
         } else {
-            // show another icon the user has to look at
             findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
         }
     }

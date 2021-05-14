@@ -15,42 +15,105 @@ class IconViewModel : ViewModel() {
     private var studyAlreadyDone = false
 
     fun getStudyAlreadyDone(): Boolean {
-        return studyAlreadyDone
+    return studyAlreadyDone
     }
 
     /**
      * Changes the value of [ studyAlreadyDone] to true to indicate that the user has already
      * done the study (reached the ThankYouFragment once).
-     */
+    */
     fun setStudyAlreadyDone() {
-        studyAlreadyDone = true
+    studyAlreadyDone = true
     }
-    **/
+     **/
+
+    // the study consists of four phases
+    private var phase = 4
+
+    /**
+     * Returns the current [phase] of the study.
+     * Phase 1: The user sees one colorful icon and has to find it in a grid of colorful icons.
+     * Phase 2: The user sees one black and white icon and has to find it in a grid of
+     * black and white icons.
+     * Phase 3: The user sees an icon name and has to find it in a grid of colorful icons.
+     * Phase 4: The user sees an icon name and has to find it in a grid of black and white icons.
+     */
+    fun getPhase(): Int {
+        return phase
+    }
+
+    /**
+     * Sets the [phase] of the study.
+     */
+    fun setPhase(phaseNr: Int) {
+        phase = phaseNr
+    }
 
     /**
      * Every icon is identified by an unique Integer [imgId].
      */
     data class Icon(val imgId: Int)
 
-    // list of all icons
-    private val allIcons = listOf(
-            Icon(R.drawable.icon_0),
-            Icon(R.drawable.icon_1),
-            Icon(R.drawable.icon_2),
-            Icon(R.drawable.icon_3),
-            Icon(R.drawable.icon_4),
-            Icon(R.drawable.icon_5),
-            Icon(R.drawable.icon_6),
-            Icon(R.drawable.icon_7),
-            Icon(R.drawable.icon_8)
+    // list of all colorful icons
+    private val colorIcons = listOf(
+        Icon(R.drawable.icon_0),
+        Icon(R.drawable.icon_1),
+        Icon(R.drawable.icon_2),
+        Icon(R.drawable.icon_3),
+        Icon(R.drawable.icon_4),
+        Icon(R.drawable.icon_5),
+        Icon(R.drawable.icon_6),
+        Icon(R.drawable.icon_7),
+        Icon(R.drawable.icon_8)
     )
 
     /**
-     * Returns a list [allIcons] of all icons used in this study.
+     * Returns a list [colorIcons] of all colorful icons used in this study.
      */
-    fun getAllIcons(): List<Icon> {
-        return allIcons
+    fun getColorIcons(): List<Icon> {
+        return colorIcons
     }
+
+    // list of all black and white icons
+    private val blackWhiteIcons = listOf(
+        Icon(R.drawable.icon_0_bw),
+        Icon(R.drawable.icon_1_bw),
+        Icon(R.drawable.icon_2_bw),
+        Icon(R.drawable.icon_3_bw),
+        Icon(R.drawable.icon_4_bw),
+        Icon(R.drawable.icon_5_bw),
+        Icon(R.drawable.icon_6_bw),
+        Icon(R.drawable.icon_7_bw),
+        Icon(R.drawable.icon_8_bw)
+    )
+
+    /**
+     * Returns a list [blackWhiteIcons] of all black and white icons used in this study.
+     */
+    fun getBlackWhiteIcons(): List<Icon> {
+        return blackWhiteIcons
+    }
+
+    // list of all icon names
+    private val iconNames = listOf(
+        "Art",
+        "Browser",
+        "Wetter",
+        "Einstellungen",
+        "Galerie",
+        "Mail",
+        "Maps",
+        "Nachrichten",
+        "Telefon"
+    )
+
+    /**
+     * Returns a list [iconNames] of all names of the icons used in this study.
+     */
+    fun getIconNames(): List<String> {
+        return iconNames
+    }
+
 
     // list of numbers of already shown icons
     private val shownIconsList = mutableListOf<Int>()
@@ -67,6 +130,13 @@ class IconViewModel : ViewModel() {
      */
     fun addShownIcon(numberOfIcon: Int) {
         shownIconsList.add(numberOfIcon)
+    }
+
+    /**
+     * Removes all elements from [shownIconsList]
+     */
+    fun clearShownIcons() {
+        shownIconsList.clear()
     }
 
 
@@ -144,8 +214,8 @@ class IconViewModel : ViewModel() {
     private val resultDataList = mutableListOf<ResultData>()
 
     /**
-    * Returns a list containing [ResultData]. Used in table with results.
-    */
+     * Returns a list containing [ResultData]. Used in table with results.
+     */
     fun getResultData(): MutableList<ResultData> {
         return resultDataList
     }
