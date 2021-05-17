@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Rework ResultFragment
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)
-// TODO: Design app icon (background as image not color!)
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 
@@ -61,3 +60,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Check for spelling errors
 // TODO: Read through comments
 // TODO: Rewrite texts
+// TODO: Redo app icon with final icon images
