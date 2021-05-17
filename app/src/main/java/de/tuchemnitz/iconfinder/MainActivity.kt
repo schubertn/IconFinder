@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         **/
     }
 
-
     /**
      * Deletes the data from the incomplete study and navigates back to InstructionFragment
      * when home button on phone is pressed.
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-// TODO: Check if there are any unnecessary style attributes in xml files
 // TODO: Rework ResultFragment
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)
