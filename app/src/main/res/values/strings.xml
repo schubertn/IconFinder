@@ -1,33 +1,58 @@
 <resources>
     <string name="top_bar_label">Icon Finder</string>
 
-    <!-- Strings used in welcome_fragment.xml -->
-    <string name="first_paragraph_text">
+    <!-- Strings used in instruction_fragment.xml -->
+    <string name="phase1_text">
         Herzlich willkommen zu meiner Studie! \n
         Es soll ermittelt werden, wie schnell Icons erkannt werden.
-    </string>
-
-    <string name="second_paragraph_text">
-        Nachdem der START Button betätigt wurde, wird ein einzelnes Icon für einige Sekunden lang
-        angezeigt. Bitte merken Sie sich das gezeigte Icon. \n
-        Anschließend wird eine Gruppe bestehend aus neun verschiedenen Icons angezeigt.
+        \n\n
+        Nachdem der START Button betätigt wurde, beginnt die erste Phase dieser Studie und Ihnen
+        wird ein einzelnes buntes Icon für einige Sekunden lang angezeigt.
+        Bitte merken Sie sich das gezeigte Icon. \n
+        Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
         Ihre Aufgabe ist es, das zuvor gesehene Icon so schnell wie möglich zu finden
         und zu berühren. \n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
-        und der Ablauf wiederholt sich neun Mal.
-    </string>
-
-    <string name="third_paragraph_text">
+        und der Ablauf wiederholt sich insgesamt neun Mal.
+        \n\n
         Wenn Sie den Home-Button oder den Zurück-Button Ihres Gerätes betätigen, gelangen Sie
         zu diesem Bildschirm zurück und jeglicher Fortschritt wird gelöscht.
     </string>
 
-    <string name="fourth_paragraph_text">
-        Vielen Dank für Ihre Teilnahme!
+    <string name="phase2_text">
+        Nachdem der START Button betätigt wurde, beginnt die zweite Phase dieser Studie und Ihnen
+        wird ein einzelnes schwarz-weißes Icon für einige Sekunden lang angezeigt.
+        Bitte merken Sie sich das gezeigte Icon. \n\n
+        Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weiß Icons angezeigt.
+        Ihre Aufgabe ist es, das zuvor gesehene Icon so schnell wie möglich zu finden
+        und zu berühren. \n\n
+        Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
+        und der Ablauf wiederholt sich insgesamt neun Mal.
+    </string>
+
+    <string name="phase3_text">
+        Nachdem der START Button betätigt wurde, beginnt die dritte Phase dieser Studie und Ihnen
+        wird der Name eines Icons für einige Sekunden lang angezeigt.
+        Bitte merken Sie sich das gezeigte Wort. \n\n
+        Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
+        Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
+        finden und zu berühren. \n\n
+        Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
+        und der Ablauf wiederholt sich insgesamt neun Mal.
+    </string>
+
+    <string name="phase4_text">
+        Nachdem der START Button betätigt wurde, beginnt die vierte Phase dieser Studie und Ihnen
+        wird erneut der Name eines Icons für einige Sekunden lang angezeigt.
+        Bitte merken Sie sich das gezeigte Wort. \n\n
+        Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weiß Icons angezeigt.
+        Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
+        finden und zu berühren. \n\n
+        Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
+        und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
 
     <string name="start">Start</string>
-    <string name="next">Weiter</string>
 
     <!-- Strings used in thank_you_fragment.xml -->
     <string name="thank_you_text">

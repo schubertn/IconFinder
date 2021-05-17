@@ -32,18 +32,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
     /**
-     * Deletes the data from the incomplete study and navigates back to WelcomeFragment
+     * Deletes the data from the incomplete study and navigates back to InstructionFragment
      * when home button on phone is pressed.
      */
     override fun onPause() {
         super.onPause()
         sharedViewModel.clearData()
-        this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_welcome_fragment)
+        this.findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_to_instruction_fragment)
     }
 }
 
 // TODO: Check if there are any unnecessary style attributes in xml files
-// TODO: Add instruction fragments between phases
 // TODO: Rework ResultFragment
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)
@@ -57,6 +56,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?
 // TODO: Remove Databinding from OneIcon.xml?
 // TODO: Make layout of ThankYouFragment nicer
+// TODO: Remove function from onCreateView()?
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)

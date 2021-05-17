@@ -54,7 +54,7 @@ class OneIconFragment : Fragment() {
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
      * which would falsify the study data. Therefore, a back button press navigates the user
-     * back to the WelcomeFragment, stops the delay and deletes all data.
+     * back to the InstructionFragment, stops the delay and deletes all data.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +64,8 @@ class OneIconFragment : Fragment() {
                 iconHandler.removeCallbacksAndMessages(null)
                 // reset data
                 sharedViewModel.clearData()
-                // go back to WelcomeFragment
-                findNavController().navigate(R.id.action_global_to_welcome_fragment)
+                // go back to InstructionFragment
+                findNavController().navigate(R.id.action_global_to_instruction_fragment)
             }
         })
     }

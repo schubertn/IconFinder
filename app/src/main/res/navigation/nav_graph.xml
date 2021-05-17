@@ -2,13 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/instructionFragment">
 
     <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="de.tuchemnitz.iconfinder.WelcomeFragment">
+        android:id="@+id/instructionFragment"
+        android:name="de.tuchemnitz.iconfinder.InstructionFragment">
         <action
-            android:id="@+id/action_welcomeFragment_to_oneIconFragment"
+            android:id="@+id/action_instructionFragment_to_oneIconFragment"
             app:destination="@id/oneIconFragment" />
     </fragment>
 
@@ -32,9 +32,9 @@
     </fragment>
 
     <action
-        android:id="@+id/action_global_to_welcome_fragment"
-        app:destination="@id/welcomeFragment"
-        app:popUpTo="@id/welcomeFragment"
+        android:id="@+id/action_global_to_instruction_fragment"
+        app:destination="@id/instructionFragment"
+        app:popUpTo="@id/instructionFragment"
         app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/resultFragment"
@@ -48,8 +48,8 @@
             android:id="@+id/action_thankYouFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
         <action
-            android:id="@+id/action_thankYouFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            android:id="@+id/action_thankYouFragment_to_instructionFragment"
+            app:destination="@id/instructionFragment" />
     </fragment>
 
 </navigation>

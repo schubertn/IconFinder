@@ -49,7 +49,7 @@ class AllIconsFragment : Fragment() {
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
      * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the WelcomeFragment
+     * Therefore, a back button press navigates the user back to the InstructionFragment
      * and clear all data.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,8 +59,8 @@ class AllIconsFragment : Fragment() {
             override fun handleOnBackPressed() {
                 // reset data
                 sharedViewModel.clearData()
-                // go back to WelcomeFragment
-                findNavController().navigate(R.id.action_global_to_welcome_fragment)
+                // go back to InstructionFragment
+                findNavController().navigate(R.id.action_global_to_instruction_fragment)
             }
         })
     }
@@ -140,15 +140,15 @@ class AllIconsFragment : Fragment() {
                 1 -> {
                     sharedViewModel.setPhase(2)
                     // add individual navigation to instruction fragments here
-                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                    findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
                 2 -> {
                     sharedViewModel.setPhase(3)
-                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                    findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
                 3 -> {
                     sharedViewModel.setPhase(4)
-                    findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
+                    findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
                 4 -> findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
             }

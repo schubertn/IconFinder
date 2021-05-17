@@ -41,7 +41,7 @@ class ThankYouFragment : Fragment() {
     /**
      * Handles back button press. If not handled, the user would see previous fragment again,
      * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the WelcomeFragment
+     * Therefore, a back button press navigates the user back to the InstructionFragment
      * and clears all data. This enables the user to do the study again.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,19 +50,19 @@ class ThankYouFragment : Fragment() {
             override fun handleOnBackPressed() {
                 // reset data
                 sharedViewModel.clearData()
-                // go back to WelcomeFragment
-                findNavController().navigate(R.id.action_global_to_welcome_fragment)
+                // go back to InstructionFragment
+                findNavController().navigate(R.id.action_global_to_instruction_fragment)
             }
         })
     }
 
     /**
-     * Navigation back to the WelcomeFragment and clears data if the user wants to go back to
+     * Navigation back to the InstructionFragment and clears data if the user wants to go back to
      * the first screen (and do the study again).
      */
     fun navigateToStart() {
         sharedViewModel.clearData()
-        findNavController().navigate(R.id.action_global_to_welcome_fragment)
+        findNavController().navigate(R.id.action_global_to_instruction_fragment)
     }
 
     /**

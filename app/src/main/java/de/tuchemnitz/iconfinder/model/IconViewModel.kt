@@ -28,7 +28,7 @@ class IconViewModel : ViewModel() {
      **/
 
     // the study consists of four phases
-    private var phase = 4
+    private var phase = 1
 
     /**
      * Returns the current [phase] of the study.
@@ -238,5 +238,6 @@ class IconViewModel : ViewModel() {
         shownIcon = Icon(0)
         dataList.clear()
         resultDataList.clear()
+        phase = 1
     }
 }
