@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
+// TODO: Change saved data from StudyData to FireStoreData
+// TODO: Rework fragments to adjust to changes
+// TODO: Add toast for user if data was saved successfully
+// TODO: Gradle warnings
 // TODO: Rework ResultFragment
 // TODO Save data to db (Firebase?)
 // --> do not save the data to the db if the study is done again (see IconViewModel)

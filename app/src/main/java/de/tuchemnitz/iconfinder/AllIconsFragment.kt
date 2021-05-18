@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
 import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
@@ -27,6 +28,9 @@ class AllIconsFragment : Fragment() {
     private var binding: AllIconsFragmentBinding? = null
 
     private val sharedViewModel: IconViewModel by activityViewModels()
+
+    // creating a variable for firebase firestore
+    private var db: FirebaseFirestore? = null
 
     // values needed for study with default values
     private var startTime: Long = 0
@@ -54,6 +58,10 @@ class AllIconsFragment : Fragment() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // getting our instance from Firebase Firestore.
+        db = FirebaseFirestore.getInstance()
+
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
@@ -125,7 +133,6 @@ class AllIconsFragment : Fragment() {
         navigateToNextFragment()
     }
 
-
     /**
      * Navigation to the next fragment.
      * If the user has already seen all nine icons, the next phase is started by resetting the
@@ -139,7 +146,6 @@ class AllIconsFragment : Fragment() {
             when (sharedViewModel.getPhase()) {
                 1 -> {
                     sharedViewModel.setPhase(2)
-                    // add individual navigation to instruction fragments here
                     findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
                 2 -> {
@@ -150,13 +156,32 @@ class AllIconsFragment : Fragment() {
                     sharedViewModel.setPhase(4)
                     findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
-                4 -> findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
+                4 -> {
+                    // only when the last phase is completed, the data is added
+                    addDataToFirebase()
+                    findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
+                }
             }
         } else {
             findNavController().navigate(R.id.action_allIconsFragment_to_oneIconFragment)
         }
     }
 
+    /**
+     * Adds all data that was collected in the study to the FireStore Database.
+     * Each added document contains the phase of the study, the id of the icon the user saw,
+     * the correctness of the clicked icon and the needed time.
+     */
+    private fun addDataToFirebase() {
+        // creating a collection reference for our Firebase Firetore database.
+        val dbIconFinder = db!!.collection("IconFinder")
+        // adds each dataset of the type StudyData to the database
+        for(dataSet in sharedViewModel.getData()){
+            dbIconFinder.add(dataSet)
+        }
+    }
+
+    // currently of no use, can be removed later on
     /**
      * Save data in every iteration to one list.
      * The list contains objects with the type StudyData.

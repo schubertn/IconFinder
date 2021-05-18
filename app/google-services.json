@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16744984949",
+    "project_id": "iconfinder-38202",
+    "storage_bucket": "iconfinder-38202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16744984949:android:454d4966ed82818213e33c",
+        "android_client_info": {
+          "package_name": "de.tuchemnitz.iconfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16744984949-0ee0b8u9cd9oba2s08rbdhcsei1cg6jn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB91e5uPGeKTaTTZv1dc8CPuz0pWJFlzA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16744984949-0ee0b8u9cd9oba2s08rbdhcsei1cg6jn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

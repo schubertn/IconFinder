@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.InstructionFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+
 /**
  * This is the first screen of the IconFinder app.
  * The user is introduced to the app and instructed on how to use it.

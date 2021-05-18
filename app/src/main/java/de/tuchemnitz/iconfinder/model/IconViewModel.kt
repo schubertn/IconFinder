@@ -56,15 +56,15 @@ class IconViewModel : ViewModel() {
 
     // list of all colorful icons
     private val colorIcons = listOf(
-        Icon(R.drawable.icon_0),
-        Icon(R.drawable.icon_1),
-        Icon(R.drawable.icon_2),
-        Icon(R.drawable.icon_3),
-        Icon(R.drawable.icon_4),
-        Icon(R.drawable.icon_5),
-        Icon(R.drawable.icon_6),
-        Icon(R.drawable.icon_7),
-        Icon(R.drawable.icon_8)
+        Icon(R.drawable.icon_0), // id 0
+        Icon(R.drawable.icon_1), // id 1
+        Icon(R.drawable.icon_2), // id 2
+        Icon(R.drawable.icon_3), // id 3
+        Icon(R.drawable.icon_4), // id 4
+        Icon(R.drawable.icon_5), // id 5
+        Icon(R.drawable.icon_6), // id 6
+        Icon(R.drawable.icon_7), // id 7
+        Icon(R.drawable.icon_8)  // id 8
     )
 
     /**
@@ -175,6 +175,18 @@ class IconViewModel : ViewModel() {
         shownIcon = icon
     }
 
+
+    // id of the shown icon - needed for firestore
+    private var shownIconId = 0
+    fun getShownIconId(): Int{
+        return shownIconId
+    }
+    fun setShownIconId(id: Int){
+        shownIconId = id
+    }
+
+
+    data class FireStoreData(val phase: Int, val iconId: Int, val correctness: Boolean, val timeNeeded: Double)
 
     /**
      * Data as collected in the study. Every data-set consists of

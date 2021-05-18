@@ -95,6 +95,9 @@ class OneIconFragment : Fragment() {
 
         // add the index of the icon to the list of icons that have already been shown
         sharedViewModel.addShownIcon(rnd)
+
+        sharedViewModel.setShownIconId(rnd)
+
         // set shown icon to later compare it with clicked icon
         sharedViewModel.setShownIcon(currentIcon)
         // bind current icon to imageview in one_icon_fragment.xml
@@ -115,6 +118,9 @@ class OneIconFragment : Fragment() {
         // set the current icon and add its index to the list of shown icons
         val currentIconName = sharedViewModel.getIconNames()[rnd]
         sharedViewModel.addShownIcon(rnd)
+
+        // icon id that is used for storing the data
+        sharedViewModel.setShownIconId(rnd)
 
         // set shown icon to later compare it with clicked icon
         // this uses the actual icon and not its name to allow the comparison with the clicked icon
