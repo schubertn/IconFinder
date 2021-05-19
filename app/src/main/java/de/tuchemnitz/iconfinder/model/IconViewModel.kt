@@ -10,22 +10,28 @@ import de.tuchemnitz.iconfinder.R
  */
 class IconViewModel : ViewModel() {
 
-    /** will be used to not save data to db if study is done again
-    // is true if the user already reached the ThankYouFragment once
+    /**
+     * If data is saved to the database after all four phases, [studyAlreadyDone] is set to
+     * true, so the user is not able to do the study again (without closing the app completely).
+     */
     private var studyAlreadyDone = false
 
+    /**
+     * Returns the Boolean value of [studyAlreadyDone] to indicate whether the study was already
+     * done once (all four phases completed and data saved to the database).
+     */
     fun getStudyAlreadyDone(): Boolean {
-    return studyAlreadyDone
+        return studyAlreadyDone
     }
 
     /**
-     * Changes the value of [ studyAlreadyDone] to true to indicate that the user has already
-     * done the study (reached the ThankYouFragment once).
+     * Changes the value of [studyAlreadyDone] to true to indicate that the user has already
+     * done the study (completed all four phases).
     */
     fun setStudyAlreadyDone() {
-    studyAlreadyDone = true
+        studyAlreadyDone = true
     }
-     **/
+
 
     /**
      * Phase of the study. There are four different phases 1 to 4.

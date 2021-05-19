@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+
 /**
  * This is the third screen of the IconFinder app.
  * The user sees a 3x3 grid with nine different icons and has to click on the one shown before,
@@ -155,8 +156,12 @@ class AllIconsFragment : Fragment() {
                     findNavController().navigate(R.id.action_global_to_instruction_fragment)
                 }
                 4 -> {
-                    // only when the last phase is completed, the data is added
-                    addDataToFirebase()
+                    // only when the last phase is completed and the study has not been done before
+                    // the data is added
+                    if(!sharedViewModel.getStudyAlreadyDone()) {
+                        addDataToFirebase()
+                        sharedViewModel.setStudyAlreadyDone()
+                    }
                     findNavController().navigate(R.id.action_allIconsFragment_to_thankYouFragment)
                 }
             }

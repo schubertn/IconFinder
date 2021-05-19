@@ -31,10 +31,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-// TODO: Add toast for user if data was saved successfully
-// TODO: Gradle warnings
 // TODO: Rework ResultFragment (use database queries?)
-// TODO: Do not save the data to the db if the study is done again (see IconViewModel)
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 
