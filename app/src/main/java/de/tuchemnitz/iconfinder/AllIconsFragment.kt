@@ -1,7 +1,6 @@
 package de.tuchemnitz.iconfinder
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +58,7 @@ class AllIconsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // getting our instance from Firebase Firestore.
+        // getting our instance from firebase firestore
         db = FirebaseFirestore.getInstance()
 
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
@@ -120,15 +119,14 @@ class AllIconsFragment : Fragment() {
         // calculate the time until the user clicked the icon
         val elapsedTime = System.nanoTime() - startTime
         timeInSeconds = elapsedTime / 1_000_000_000.0 // conversion from nanoseconds to seconds
-        Log.d("TESTING", "time in nanoseconds: $elapsedTime")
-        Log.d("TESTING", "time in seconds: $timeInSeconds")
 
         // check if user clicked the right icon (the one shown before)
         correctIconClicked =
             sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()
 
         // save data in a list
-        saveData()
+        addDataToList()
+
         // next fragment to be shown is either OneIconFragment or ResultFragment
         navigateToNextFragment()
     }
@@ -171,41 +169,31 @@ class AllIconsFragment : Fragment() {
      * Adds all data that was collected in the study to the FireStore Database.
      * Each added document contains the phase of the study, the id of the icon the user saw,
      * the correctness of the clicked icon and the needed time.
+     * The function is only called after the last phase is finished, so no incomplete data is added.
      */
     private fun addDataToFirebase() {
         // creating a collection reference for our Firebase Firetore database.
         val dbIconFinder = db!!.collection("IconFinder")
+
         // adds each dataset of the type StudyData to the database
         for(dataSet in sharedViewModel.getData()){
             dbIconFinder.add(dataSet)
         }
     }
 
-    // currently of no use, can be removed later on
     /**
      * Save data in every iteration to one list.
-     * The list contains objects with the type StudyData.
-     * In there the shown icon, the correctness and needed time are saved.
+     * For each element of the list the current phase, the id of the shown icon, the correctness
+     * and needed time in seconds are saved.
      */
-    private fun saveData() {
+    private fun addDataToList() {
         val data = IconViewModel.StudyData(
-            sharedViewModel.getShownIcon(),
+            sharedViewModel.getPhase(),
+            sharedViewModel.getShownIconId(),
             correctIconClicked,
             timeInSeconds
         )
         sharedViewModel.addData(data)
-        printMyData()
-    }
-
-    /**
-     * Temporary function to print the data for testing purposes.
-     */
-    private fun printMyData() {
-        for (data in sharedViewModel.getData()) {
-            println("Icon shown: " + (context?.resources?.getResourceName(data.shownIcon.imgId)))
-            println("Icon was correct: " + data.correctness)
-            println("Time needed: " + data.timeNeeded + " seconds")
-        }
     }
 
     override fun onDestroyView() {

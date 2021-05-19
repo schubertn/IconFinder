@@ -65,10 +65,4 @@
 
     <string name="show_results">Ergebnisse anzeigen</string>
     <string name="back_to_start">Zurück zum Start</string>
-
-    <!-- Strings used in result_fragment.xml -->
-    <string name="table_head_column1">Gesehenes Icon</string>
-    <string name="table_head_column2">Korrekt erkannt?</string>
-    <string name="table_head_column3">Benötigte Zeit</string>
-    <string name="test">hllo</string>
 </resources>

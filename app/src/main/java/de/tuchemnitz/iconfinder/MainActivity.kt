@@ -18,16 +18,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         // disable night mode for this app to avoid differences because of the background color
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-        /**
-        // Retrieve NavController from the NavHostFragment
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        // setupActionBarWithNavController(navController)
-        // setContentView(R.layout.activity_main)
-        **/
     }
 
     /**
@@ -41,13 +31,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-// TODO: Change saved data from StudyData to FireStoreData
-// TODO: Rework fragments to adjust to changes
 // TODO: Add toast for user if data was saved successfully
 // TODO: Gradle warnings
-// TODO: Rework ResultFragment
-// TODO Save data to db (Firebase?)
-// --> do not save the data to the db if the study is done again (see IconViewModel)
+// TODO: Rework ResultFragment (use database queries?)
+// TODO: Do not save the data to the db if the study is done again (see IconViewModel)
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 
@@ -58,6 +45,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Remove Databinding from OneIcon.xml?
 // TODO: Make layout of ThankYouFragment nicer
 // TODO: Remove function from onCreateView()?
+// TODO: Save icons with their ids (Map?)
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)

@@ -27,7 +27,9 @@ class IconViewModel : ViewModel() {
     }
      **/
 
-    // the study consists of four phases
+    /**
+     * Phase of the study. There are four different phases 1 to 4.
+     */
     private var phase = 1
 
     /**
@@ -54,7 +56,9 @@ class IconViewModel : ViewModel() {
      */
     data class Icon(val imgId: Int)
 
-    // list of all colorful icons
+    /**
+     * List of all colorful icons. The order they are in corresponds to their ids.
+     */
     private val colorIcons = listOf(
         Icon(R.drawable.icon_0), // id 0
         Icon(R.drawable.icon_1), // id 1
@@ -74,7 +78,9 @@ class IconViewModel : ViewModel() {
         return colorIcons
     }
 
-    // list of all black and white icons
+    /**
+     * List of all black and white icons. The order they are in corresponds to their ids.
+     */
     private val blackWhiteIcons = listOf(
         Icon(R.drawable.icon_0_bw),
         Icon(R.drawable.icon_1_bw),
@@ -94,7 +100,10 @@ class IconViewModel : ViewModel() {
         return blackWhiteIcons
     }
 
-    // list of all icon names
+
+    /**
+     * List of all icon names. The order they are in corresponds to their ids.
+     */
     private val iconNames = listOf(
         "Art",
         "Browser",
@@ -115,21 +124,23 @@ class IconViewModel : ViewModel() {
     }
 
 
-    // list of numbers of already shown icons
+    /**
+     * MutableList of Integer ids of already shown icons.
+     */
     private val shownIconsList = mutableListOf<Int>()
 
     /**
-     * Returns [shownIconsList] containing the numbers of the icons the user already saw.
+     * Returns [shownIconsList] containing the ids of the icons the user already saw.
      */
     fun getShownIcons(): MutableList<Int> {
         return shownIconsList
     }
 
     /**
-     * Adds a new [numberOfIcon] to [shownIconsList].
+     * Adds a new [iconId] to [shownIconsList].
      */
-    fun addShownIcon(numberOfIcon: Int) {
-        shownIconsList.add(numberOfIcon)
+    fun addShownIcon(iconId: Int) {
+        shownIconsList.add(iconId)
     }
 
     /**
@@ -140,7 +151,9 @@ class IconViewModel : ViewModel() {
     }
 
 
-    // list that can be shuffled to contain all icons in random order
+    /**
+     * MutableList that can be shuffled to contain all icons in random order.
+     */
     private var shuffleList = mutableListOf<Icon>()
 
     /**
@@ -158,7 +171,9 @@ class IconViewModel : ViewModel() {
     }
 
 
-    // icon that was shown to user
+    /**
+     * Icon that was shown to the user.
+     */
     private var shownIcon = Icon(0)
 
     /**
@@ -176,31 +191,42 @@ class IconViewModel : ViewModel() {
     }
 
 
-    // id of the shown icon - needed for firestore
+    /**
+     * Integer id of the shown icon. The icons have the ids 0 to 8.
+     */
     private var shownIconId = 0
+
+    /**
+     * Returns the [shownIconId] of the icon the user last saw.
+     */
     fun getShownIconId(): Int{
         return shownIconId
     }
+
+    /**
+     * Sets the [id] of the icon the user last saw
+     */
     fun setShownIconId(id: Int){
         shownIconId = id
     }
 
 
-    data class FireStoreData(val phase: Int, val iconId: Int, val correctness: Boolean, val timeNeeded: Double)
-
     /**
      * Data as collected in the study. Every data-set consists of
-     * the object [shownIcon] with the type [Icon], representing the icon the user saw,
+     * the [phase] of the study in which this data was collected,
+     * the [iconId] of the icon that was shown to the user,
      * the Boolean value [correctness] indicating whether the user clicked the right icon and
      * the Double [timeNeeded] containing the time the user needed to click the icon.
      */
-    data class StudyData(val shownIcon: Icon, val correctness: Boolean, val timeNeeded: Double)
+    data class StudyData(val phase: Int, val iconId: Int, val correctness: Boolean, val timeNeeded: Double)
 
-    // list of Study Data
+    /**
+     * MutableList of [StudyData]. Needed to save the data to the database.
+     */
     private val dataList = mutableListOf<StudyData>()
 
     /**
-     * Returns a list containing [dataList].
+     * Returns a [dataList] containing [StudyData].
      */
     fun getData(): MutableList<StudyData> {
         return dataList
@@ -215,41 +241,14 @@ class IconViewModel : ViewModel() {
 
 
     /**
-     * Data as used in table with results in ResultFragment. Every data-set consists of
-     * an Integer containing the [iconId] of the icon the user saw,
-     * the String [correct] indicating whether the user clicked the right icon and
-     * the String [time] representing the time the user needed to click the icon.
-     */
-    data class ResultData(val iconId: Int, val correct: String, val time: String)
-
-    // list of Result Data
-    private val resultDataList = mutableListOf<ResultData>()
-
-    /**
-     * Returns a list containing [ResultData]. Used in table with results.
-     */
-    fun getResultData(): MutableList<ResultData> {
-        return resultDataList
-    }
-
-    /**
-     * Adds new [data] of the type [ResultData] to [resultDataList].
-     */
-    fun addResultData(data: ResultData) {
-        resultDataList.add(data)
-    }
-
-
-    /**
      * Deletes the collected data.
-     * Clears [shownIconsList], [dataList] and [resultDataList].
-     * Sets [shownIcon] back to its default value.
+     * Clears [shownIconsList] and [dataList].
+     * Sets [shownIcon] and [phase] back to their default values.
      */
     fun clearData() {
         shownIconsList.clear()
         shownIcon = Icon(0)
         dataList.clear()
-        resultDataList.clear()
         phase = 1
     }
 }

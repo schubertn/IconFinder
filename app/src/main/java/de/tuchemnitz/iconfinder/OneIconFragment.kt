@@ -96,10 +96,12 @@ class OneIconFragment : Fragment() {
         // add the index of the icon to the list of icons that have already been shown
         sharedViewModel.addShownIcon(rnd)
 
+        // id of the shown icon, needed for the database
         sharedViewModel.setShownIconId(rnd)
 
         // set shown icon to later compare it with clicked icon
         sharedViewModel.setShownIcon(currentIcon)
+
         // bind current icon to imageview in one_icon_fragment.xml
         binding?.oneIcon?.setImageResource(currentIcon.imgId)
     }
@@ -119,7 +121,7 @@ class OneIconFragment : Fragment() {
         val currentIconName = sharedViewModel.getIconNames()[rnd]
         sharedViewModel.addShownIcon(rnd)
 
-        // icon id that is used for storing the data
+        // id of the shown icon, needed for the database
         sharedViewModel.setShownIconId(rnd)
 
         // set shown icon to later compare it with clicked icon
@@ -129,6 +131,7 @@ class OneIconFragment : Fragment() {
         } else {
             sharedViewModel.setShownIcon(sharedViewModel.getBlackWhiteIcons()[rnd])
         }
+
         // bind current icon name to textview in one_icon_fragment.xml
         binding?.iconName?.text = currentIconName
     }
