@@ -6,17 +6,18 @@
         Herzlich willkommen zu meiner Studie! \n
         Es soll ermittelt werden, wie schnell Icons erkannt werden.
         \n\n
+        Bitte stellen Sie sicher, dass Sie eine Internet-Verbindung haben, da sonst die
+        Ergebnisse der Studie nicht gespeichert werden können. Bitte führen Sie außerdem die
+        Studie nur einmal durch, um die Ergebnisse nicht zu verfälschen.
+        \n\n
         Nachdem der START Button betätigt wurde, beginnt die erste Phase dieser Studie und Ihnen
         wird ein einzelnes buntes Icon für einige Sekunden lang angezeigt.
         Bitte merken Sie sich das gezeigte Icon. \n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
         Ihre Aufgabe ist es, das zuvor gesehene Icon so schnell wie möglich zu finden
-        und zu berühren. \n
+        und auszuwählen. \n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
-        \n\n
-        Bitte stellen Sie sicher, dass Sie eine Internet-Verbindung haben, da sonst die
-        Ergebnisse der Studie nicht gespeichert werden können.
         \n\n
         Wenn Sie den Home-Button oder den Zurück-Button Ihres Gerätes betätigen, gelangen Sie
         zu diesem Bildschirm zurück und jeglicher Fortschritt wird gelöscht.
@@ -28,7 +29,7 @@
         Bitte merken Sie sich das gezeigte Icon. \n\n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weiß Icons angezeigt.
         Ihre Aufgabe ist es, das zuvor gesehene Icon so schnell wie möglich zu finden
-        und zu berühren. \n\n
+        und auszuwählen. \n\n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
@@ -39,18 +40,18 @@
         Bitte merken Sie sich das gezeigte Wort. \n\n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
         Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
-        finden und zu berühren. \n\n
+        finden und auszuwählen. \n\n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
 
     <string name="phase4_text">
-        Nachdem der START Button betätigt wurde, beginnt die vierte Phase dieser Studie und Ihnen
-        wird erneut der Name eines Icons für einige Sekunden lang angezeigt.
+        Nachdem der START Button betätigt wurde, beginnt die vierte und letzte Phase dieser Studie
+        und Ihnen wird erneut der Name eines Icons für einige Sekunden lang angezeigt.
         Bitte merken Sie sich das gezeigte Wort. \n\n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weiß Icons angezeigt.
         Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
-        finden und zu berühren. \n\n
+        finden und auszuwählen. \n\n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
@@ -62,8 +63,7 @@
         Vielen Dank für Ihre Teilnahme! \n
         Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten
         oder zum Start der App zurückkehren möchten. \n
-        Falls Sie die Studie erneut durchführen möchten, werden Ihre Ergebnisse nicht
-        gespeichert, um die Studie nicht zu verfälschen.
+        Bitte führen Sie die Studie nicht erneut durch, um die Ergebnisse nicht zu verfälschen.
     </string>
 
     <string name="show_results">Ergebnisse anzeigen</string>
