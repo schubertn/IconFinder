@@ -13,8 +13,9 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
 
 /**
  * This is the fourth screen of the IconFinder app.
- * The user sees a thank you message and can click on one of two buttons.
- * One brings the user back to the first screen, the other shows the results.
+ * The user sees a thank you message and can click on one of three buttons.
+ * The first one shows the results of the user, the second one statistics to compare the user
+ * to other participants and the last one brings the user back to the first screen.
  */
 class ThankYouFragment : Fragment() {
 
@@ -66,9 +67,17 @@ class ThankYouFragment : Fragment() {
     }
 
     /**
-     * Show results in a table, including shown icon, correctness of clicked icon and needed time.
+     * Show results of the user in a table, including shown icon, correctness of clicked icon
+     * and needed time.
      */
     fun navigateToResults() {
+        findNavController().navigate(R.id.action_thankYouFragment_to_resultFragment)
+    }
+
+    /**
+     * Shows some statistics to compare the user with other participants.
+     */
+    fun navigateToStatistics() {
         findNavController().navigate(R.id.action_thankYouFragment_to_resultFragment)
     }
 

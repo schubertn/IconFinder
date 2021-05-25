@@ -13,14 +13,407 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            style="@style/IconFinder.AppText"
-            android:text="To be added"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TableLayout
+            android:id="@+id/myTable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
 
+            <TableRow android:layout_marginTop="10dp">
 
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_1" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_2" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_3" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_4" />
+
+                <TextView
+                    style="@style/IconFinder.TableHeadText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_head_5" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[0].imgId}" />
+                <!--app:imageResource="@{iconViewModel.resultData[0].iconId}" />-->
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[0].time}"
+                    android:textColor="@{iconViewModel.getResultData[0].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[1].time}"
+                    android:textColor="@{iconViewModel.getResultData[1].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[2].time}"
+                    android:textColor="@{iconViewModel.getResultData[2].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[3].time}"
+                    android:textColor="@{iconViewModel.getResultData[3].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[1].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[4].time}"
+                    android:textColor="@{iconViewModel.getResultData[4].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[5].time}"
+                    android:textColor="@{iconViewModel.getResultData[5].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[6].time}"
+                    android:textColor="@{iconViewModel.getResultData[6].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[7].time}"
+                    android:textColor="@{iconViewModel.getResultData[7].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[2].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[8].time}"
+                    android:textColor="@{iconViewModel.getResultData[8].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[9].time}"
+                    android:textColor="@{iconViewModel.getResultData[9].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[10].time}"
+                    android:textColor="@{iconViewModel.getResultData[10].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[11].time}"
+                    android:textColor="@{iconViewModel.getResultData[11].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[3].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[12].time}"
+                    android:textColor="@{iconViewModel.getResultData[12].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[13].time}"
+                    android:textColor="@{iconViewModel.getResultData[13].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[14].time}"
+                    android:textColor="@{iconViewModel.getResultData[14].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[15].time}"
+                    android:textColor="@{iconViewModel.getResultData[15].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[4].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[16].time}"
+                    android:textColor="@{iconViewModel.getResultData[16].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[17].time}"
+                    android:textColor="@{iconViewModel.getResultData[17].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[18].time}"
+                    android:textColor="@{iconViewModel.getResultData[18].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[19].time}"
+                    android:textColor="@{iconViewModel.getResultData[19].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[5].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[20].time}"
+                    android:textColor="@{iconViewModel.getResultData[20].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[21].time}"
+                    android:textColor="@{iconViewModel.getResultData[21].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[22].time}"
+                    android:textColor="@{iconViewModel.getResultData[22].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[23].time}"
+                    android:textColor="@{iconViewModel.getResultData[23].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[6].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[24].time}"
+                    android:textColor="@{iconViewModel.getResultData[24].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[25].time}"
+                    android:textColor="@{iconViewModel.getResultData[25].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[26].time}"
+                    android:textColor="@{iconViewModel.getResultData[26].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[27].time}"
+                    android:textColor="@{iconViewModel.getResultData[27].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[7].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[28].time}"
+                    android:textColor="@{iconViewModel.getResultData[28].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[29].time}"
+                    android:textColor="@{iconViewModel.getResultData[29].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[30].time}"
+                    android:textColor="@{iconViewModel.getResultData[30].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[31].time}"
+                    android:textColor="@{iconViewModel.getResultData[31].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:imageResource="@{iconViewModel.getColorIcons[8].imgId}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[32].time}"
+                    android:textColor="@{iconViewModel.getResultData[32].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[33].time}"
+                    android:textColor="@{iconViewModel.getResultData[33].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[34].time}"
+                    android:textColor="@{iconViewModel.getResultData[34].correct ? @color/green : @color/red}" />
+
+                <TextView
+                    style="@style/IconFinder.TableText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{iconViewModel.getResultData[35].time}"
+                    android:textColor="@{iconViewModel.getResultData[35].correct ? @color/green : @color/red}" />
+            </TableRow>
+
+        </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

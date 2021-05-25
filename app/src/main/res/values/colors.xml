@@ -19,4 +19,9 @@
     <!-- TU Chemnitz colors -->
     <color name="green_dark">#FF005F50</color>
     <color name="green_light">#FF6A8A26</color>
+
+    <!-- Correctness colors -->
+    <color name="green">#FF00FF00</color>
+    <color name="red">#FFFF0000</color>
+
 </resources>

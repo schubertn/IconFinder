@@ -6,6 +6,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:layout_marginTop">20dp</item>
@@ -29,5 +30,22 @@
         <item name="enforceMaterialTheme">false</item>
         <item name="android:padding">5dp</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <!-- Style for the text in the head of the table in result_fragment.xml. -->
+    <style name="IconFinder.TableHeadText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <!-- Style for text in the table in result_fragment.xml. -->
+    <style name="IconFinder.TableText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 </resources>

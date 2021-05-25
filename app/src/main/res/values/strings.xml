@@ -61,11 +61,20 @@
     <!-- Strings used in thank_you_fragment.xml -->
     <string name="thank_you_text">
         Vielen Dank für Ihre Teilnahme! \n
-        Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten
+        Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten,
+        Ihre Ergebnisse im Vergleich zu anderen Teilnehmern der Studie sehen möchten,
         oder zum Start der App zurückkehren möchten. \n
         Bitte führen Sie die Studie nicht erneut durch, um die Ergebnisse nicht zu verfälschen.
     </string>
 
     <string name="show_results">Ergebnisse anzeigen</string>
+    <string name="show_statistics">Statistiken anzeigen</string>
     <string name="back_to_start">Zurück zum Start</string>
+
+    <!-- Strings used in result_fragment.xml -->
+    <string name="table_head_1">Icon</string>
+    <string name="table_head_2">Phase 1</string>
+    <string name="table_head_3">Phase 2</string>
+    <string name="table_head_4">Phase 3</string>
+    <string name="table_head_5">Phase 4</string>
 </resources>

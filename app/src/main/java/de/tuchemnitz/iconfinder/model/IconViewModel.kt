@@ -257,4 +257,40 @@ class IconViewModel : ViewModel() {
         dataList.clear()
         phase = 1
     }
+
+
+
+    /**
+     * Data as used in table with results in ResultFragment. Every data-set consists of
+     * an Integer containing the [iconId] of the icon the user saw,
+     * the Boolean [correct] indicating whether the user clicked the right icon and
+     * the String [time] representing the time the user needed to click the icon.
+     */
+    data class ResultData(val iconId: Int, val correct: Boolean, val time: String)
+
+    /**
+     * MutableList of [ResultData]. Needed to display results in table.
+     */
+    private val resultDataList = mutableListOf<ResultData>()
+
+    /**
+     * Returns a list containing [ResultData]. Used in table with results.
+     */
+    fun getResultData(): MutableList<ResultData> {
+        return resultDataList
+    }
+
+    /**
+     * Adds new [data] of the type [ResultData] to [resultDataList].
+     */
+    fun addResultData(data: ResultData) {
+        resultDataList.add(data)
+    }
+
+    /**
+     * Selector function needed to sort [resultDataList] ascending by icon ids.
+     */
+    fun selector(data: ResultData): Int {
+        return data.iconId
+    }
 }

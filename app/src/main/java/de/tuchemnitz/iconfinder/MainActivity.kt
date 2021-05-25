@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // disable night mode for this app to avoid differences because of the background color
+        // disable night mode for the app to avoid different results because of the background color
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
@@ -31,18 +31,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
-// TODO: Rework ResultFragment (use database queries?)
+// To do stuff
+// TODO: StatisticsFragment
+// TODO: Change TableLayout in ResultFragment to RecyclerView?
+// TODO: Save icons with their ids (Map?)
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 
 // Additional stuff
-// TODO: Make everything uniform
-// TODO: Order of icons in result table? (ordered by showing order - ordered by number - ordered by time)
-// TODO: Could table in ResultFragment be created with RecyclerView, for-loop etc?
-// TODO: Remove Databinding from OneIcon.xml?
-// TODO: Make layout of ThankYouFragment nicer
-// TODO: Remove function from onCreateView()?
-// TODO: Save icons with their ids (Map?)
+// TODO: Remove functions from onCreateView()?
+// TODO: Nicer layout
+// TODO: Do not use static text sizes (different display sizes!)
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)
