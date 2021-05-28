@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 // To do stuff
 // TODO: StatisticsFragment
-// TODO: Change TableLayout in ResultFragment to RecyclerView?
-// TODO: Save icons with their ids (Map?)
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 

@@ -82,33 +82,45 @@ class AllIconsFragment : Fragment() {
     }
 
     /**
-     * Shows all nine icons in random order on the 3x3 grid.
+     * Shows all nine icons as clickable buttons in random order on the 3x3 grid.
      * If the study is in phase 1 or 3, colorful icons are shown,
      * if the study is in phase 2 or 4, black and white icons are shown.
      */
     private fun showRandomOrderIcons() {
-        // set shuffle list to random order list of elements from icon lists
-        if (sharedViewModel.getPhase() == 1 || sharedViewModel.getPhase() == 3) {
-            sharedViewModel.setShuffleList(
-                sharedViewModel.getColorIcons().shuffled().toMutableList()
-            )
-        } else {
-            sharedViewModel.setShuffleList(
-                sharedViewModel.getBlackWhiteIcons().shuffled().toMutableList()
-            )
-        }
+        // all icon buttons in all_icons_fragment.xml
+        val buttonArray = arrayOf(
+            binding?.iconButtonZero,
+            binding?.iconButtonOne,
+            binding?.iconButtonTwo,
+            binding?.iconButtonThree,
+            binding?.iconButtonFour,
+            binding?.iconButtonFive,
+            binding?.iconButtonSix,
+            binding?.iconButtonSeven,
+            binding?.iconButtonEight
+        )
 
-        // alternative: create array containing all buttons and then loop over array ?
-        binding?.apply {
-            iconButtonZero.setImageResource(sharedViewModel.getShuffleList()[0].imgId)
-            iconButtonOne.setImageResource(sharedViewModel.getShuffleList()[1].imgId)
-            iconButtonTwo.setImageResource(sharedViewModel.getShuffleList()[2].imgId)
-            iconButtonThree.setImageResource(sharedViewModel.getShuffleList()[3].imgId)
-            iconButtonFour.setImageResource(sharedViewModel.getShuffleList()[4].imgId)
-            iconButtonFive.setImageResource(sharedViewModel.getShuffleList()[5].imgId)
-            iconButtonSix.setImageResource(sharedViewModel.getShuffleList()[6].imgId)
-            iconButtonSeven.setImageResource(sharedViewModel.getShuffleList()[7].imgId)
-            iconButtonEight.setImageResource(sharedViewModel.getShuffleList()[8].imgId)
+        // set shuffle list to random order list of elements from icon list
+        sharedViewModel.setShuffleList(
+            sharedViewModel.getIcons().shuffled().toMutableList()
+        )
+
+        // bind icon images to buttons from array
+        var i = 0
+        if (sharedViewModel.getPhase() == 1 || sharedViewModel.getPhase() == 3) {
+            for (button in buttonArray) {
+                binding?.apply {
+                    button?.setImageResource(sharedViewModel.getShuffleList()[i].colorIcon)
+                }
+                i++
+            }
+        } else {
+            for (button in buttonArray) {
+                binding?.apply {
+                    button?.setImageResource(sharedViewModel.getShuffleList()[i].blackWhiteIcon)
+                }
+                i++
+            }
         }
     }
 
@@ -123,13 +135,28 @@ class AllIconsFragment : Fragment() {
 
         // check if user clicked the right icon (the one shown before)
         correctIconClicked =
-            sharedViewModel.getShuffleList()[buttonNumber] == sharedViewModel.getShownIcon()
+            sharedViewModel.getShuffleList()[buttonNumber].imgId == sharedViewModel.getShownIcon()
 
         // save data in a list
         addDataToList()
 
         // next fragment to be shown is either OneIconFragment or ResultFragment
         navigateToNextFragment()
+    }
+
+    /**
+     * Save data in every iteration to one list.
+     * For each element of the list the current phase, the id of the shown icon, the correctness
+     * and needed time in seconds are saved.
+     */
+    private fun addDataToList() {
+        val data = IconViewModel.StudyData(
+            sharedViewModel.getPhase(),
+            sharedViewModel.getShownIcon(),
+            correctIconClicked,
+            timeInSeconds
+        )
+        sharedViewModel.addData(data)
     }
 
     /**
@@ -158,7 +185,7 @@ class AllIconsFragment : Fragment() {
                 4 -> {
                     // only when the last phase is completed and the study has not been done before
                     // the data is added
-                    if(!sharedViewModel.getStudyAlreadyDone()) {
+                    if (!sharedViewModel.getStudyAlreadyDone()) {
                         addDataToFirebase()
                         sharedViewModel.setStudyAlreadyDone()
                     }
@@ -181,24 +208,9 @@ class AllIconsFragment : Fragment() {
         val dbIconFinder = db!!.collection("IconFinder")
 
         // adds each dataset of the type StudyData to the database
-        for(dataSet in sharedViewModel.getData()){
+        for (dataSet in sharedViewModel.getData()) {
             dbIconFinder.add(dataSet)
         }
-    }
-
-    /**
-     * Save data in every iteration to one list.
-     * For each element of the list the current phase, the id of the shown icon, the correctness
-     * and needed time in seconds are saved.
-     */
-    private fun addDataToList() {
-        val data = IconViewModel.StudyData(
-            sharedViewModel.getPhase(),
-            sharedViewModel.getShownIconId(),
-            correctIconClicked,
-            timeInSeconds
-        )
-        sharedViewModel.addData(data)
     }
 
     override fun onDestroyView() {

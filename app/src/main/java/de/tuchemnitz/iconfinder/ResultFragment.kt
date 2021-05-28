@@ -79,7 +79,7 @@ class ResultFragment : Fragment() {
     // used for testing, will be removed later
     private fun printMyData() {
         for (data in sharedViewModel.getResultData()) {
-            println("Icon shown: " + (context?.resources?.getResourceName(sharedViewModel.getColorIcons()[data.iconId].imgId)))
+            println("Icon shown: " + (sharedViewModel.getIcons()[data.iconId].imgId))
             println("Icon was correct: " + data.correct)
             println("Time needed: " + data.time)
         }

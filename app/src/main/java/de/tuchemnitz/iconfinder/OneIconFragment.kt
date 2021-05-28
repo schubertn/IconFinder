@@ -39,11 +39,7 @@ class OneIconFragment : Fragment() {
         binding = fragmentBinding
 
         // the first two phases show the user an icon, the next two phases show the names
-        if (sharedViewModel.getPhase() < 3) {
-            showRandomIcon()
-        } else {
-            showRandomIconName()
-        }
+        showRandomIcon(sharedViewModel.getPhase())
 
         // navigation to next fragment after delay
         iconHandler.postDelayed({ showAllIcons() }, 1000)
@@ -71,71 +67,29 @@ class OneIconFragment : Fragment() {
     }
 
     /**
-     * Shows a random icon. Every icon is only shown once.
-     * If this is in the first phase of the study the icon will be colorful,
-     * if this is in the second phase of the study the icon will be black and white.
+     * Shows a random icon or its name depending on the [phase]. Every icon is only shown once.
+     * If this is in the first [phase] of the study the icon will be colorful,
+     * if this is in the second [phase] of the study the icon will be black and white.
+     * If this is the third or fourth [phase] of the study the name of an icon will be displayed
      */
-    private fun showRandomIcon() {
-        var rnd = (0..8).random()
-        // currently displayed icon
-        val currentIcon: IconViewModel.Icon
-
+    private fun showRandomIcon(phase: Int) {
         // generate new number if icon associated with generated number was already shown
+        var rnd = (0..8).random()
         while (sharedViewModel.getShownIcons().contains(rnd)) {
             rnd = (0..8).random()
         }
 
-        // set the current icon and add it to the list of shown icons
-        // in phase 1 the current icon is colored, in phase 2 it is black and white
-        if (sharedViewModel.getPhase() == 1) {
-            currentIcon = sharedViewModel.getColorIcons()[rnd]
-        } else {
-            currentIcon = sharedViewModel.getBlackWhiteIcons()[rnd]
+        // set shown icon to later compare it with clicked icon and add it to list of shown icons
+        sharedViewModel.setShownIcon(sharedViewModel.getIcons()[rnd].imgId)
+        sharedViewModel.addShownIcon(sharedViewModel.getIcons()[rnd].imgId)
+
+        // bind current icon to imageview or its name to textview in one_icon_fragment.xml
+        when(phase){
+            1 -> binding?.oneIcon?.setImageResource(sharedViewModel.getIcons()[rnd].colorIcon)
+            2 -> binding?.oneIcon?.setImageResource(sharedViewModel.getIcons()[rnd].blackWhiteIcon)
+            else -> binding?.iconName?.text = sharedViewModel.getIcons()[rnd].name
         }
-
-        // add the index of the icon to the list of icons that have already been shown
-        sharedViewModel.addShownIcon(rnd)
-
-        // id of the shown icon, needed for the database
-        sharedViewModel.setShownIconId(rnd)
-
-        // set shown icon to later compare it with clicked icon
-        sharedViewModel.setShownIcon(currentIcon)
-
-        // bind current icon to imageview in one_icon_fragment.xml
-        binding?.oneIcon?.setImageResource(currentIcon.imgId)
     }
-
-    /**
-     * Shows a random icon name. Every name is shown once in phase 3 and once in phase 4.
-     * The phase of the study has no impact on which names are shown.
-     */
-    private fun showRandomIconName() {
-        var rnd = (0..8).random()
-        // generate new number if icon associated with generated number was already shown
-        while (sharedViewModel.getShownIcons().contains(rnd)) {
-            rnd = (0..8).random()
-        }
-
-        // set the current icon and add its index to the list of shown icons
-        val currentIconName = sharedViewModel.getIconNames()[rnd]
-        sharedViewModel.addShownIcon(rnd)
-
-        // id of the shown icon, needed for the database
-        sharedViewModel.setShownIconId(rnd)
-
-        // set shown icon to later compare it with clicked icon
-        // this uses the actual icon and not its name to allow the comparison with the clicked icon
-        if (sharedViewModel.getPhase() == 3) {
-            sharedViewModel.setShownIcon(sharedViewModel.getColorIcons()[rnd])
-        } else {
-            sharedViewModel.setShownIcon(sharedViewModel.getBlackWhiteIcons()[rnd])
-        }
-
-        // bind current icon name to textview in one_icon_fragment.xml
-        binding?.iconName?.text = currentIconName
-    }
-
 
     /**
      * Navigation to next fragment to show all icons. The user will have to click the icon/name

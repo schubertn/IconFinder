@@ -62,8 +62,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[0].imgId}" />
-                <!--app:imageResource="@{iconViewModel.resultData[0].iconId}" />-->
+                    app:imageResource="@{iconViewModel.getIcons[0].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -71,6 +70,7 @@
                     android:layout_weight="1"
                     android:text="@{iconViewModel.getResultData[0].time}"
                     android:textColor="@{iconViewModel.getResultData[0].correct ? @color/green : @color/red}" />
+
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -103,7 +103,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[1].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[1].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -143,7 +143,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[2].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[2].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -183,7 +183,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[3].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[3].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -223,7 +223,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[4].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[4].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -263,7 +263,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[5].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[5].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -303,7 +303,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[6].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[6].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -343,7 +343,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[7].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[7].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -383,7 +383,7 @@
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:contentDescription="@null"
-                    app:imageResource="@{iconViewModel.getColorIcons[8].imgId}" />
+                    app:imageResource="@{iconViewModel.getIcons[8].colorIcon}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"

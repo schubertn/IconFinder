@@ -58,75 +58,32 @@ class IconViewModel : ViewModel() {
     }
 
     /**
-     * Every icon is identified by an unique Integer [imgId].
+     * For every icon there is an [imgId] between 0 and 8,
+     * two versions of the icon - a [colorIcon] and [blackWhiteIcon],
+     * and the [name] of the icon.
      */
-    data class Icon(val imgId: Int)
+    data class Icon(val imgId: Int, val colorIcon: Int, val blackWhiteIcon: Int, val name: String)
 
     /**
-     * List of all colorful icons. The order they are in corresponds to their ids.
+     * List of all [Icon] objects.
      */
-    private val colorIcons = listOf(
-        Icon(R.drawable.icon_0), // id 0
-        Icon(R.drawable.icon_1), // id 1
-        Icon(R.drawable.icon_2), // id 2
-        Icon(R.drawable.icon_3), // id 3
-        Icon(R.drawable.icon_4), // id 4
-        Icon(R.drawable.icon_5), // id 5
-        Icon(R.drawable.icon_6), // id 6
-        Icon(R.drawable.icon_7), // id 7
-        Icon(R.drawable.icon_8)  // id 8
+    private val iconList = listOf(
+        Icon(0, R.drawable.icon_0, R.drawable.icon_0_bw, "Art"),
+        Icon(1, R.drawable.icon_1, R.drawable.icon_1_bw, "Browser"),
+        Icon(2, R.drawable.icon_2, R.drawable.icon_2_bw, "Wetter"),
+        Icon(3, R.drawable.icon_3, R.drawable.icon_3_bw, "Einstellungen"),
+        Icon(4, R.drawable.icon_4, R.drawable.icon_4_bw, "Galerie"),
+        Icon(5, R.drawable.icon_5, R.drawable.icon_5_bw, "Mail"),
+        Icon(6, R.drawable.icon_6, R.drawable.icon_6_bw, "Maps"),
+        Icon(7, R.drawable.icon_7, R.drawable.icon_7_bw, "Nachrichten"),
+        Icon(8, R.drawable.icon_8, R.drawable.icon_8_bw, "Telefon"),
     )
 
     /**
-     * Returns a list [colorIcons] of all colorful icons used in this study.
+     * Returns a [iconList] of all icons used in the study.
      */
-    fun getColorIcons(): List<Icon> {
-        return colorIcons
-    }
-
-    /**
-     * List of all black and white icons. The order they are in corresponds to their ids.
-     */
-    private val blackWhiteIcons = listOf(
-        Icon(R.drawable.icon_0_bw),
-        Icon(R.drawable.icon_1_bw),
-        Icon(R.drawable.icon_2_bw),
-        Icon(R.drawable.icon_3_bw),
-        Icon(R.drawable.icon_4_bw),
-        Icon(R.drawable.icon_5_bw),
-        Icon(R.drawable.icon_6_bw),
-        Icon(R.drawable.icon_7_bw),
-        Icon(R.drawable.icon_8_bw)
-    )
-
-    /**
-     * Returns a list [blackWhiteIcons] of all black and white icons used in this study.
-     */
-    fun getBlackWhiteIcons(): List<Icon> {
-        return blackWhiteIcons
-    }
-
-
-    /**
-     * List of all icon names. The order they are in corresponds to their ids.
-     */
-    private val iconNames = listOf(
-        "Art",
-        "Browser",
-        "Wetter",
-        "Einstellungen",
-        "Galerie",
-        "Mail",
-        "Maps",
-        "Nachrichten",
-        "Telefon"
-    )
-
-    /**
-     * Returns a list [iconNames] of all names of the icons used in this study.
-     */
-    fun getIconNames(): List<String> {
-        return iconNames
+    fun getIcons(): List<Icon> {
+        return iconList
     }
 
 
@@ -178,42 +135,22 @@ class IconViewModel : ViewModel() {
 
 
     /**
-     * Icon that was shown to the user.
+     * Image id of the icon that was shown to the user.
      */
-    private var shownIcon = Icon(0)
+    private var shownIcon: Int = 0
 
     /**
-     * Returns an object of the type [Icon], containing the icon the user last saw.
+     * Returns the image id of the [shownIcon].
      */
-    fun getShownIcon(): Icon {
+    fun getShownIcon(): Int {
         return shownIcon
     }
 
     /**
-     * Sets the value of the [icon] the user just saw.
+     * Sets the value of the [iconId] the user just saw.
      */
-    fun setShownIcon(icon: Icon) {
-        shownIcon = icon
-    }
-
-
-    /**
-     * Integer id of the shown icon. The icons have the ids 0 to 8.
-     */
-    private var shownIconId = 0
-
-    /**
-     * Returns the [shownIconId] of the icon the user last saw.
-     */
-    fun getShownIconId(): Int{
-        return shownIconId
-    }
-
-    /**
-     * Sets the [id] of the icon the user last saw
-     */
-    fun setShownIconId(id: Int){
-        shownIconId = id
+    fun setShownIcon(iconId: Int) {
+        shownIcon = iconId
     }
 
 
@@ -244,8 +181,7 @@ class IconViewModel : ViewModel() {
     fun addData(data: StudyData) {
         dataList.add(data)
     }
-
-
+    
     /**
      * Deletes the collected data.
      * Clears [shownIconsList] and [dataList].
@@ -253,11 +189,10 @@ class IconViewModel : ViewModel() {
      */
     fun clearData() {
         shownIconsList.clear()
-        shownIcon = Icon(0)
+        shownIcon = 0
         dataList.clear()
         phase = 1
     }
-
 
 
     /**
