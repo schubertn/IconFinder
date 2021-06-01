@@ -42,7 +42,7 @@ class OneIconFragment : Fragment() {
         showRandomIcon(sharedViewModel.getPhase())
 
         // navigation to next fragment after delay
-        iconHandler.postDelayed({ showAllIcons() }, 1000)
+        iconHandler.postDelayed({ showAllIcons() }, 500)
 
         return fragmentBinding.root
     }

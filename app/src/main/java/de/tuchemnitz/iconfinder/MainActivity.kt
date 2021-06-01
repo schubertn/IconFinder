@@ -32,14 +32,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 // To do stuff
-// TODO: StatisticsFragment
+// TODO: StatisticsFragment with Firebase Data
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
+// TODO: Remove functions from onCreateView()?
 
 // Additional stuff
-// TODO: Remove functions from onCreateView()?
 // TODO: Nicer layout
-// TODO: Do not use static text sizes (different display sizes!)
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)

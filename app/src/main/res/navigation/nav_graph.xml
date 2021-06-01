@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/instructionFragment">
+    app:startDestination="@id/statisticsFragment">
 
     <fragment
         android:id="@+id/instructionFragment"
@@ -50,6 +50,13 @@
         <action
             android:id="@+id/action_thankYouFragment_to_instructionFragment"
             app:destination="@id/instructionFragment" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="de.tuchemnitz.iconfinder.StatisticsFragment"
+        android:label="StatisticsFragment" />
 
 </navigation>

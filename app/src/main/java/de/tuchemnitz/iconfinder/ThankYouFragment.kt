@@ -78,7 +78,7 @@ class ThankYouFragment : Fragment() {
      * Shows some statistics to compare the user with other participants.
      */
     fun navigateToStatistics() {
-        findNavController().navigate(R.id.action_thankYouFragment_to_resultFragment)
+        findNavController().navigate(R.id.action_thankYouFragment_to_statisticsFragment)
     }
 
     override fun onDestroyView() {
