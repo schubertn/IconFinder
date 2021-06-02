@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 // Additional stuff
 // TODO: Nicer layout
+// TODO: Remove global variables
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)
