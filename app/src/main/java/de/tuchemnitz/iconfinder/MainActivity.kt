@@ -32,12 +32,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 // StatisticsFragment
-// TODO: Change Layout of xml (see notes)
 // TODO: Clean up code
+// TODO: Clean up strings.xml
 // TODO: Comments
+// TODO: Implement back button
 
 // To do stuff
 // TODO: Remove ResultData and do ResultTable like StatisticsTable
+// TODO: Add back button to ResultFragment
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 // TODO: Remove functions from onCreateView()?
