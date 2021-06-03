@@ -31,8 +31,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 
+// StatisticsFragment
+// TODO: Change Layout of xml (see notes)
+// TODO: Clean up code
+// TODO: Comments
+
 // To do stuff
-// TODO: StatisticsFragment with Firebase Data
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 // TODO: Remove functions from onCreateView()?

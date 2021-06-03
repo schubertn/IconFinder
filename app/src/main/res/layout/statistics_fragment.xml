@@ -15,80 +15,64 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/all_times_avg"
+            android:id="@+id/general_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/time_avg"
+            android:id="@+id/phase1_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/all_times_avg"/>
+            app:layout_constraintTop_toBottomOf="@id/general_statistics"/>
 
         <TextView
-            android:id="@+id/all_corrects_avg"
+            android:id="@+id/phase2_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time_avg" />
+            app:layout_constraintTop_toBottomOf="@id/phase1_statistics"/>
 
         <TextView
-            android:id="@+id/correct_avg"
+            android:id="@+id/phase3_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/all_corrects_avg" />
-
-
-        <TextView
-            android:id="@+id/all_times_phase1_avg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/correct_avg"/>
+            app:layout_constraintTop_toBottomOf="@id/phase2_statistics"/>
 
         <TextView
-            android:id="@+id/time_phase1_avg"
+            android:id="@+id/phase4_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/all_times_phase1_avg"/>
-
-        <TextView
-            android:id="@+id/all_corrects_phase1_avg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time_phase1_avg" />
-
-        <TextView
-            android:id="@+id/correct_phase1_avg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/all_corrects_phase1_avg" />
+            app:layout_constraintTop_toBottomOf="@id/phase3_statistics"/>
 
     </LinearLayout>
 </layout>

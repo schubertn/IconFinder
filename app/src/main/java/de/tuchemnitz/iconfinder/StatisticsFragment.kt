@@ -1,7 +1,6 @@
 package de.tuchemnitz.iconfinder
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +24,23 @@ class StatisticsFragment : Fragment() {
     private var db: FirebaseFirestore? = null
 
     private val numberOfIterations = 36
+    private val numberOfIterationsOnePhase = 9
 
     private var docCounter = 0
     private var allTimesSum = 0.0
     private var allCorrectsSum = 0.0
 
-    private var allTimesPhaseOneSum = 0.0
-    private var allCorrectsPhaseOneSum = 0.0
+    private var allTimesSumPhaseOne = 0.0
+    private var allCorrectsSumPhaseOne = 0.0
+
+    private var allTimesSumPhaseTwo = 0.0
+    private var allCorrectsSumPhaseTwo = 0.0
+
+    private var allTimesSumPhaseThree = 0.0
+    private var allCorrectsSumPhaseThree = 0.0
+
+    private var allTimesSumPhaseFour = 0.0
+    private var allCorrectsSumPhaseFour = 0.0
 
 
 
@@ -58,27 +67,15 @@ class StatisticsFragment : Fragment() {
      * Get statistics related to all users from the database.
      */
     private fun getAllStatistics() {
-        /**
-         * val test = db?.collection("IconFinder")
-         * val query = test?.whereEqualTo("iconId", 1)?.get()
-         * **/
-
         db!!.collection("IconFinder")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                   setStatistics(document)
-                   setStatisticsPhase1(document)
-
-
+                   setStatisticsGeneral(document)
+                   setStatisticsPhases(document)
                 }
             }
-            .addOnFailureListener { exception ->
-                Log.d("test", "Error getting documents: ", exception)
-            }
             .addOnCompleteListener {
-                Log.d("test", "Binding")
-                bindDatabaseStatistics()
                 bindUserStatistics()
                 bindUserStatisticsPhaseOne()
             }
@@ -87,7 +84,7 @@ class StatisticsFragment : Fragment() {
     /**
      * Set values for the statistics for each document in the database.
      */
-    private fun setStatistics(document: QueryDocumentSnapshot) {
+    private fun setStatisticsGeneral(document: QueryDocumentSnapshot) {
         allTimesSum += document.getDouble("timeNeeded")!!
         docCounter++
         if(document.getBoolean("correctness") == true) {
@@ -95,58 +92,42 @@ class StatisticsFragment : Fragment() {
         }
     }
 
-    private fun setStatisticsPhase1(document: QueryDocumentSnapshot) {
-        if(document.getLong("phase")?.toInt() == 1) {
-            Log.d("test", "this is phase 1")
-            allTimesPhaseOneSum += document.getDouble("timeNeeded")!!
-            if(document.getBoolean("correctness") == true) {
-                allCorrectsPhaseOneSum++
+    private fun setStatisticsPhases(document: QueryDocumentSnapshot) {
+        when(document.getLong("phase")?.toInt()){
+            1 -> {
+                allTimesSumPhaseOne += document.getDouble("timeNeeded")!!
+                if(document.getBoolean("correctness") == true) {
+                    allCorrectsSumPhaseOne++
+                }
+            }
+            2 -> {
+                allTimesSumPhaseTwo += document.getDouble("timeNeeded")!!
+                if(document.getBoolean("correctness") == true) {
+                    allCorrectsSumPhaseTwo++
+                }
+            }
+            3 -> {
+                allTimesSumPhaseThree += document.getDouble("timeNeeded")!!
+                if(document.getBoolean("correctness") == true) {
+                    allCorrectsSumPhaseThree++
+                }
+            }
+            4 -> {
+                allTimesSumPhaseFour += document.getDouble("timeNeeded")!!
+                if(document.getBoolean("correctness") == true) {
+                    allCorrectsSumPhaseFour++
+                }
             }
         }
     }
-
-    // setStatisticsPhase2()
-    // setStatisticsPhase3()
-    // setStatisticsPhase4()
-
-    /**
-     * Bind the statistics from the database to statistics_fragment.xml to show them to the user.
-     */
-    private fun bindDatabaseStatistics() {
-        // average time (all users)
-        val allTimesAvg = allTimesSum / docCounter
-        binding?.allTimesAvg?.text = String.format(resources.getString(R.string.test_string), allTimesAvg)
-
-        val allTimesPhaseOneAvg = allTimesPhaseOneSum / docCounter
-        binding?.allTimesPhase1Avg?.text = resources.getString(R.string.test_string, allTimesPhaseOneAvg)
-
-        // average correctness (all users)
-        val allCorrectsPercentage = round((allCorrectsSum / docCounter) * 100)
-        binding?.allCorrectsAvg?.text = allCorrectsPercentage.toString()
-
-        val allCorrectsPhaseOnePercentage = round((allCorrectsPhaseOneSum / docCounter) * 100)
-        binding?.allCorrectsPhase1Avg?.text = allCorrectsPhaseOnePercentage.toString()
-
-        Log.d("test", "Sum time is $allTimesSum")
-        Log.d("test", "Counter is $docCounter")
-        Log.d("test", "Average time is $allTimesAvg")
-        Log.d("test", "Average time Phase One $allTimesPhaseOneAvg")
-        Log.d("test", "Sum of correct is $allCorrectsSum")
-        Log.d("test", "Average correct is $allCorrectsPercentage")
-        Log.d("test", "Sum of correct phase one is $allCorrectsPhaseOneSum")
-        Log.d("test", "Average correct phase 1 is $allCorrectsPhaseOnePercentage")
-    }
-
 
     /**
      * Get statistics related to the user from the shared view model
      * and bind them to statistics_fragment.xml.
      */
     private fun bindUserStatistics() {
-        Log.d("test", "User binding")
-
         var ownTimeSum = 0.0
-        var ownCorrectSum = 0
+        var ownCorrectSum = 0.0
 
         for(data in sharedViewModel.getData()) {
             ownTimeSum += data.timeNeeded
@@ -157,40 +138,129 @@ class StatisticsFragment : Fragment() {
 
         // average time (user)
         val ownTimeAvg = ownTimeSum / numberOfIterations
-        binding?.timeAvg?.text = ownTimeAvg.toString()
 
         // average correctness (user)
-        val ownCorrectPercentage = ((ownCorrectSum / numberOfIterations) * 100).toDouble()
-        binding?.correctAvg?.text = ownCorrectPercentage.toString()
+        val ownCorrectPercentage = (ownCorrectSum / numberOfIterations) * 100
 
-        Log.d("test", "Time General = $ownTimeAvg")
-        Log.d("test", "Correct General = $ownCorrectPercentage")
+        // general statistics
+        val allTimesAvg = allTimesSum / docCounter
+        val allCorrectsPercentage = round((allCorrectsSum / docCounter) * 100)
+
+        binding?.generalStatistics?.text = resources.getString(
+            R.string.statistics_general,
+            ownTimeAvg,
+            ownCorrectPercentage,
+            allTimesAvg,
+            allCorrectsPercentage
+        )
+
     }
 
     private fun bindUserStatisticsPhaseOne() {
-        Log.d("test", "User binding")
-
         var ownTimeSumPhaseOne = 0.0
-        var ownCorrectSumPhaseOne = 0
+        var ownCorrectSumPhaseOne = 0.0
+        var ownTimeSumPhaseTwo = 0.0
+        var ownCorrectSumPhaseTwo = 0.0
+        var ownTimeSumPhaseThree = 0.0
+        var ownCorrectSumPhaseThree = 0.0
+        var ownTimeSumPhaseFour = 0.0
+        var ownCorrectSumPhaseFour = 0.0
 
         for (data in sharedViewModel.getData()) {
-            if (data.phase == 1) {
-                ownTimeSumPhaseOne += data.timeNeeded
-                if (data.correctness) {
-                    ownCorrectSumPhaseOne++
+            when(data.phase) {
+                1 -> {
+                    ownTimeSumPhaseOne += data.timeNeeded
+                    if (data.correctness) {
+                        ownCorrectSumPhaseOne++
+                    }
+                }
+                2 -> {
+                    ownTimeSumPhaseTwo += data.timeNeeded
+                    if (data.correctness) {
+                        ownCorrectSumPhaseTwo++
+                    }
+                }
+                3 -> {
+                    ownTimeSumPhaseThree += data.timeNeeded
+                    if (data.correctness) {
+                        ownCorrectSumPhaseThree++
+                    }
+                }
+                4 -> {
+                    ownTimeSumPhaseFour += data.timeNeeded
+                    if (data.correctness) {
+                        ownCorrectSumPhaseFour++
+                    }
                 }
             }
         }
 
-        val ownTimeAvgPhaseOne = ownTimeSumPhaseOne / numberOfIterations
-        binding?.timePhase1Avg?.text = ownTimeAvgPhaseOne.toString()
+        // phase 1
+        val ownTimeAvgPhaseOne = ownTimeSumPhaseOne / numberOfIterationsOnePhase
+        val ownCorrectPercentagePhaseOne = (ownCorrectSumPhaseOne / numberOfIterationsOnePhase) * 100
 
-        val ownCorrectPercentagePhaseOne = ((ownCorrectSumPhaseOne / numberOfIterations) * 100).toDouble()
-        binding?.correctPhase1Avg?.text = ownCorrectPercentagePhaseOne.toString()
+        // phase 2
+        val ownTimeAvgPhaseTwo = ownTimeSumPhaseTwo / numberOfIterationsOnePhase
+        val ownCorrectPercentagePhaseTwo = (ownCorrectSumPhaseTwo / numberOfIterationsOnePhase) * 100
 
-        Log.d("test", "Time Phase 1 = $ownTimeAvgPhaseOne")
-        Log.d("test", "Correct Phase 1 = $ownCorrectPercentagePhaseOne")
+        // phase 3
+        val ownTimeAvgPhaseThree = ownTimeSumPhaseThree / numberOfIterationsOnePhase
+        val ownCorrectPercentagePhaseThree = (ownCorrectSumPhaseThree / numberOfIterationsOnePhase) * 100
 
+        // phase 4
+        val ownTimeAvgPhaseFour = ownTimeSumPhaseFour / numberOfIterationsOnePhase
+        val ownCorrectPercentagePhaseFour = (ownCorrectSumPhaseFour / numberOfIterationsOnePhase) * 100
+
+
+        val docCounterPhases = docCounter / 4
+
+        // statistics phase one
+        val allCorrectsPercentagePhaseOne = round((allCorrectsSumPhaseOne / docCounterPhases) * 100)
+        val allTimesAvgPhaseOne = allTimesSumPhaseOne / docCounterPhases
+
+        // statistics phase two
+        val allCorrectsPercentagePhaseTwo = round((allCorrectsSumPhaseTwo / docCounterPhases) * 100)
+        val allTimesAvgPhaseTwo = allTimesSumPhaseTwo / docCounterPhases
+
+        // statistics phase three
+        val allCorrectsPercentagePhaseThree = round((allCorrectsSumPhaseThree / docCounterPhases) * 100)
+        val allTimesAvgPhaseThree = allTimesSumPhaseThree / docCounterPhases
+
+        // statistics phase four
+        val allCorrectsPercentagePhaseFour = round((allCorrectsSumPhaseFour / docCounterPhases) * 100)
+        val allTimesAvgPhaseFour = allTimesSumPhaseFour / docCounterPhases
+
+        binding?.phase1Statistics?.text = resources.getString(
+            R.string.statistics_phase1,
+            ownTimeAvgPhaseOne,
+            ownCorrectPercentagePhaseOne,
+            allTimesAvgPhaseOne,
+            allCorrectsPercentagePhaseOne
+        )
+
+        binding?.phase2Statistics?.text = resources.getString(
+            R.string.statistics_phase2,
+            ownTimeAvgPhaseTwo,
+            ownCorrectPercentagePhaseTwo,
+            allTimesAvgPhaseTwo,
+            allCorrectsPercentagePhaseTwo
+        )
+
+        binding?.phase3Statistics?.text = resources.getString(
+            R.string.statistics_phase3,
+            ownTimeAvgPhaseThree,
+            ownCorrectPercentagePhaseThree,
+            allTimesAvgPhaseThree,
+            allCorrectsPercentagePhaseThree
+        )
+
+        binding?.phase4Statistics?.text = resources.getString(
+            R.string.statistics_phase4,
+            ownTimeAvgPhaseFour,
+            ownCorrectPercentagePhaseFour,
+            allTimesAvgPhaseFour,
+            allCorrectsPercentagePhaseFour
+        )
     }
 
     override fun onDestroyView() {
