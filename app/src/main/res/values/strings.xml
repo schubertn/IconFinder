@@ -120,4 +120,15 @@
         %4$.2f Prozent der Icons richtig erkannt.
     </string>
 
+    <string name="seconds">%1$.2f Sekunden</string>
+    <string name="percent">%1$.2f Prozent</string>
+    <string name="back">Zurück zum vorherigen Bildschirm</string>
+    <string name="One">1</string>
+    <string name="Two">2</string>
+    <string name="Three">3</string>
+    <string name="Four">4</string>
+    <string name="other_participants_statistics">Ergebnisse anderer Teilnehmer</string>
+    <string name="user_statistics">Ihre Ergebnisse</string>
+    <string name="phase">Phase</string>
+
 </resources>

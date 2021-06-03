@@ -10,38 +10,69 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import de.tuchemnitz.iconfinder.databinding.StatisticsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
-import kotlin.math.round
+import de.tuchemnitz.iconfinder.model.StatisticsViewModel
 
+data class CalculationValues(
+    var timeSumUser: Double,
+    var correctSumUser: Double,
+    var timeSumAll: Double,
+    var correctSumAll: Double
+) {
+    constructor() : this(0.0, 0.0, 0.0, 0.0)
+}
+
+data class StatisticsData(
+    var timeUser: Double,
+    var correctPercentageUser: Double,
+    var timeAll: Double,
+    var correctPercentageAll: Double
+) {
+    constructor() : this(0.0, 0.0, 0.0, 0.0)
+}
 
 class StatisticsFragment : Fragment() {
 
     // binding object instance corresponding to the result_fragment.xml layout
     private var binding: StatisticsFragmentBinding? = null
 
-    private val sharedViewModel: IconViewModel by activityViewModels()
+    private val sharedViewModelStudy: IconViewModel by activityViewModels()
+    private val sharedViewModelStatistics: StatisticsViewModel by activityViewModels()
 
     // creating a variable for firebase firestore
     private var db: FirebaseFirestore? = null
 
+    private var generalCalcValues = CalculationValues()
+    private var phaseOneCalcValues = CalculationValues()
+    private var phaseTwoCalcValues = CalculationValues()
+    private var phaseThreeCalcValues = CalculationValues()
+    private var phaseFourCalcValues = CalculationValues()
+
     private val numberOfIterations = 36
-    private val numberOfIterationsOnePhase = 9
-
+    private val iterationsPerPhase = 9
     private var docCounter = 0
-    private var allTimesSum = 0.0
-    private var allCorrectsSum = 0.0
 
-    private var allTimesSumPhaseOne = 0.0
-    private var allCorrectsSumPhaseOne = 0.0
+    private var generalStatistics = StatisticsData()
+    private var phaseOneStatistics = StatisticsData()
+    private var phaseTwoStatistics = StatisticsData()
+    private var phaseThreeStatistics = StatisticsData()
+    private var phaseFourStatistics = StatisticsData()
 
-    private var allTimesSumPhaseTwo = 0.0
-    private var allCorrectsSumPhaseTwo = 0.0
+    private var calcValues = arrayOf(
+        generalCalcValues,
+        phaseOneCalcValues,
+        phaseTwoCalcValues,
+        phaseThreeCalcValues,
+        phaseFourCalcValues
+    )
 
-    private var allTimesSumPhaseThree = 0.0
-    private var allCorrectsSumPhaseThree = 0.0
-
-    private var allTimesSumPhaseFour = 0.0
-    private var allCorrectsSumPhaseFour = 0.0
-
+    
+    private var statisticValues = arrayOf(
+        generalStatistics,
+        phaseOneStatistics,
+        phaseTwoStatistics,
+        phaseThreeStatistics,
+        phaseFourStatistics
+    )
 
 
     override fun onCreateView(
@@ -57,6 +88,7 @@ class StatisticsFragment : Fragment() {
         return fragmentBinding.root
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // getting our instance from firebase firestore
@@ -71,196 +103,198 @@ class StatisticsFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                   setStatisticsGeneral(document)
-                   setStatisticsPhases(document)
+                    setStatisticsGeneral(document)
+                    setStatisticsPhases(document, document.getLong("phase")!!.toInt())
                 }
             }
             .addOnCompleteListener {
                 bindUserStatistics()
                 bindUserStatisticsPhaseOne()
+                bindGeneralStatistics()
+                binding?.statisticsFragment = this
             }
+    }
+
+    /**
+     * Bind the general statistics to statistics_fragment.xml.
+     */
+    private fun bindGeneralStatistics() {
+        binding?.generalStatistics?.text = resources.getString(
+            R.string.statistics_general,
+            generalStatistics.timeUser,
+            generalStatistics.correctPercentageUser,
+            generalStatistics.timeAll,
+            generalStatistics.correctPercentageAll
+        )
     }
 
     /**
      * Set values for the statistics for each document in the database.
      */
     private fun setStatisticsGeneral(document: QueryDocumentSnapshot) {
-        allTimesSum += document.getDouble("timeNeeded")!!
+        generalCalcValues.timeSumAll += document.getDouble("timeNeeded")!!
         docCounter++
-        if(document.getBoolean("correctness") == true) {
-            allCorrectsSum++
+        if (document.getBoolean("correctness") == true) {
+            generalCalcValues.correctSumAll++
         }
     }
 
-    private fun setStatisticsPhases(document: QueryDocumentSnapshot) {
-        when(document.getLong("phase")?.toInt()){
+    private fun setStatisticsPhases(document: QueryDocumentSnapshot, phase: Int) {
+        calcValues[phase].timeSumAll += document.getDouble("timeNeeded")!!
+        if (document.getBoolean("correctness") == true) {
+            calcValues[phase].correctSumAll++
+        }
+        /**
+        when (document.getLong("phase")?.toInt()) {
             1 -> {
-                allTimesSumPhaseOne += document.getDouble("timeNeeded")!!
-                if(document.getBoolean("correctness") == true) {
-                    allCorrectsSumPhaseOne++
+                phaseOneCalcValues.timeSumAll += document.getDouble("timeNeeded")!!
+                if (document.getBoolean("correctness") == true) {
+                    phaseOneCalcValues.correctSumAll++
                 }
             }
             2 -> {
-                allTimesSumPhaseTwo += document.getDouble("timeNeeded")!!
-                if(document.getBoolean("correctness") == true) {
-                    allCorrectsSumPhaseTwo++
+                phaseTwoCalcValues.timeSumAll += document.getDouble("timeNeeded")!!
+                if (document.getBoolean("correctness") == true) {
+                    phaseTwoCalcValues.correctSumAll++
                 }
             }
             3 -> {
-                allTimesSumPhaseThree += document.getDouble("timeNeeded")!!
-                if(document.getBoolean("correctness") == true) {
-                    allCorrectsSumPhaseThree++
+                phaseThreeCalcValues.timeSumAll += document.getDouble("timeNeeded")!!
+                if (document.getBoolean("correctness") == true) {
+                    phaseThreeCalcValues.correctSumAll++
                 }
             }
             4 -> {
-                allTimesSumPhaseFour += document.getDouble("timeNeeded")!!
-                if(document.getBoolean("correctness") == true) {
-                    allCorrectsSumPhaseFour++
+                phaseFourCalcValues.timeSumAll += document.getDouble("timeNeeded")!!
+                if (document.getBoolean("correctness") == true) {
+                    phaseFourCalcValues.correctSumAll++
                 }
             }
         }
+        **/
     }
+
 
     /**
      * Get statistics related to the user from the shared view model
      * and bind them to statistics_fragment.xml.
      */
     private fun bindUserStatistics() {
-        var ownTimeSum = 0.0
-        var ownCorrectSum = 0.0
-
-        for(data in sharedViewModel.getData()) {
-            ownTimeSum += data.timeNeeded
-            if(data.correctness) {
-                ownCorrectSum++
+        for (data in sharedViewModelStudy.getData()) {
+            generalCalcValues.timeSumUser += data.timeNeeded
+            if (data.correctness) {
+                generalCalcValues.correctSumUser++
             }
         }
 
         // average time (user)
-        val ownTimeAvg = ownTimeSum / numberOfIterations
+        generalStatistics.timeUser = generalCalcValues.timeSumUser / numberOfIterations
 
         // average correctness (user)
-        val ownCorrectPercentage = (ownCorrectSum / numberOfIterations) * 100
+        generalStatistics.correctPercentageUser = (generalCalcValues.correctSumUser / numberOfIterations) * 100
 
         // general statistics
-        val allTimesAvg = allTimesSum / docCounter
-        val allCorrectsPercentage = round((allCorrectsSum / docCounter) * 100)
-
-        binding?.generalStatistics?.text = resources.getString(
-            R.string.statistics_general,
-            ownTimeAvg,
-            ownCorrectPercentage,
-            allTimesAvg,
-            allCorrectsPercentage
-        )
+        generalStatistics.timeAll = generalCalcValues.timeSumAll / docCounter
+        generalStatistics.correctPercentageAll = (generalCalcValues.correctSumAll / docCounter) * 100
 
     }
 
-    private fun bindUserStatisticsPhaseOne() {
-        var ownTimeSumPhaseOne = 0.0
-        var ownCorrectSumPhaseOne = 0.0
-        var ownTimeSumPhaseTwo = 0.0
-        var ownCorrectSumPhaseTwo = 0.0
-        var ownTimeSumPhaseThree = 0.0
-        var ownCorrectSumPhaseThree = 0.0
-        var ownTimeSumPhaseFour = 0.0
-        var ownCorrectSumPhaseFour = 0.0
 
-        for (data in sharedViewModel.getData()) {
-            when(data.phase) {
+    private fun bindUserStatisticsPhaseOne() {
+
+        for (data in sharedViewModelStudy.getData()) {
+            calcValues[data.phase].timeSumUser += data.timeNeeded
+            if (data.correctness) {
+                calcValues[data.phase].correctSumUser++
+            }
+            /**
+            when (data.phase) {
                 1 -> {
-                    ownTimeSumPhaseOne += data.timeNeeded
+                    phaseOneCalcValues.timeSumUser += data.timeNeeded
                     if (data.correctness) {
-                        ownCorrectSumPhaseOne++
+                        phaseOneCalcValues.correctSumUser++
                     }
                 }
                 2 -> {
-                    ownTimeSumPhaseTwo += data.timeNeeded
+                    phaseTwoCalcValues.timeSumUser += data.timeNeeded
                     if (data.correctness) {
-                        ownCorrectSumPhaseTwo++
+                        phaseTwoCalcValues.correctSumUser++
                     }
                 }
                 3 -> {
-                    ownTimeSumPhaseThree += data.timeNeeded
+                    phaseThreeCalcValues.timeSumUser += data.timeNeeded
                     if (data.correctness) {
-                        ownCorrectSumPhaseThree++
+                        phaseThreeCalcValues.correctSumUser++
                     }
                 }
                 4 -> {
-                    ownTimeSumPhaseFour += data.timeNeeded
+                    phaseFourCalcValues.timeSumUser += data.timeNeeded
                     if (data.correctness) {
-                        ownCorrectSumPhaseFour++
+                        phaseFourCalcValues.correctSumUser++
                     }
                 }
             }
+            **/
         }
 
-        // phase 1
-        val ownTimeAvgPhaseOne = ownTimeSumPhaseOne / numberOfIterationsOnePhase
-        val ownCorrectPercentagePhaseOne = (ownCorrectSumPhaseOne / numberOfIterationsOnePhase) * 100
+        for(i in 1..4){
+            statisticValues[i].timeUser = calcValues[i].timeSumUser / iterationsPerPhase
+            statisticValues[i].correctPercentageUser = (calcValues[i].correctSumUser / iterationsPerPhase) * 100
+        }
 
-        // phase 2
-        val ownTimeAvgPhaseTwo = ownTimeSumPhaseTwo / numberOfIterationsOnePhase
-        val ownCorrectPercentagePhaseTwo = (ownCorrectSumPhaseTwo / numberOfIterationsOnePhase) * 100
+        /**
+        // user statistics phase 1
+        phaseOneStatistics.timeUser = phaseOneCalcValues.timeSumUser / iterationsPerPhase
+        phaseOneStatistics.correctPercentageUser = (phaseOneCalcValues.correctSumUser / iterationsPerPhase) * 100
 
-        // phase 3
-        val ownTimeAvgPhaseThree = ownTimeSumPhaseThree / numberOfIterationsOnePhase
-        val ownCorrectPercentagePhaseThree = (ownCorrectSumPhaseThree / numberOfIterationsOnePhase) * 100
+        // user statistics phase 2
+        phaseTwoStatistics.timeUser = phaseTwoCalcValues.timeSumUser / iterationsPerPhase
+        phaseTwoStatistics.correctPercentageUser = (phaseTwoCalcValues.correctSumUser / iterationsPerPhase) * 100
 
-        // phase 4
-        val ownTimeAvgPhaseFour = ownTimeSumPhaseFour / numberOfIterationsOnePhase
-        val ownCorrectPercentagePhaseFour = (ownCorrectSumPhaseFour / numberOfIterationsOnePhase) * 100
+        // user statistics phase 3
+        phaseThreeStatistics.timeUser = phaseThreeCalcValues.timeSumUser / iterationsPerPhase
+        phaseThreeStatistics.correctPercentageUser = (phaseThreeCalcValues.correctSumUser / iterationsPerPhase) * 100
+
+        // user statistics phase 4
+        phaseFourStatistics.timeUser = phaseFourCalcValues.timeSumUser / iterationsPerPhase
+        phaseFourStatistics.correctPercentageUser = (phaseFourCalcValues.correctSumUser / iterationsPerPhase) * 100
+        **/
 
 
         val docCounterPhases = docCounter / 4
+        for(i in 1..4){
+            statisticValues[i].timeAll = calcValues[i].timeSumAll / docCounterPhases
+            statisticValues[i].correctPercentageAll = (calcValues[i].correctSumAll / docCounterPhases) * 100
+        }
 
+
+        /**
         // statistics phase one
-        val allCorrectsPercentagePhaseOne = round((allCorrectsSumPhaseOne / docCounterPhases) * 100)
-        val allTimesAvgPhaseOne = allTimesSumPhaseOne / docCounterPhases
+        phaseOneStatistics.correctPercentageAll =
+            (phaseOneCalcValues.correctSumAll / docCounterPhases) * 100
+        phaseOneStatistics.timeAll = phaseOneCalcValues.timeSumAll / docCounterPhases
 
         // statistics phase two
-        val allCorrectsPercentagePhaseTwo = round((allCorrectsSumPhaseTwo / docCounterPhases) * 100)
-        val allTimesAvgPhaseTwo = allTimesSumPhaseTwo / docCounterPhases
+        phaseTwoStatistics.correctPercentageAll =
+            (phaseTwoCalcValues.correctSumAll / docCounterPhases) * 100
+        phaseTwoStatistics.timeAll = phaseTwoCalcValues.timeSumAll / docCounterPhases
 
         // statistics phase three
-        val allCorrectsPercentagePhaseThree = round((allCorrectsSumPhaseThree / docCounterPhases) * 100)
-        val allTimesAvgPhaseThree = allTimesSumPhaseThree / docCounterPhases
+        phaseThreeStatistics.correctPercentageAll =
+            (phaseThreeCalcValues.correctSumAll / docCounterPhases) * 100
+        phaseThreeStatistics.timeAll = phaseTwoCalcValues.timeSumAll / docCounterPhases
 
         // statistics phase four
-        val allCorrectsPercentagePhaseFour = round((allCorrectsSumPhaseFour / docCounterPhases) * 100)
-        val allTimesAvgPhaseFour = allTimesSumPhaseFour / docCounterPhases
+        phaseFourStatistics.correctPercentageAll =
+            (phaseFourCalcValues.correctSumAll / docCounterPhases) * 100
+        phaseFourStatistics.timeAll = phaseTwoCalcValues.timeSumAll / docCounterPhases
+        **/
+    }
 
-        binding?.phase1Statistics?.text = resources.getString(
-            R.string.statistics_phase1,
-            ownTimeAvgPhaseOne,
-            ownCorrectPercentagePhaseOne,
-            allTimesAvgPhaseOne,
-            allCorrectsPercentagePhaseOne
-        )
 
-        binding?.phase2Statistics?.text = resources.getString(
-            R.string.statistics_phase2,
-            ownTimeAvgPhaseTwo,
-            ownCorrectPercentagePhaseTwo,
-            allTimesAvgPhaseTwo,
-            allCorrectsPercentagePhaseTwo
-        )
 
-        binding?.phase3Statistics?.text = resources.getString(
-            R.string.statistics_phase3,
-            ownTimeAvgPhaseThree,
-            ownCorrectPercentagePhaseThree,
-            allTimesAvgPhaseThree,
-            allCorrectsPercentagePhaseThree
-        )
-
-        binding?.phase4Statistics?.text = resources.getString(
-            R.string.statistics_phase4,
-            ownTimeAvgPhaseFour,
-            ownCorrectPercentagePhaseFour,
-            allTimesAvgPhaseFour,
-            allCorrectsPercentagePhaseFour
-        )
+    fun getPhaseOneStatistics() : StatisticsData {
+        return phaseOneStatistics
     }
 
     override fun onDestroyView() {

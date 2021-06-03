@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // TODO: Comments
 
 // To do stuff
+// TODO: Remove ResultData and do ResultTable like StatisticsTable
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
 // TODO: Remove functions from onCreateView()?
