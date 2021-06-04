@@ -1,257 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="statisticsFragment"
             type="de.tuchemnitz.iconfinder.StatisticsFragment" />
-
     </data>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TableLayout
-            android:id="@+id/statistics_table"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:padding="5dp">
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableHeadText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/phase" />
-
-                <TextView
-                    style="@style/IconFinder.TableHeadText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/user_statistics" />
-
-                <TextView
-                    style="@style/IconFinder.TableHeadText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/other_participants_statistics" />
-
-            </TableRow>
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/darker_gray" />
-
-
-            <!-- Phase One -->
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/One" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[1].timeUser)}" />
-                   <!-- statisticsViewModel.getPhaseOneStatistics().timeUser)}" />-->
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[1].timeAll)}" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageAll)}" />
-            </TableRow>
-
-            <!-- Phase 2 -->
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/Two" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[2].timeUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[2].timeAll)}" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageAll)}" />
-            </TableRow>
-
-            <!-- Phase 3 -->
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/Three" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[3].timeUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[3].timeAll)}" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageAll)}" />
-            </TableRow>
-
-            <!-- Phase 4 -->
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="@string/Four" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[4].timeUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/seconds(statisticsFragment.getStatistics()[4].timeAll)}" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="10dp">
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:text="" />
-
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageUser)}" />
-
-                <TextView
-                    style="@style/IconFinder.TableText"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageAll)}" />
-            </TableRow>
-
-        </TableLayout>
-
-
-        <TextView
-            android:id="@+id/general_statistics"
-            style="@style/IconFinder.AppText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <Button
-            android:id="@+id/back_button"
-            style="@style/IconFinder.AppButtons"
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <TableLayout
+                android:id="@+id/statistics_table"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="5dp">
+
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableHeadText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/phase" />
+
+                    <TextView
+                        style="@style/IconFinder.TableHeadText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/user_statistics" />
+
+                    <TextView
+                        style="@style/IconFinder.TableHeadText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/other_participants_statistics" />
+                </TableRow>
+
+                <!-- horizontal line -->
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:color/darker_gray" />
+
+                <!-- Phase One -->
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/One" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[1].timeUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[1].timeAll)}" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageAll)}" />
+                </TableRow>
+
+                <!-- Phase 2 -->
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/Two" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[2].timeUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[2].timeAll)}" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageAll)}" />
+                </TableRow>
+
+                <!-- Phase 3 -->
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/Three" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[3].timeUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[3].timeAll)}" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageAll)}" />
+                </TableRow>
+
+                <!-- Phase 4 -->
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/Four" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[4].timeUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/seconds(statisticsFragment.getStatistics()[4].timeAll)}" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:text="" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageUser)}" />
+
+                    <TextView
+                        style="@style/IconFinder.TableText"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageAll)}" />
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/general_statistics"
+                style="@style/IconFinder.AppText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@id/statistics_table" />
+
+            <Button
+                android:id="@+id/back_button"
+                style="@style/IconFinder.AppButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:onClick="@{() -> statisticsFragment.backToPreviousScreen()}"
+                android:text="@string/back"
+                app:layout_constraintTop_toBottomOf="@id/general_statistics" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

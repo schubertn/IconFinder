@@ -228,4 +228,24 @@ class IconViewModel : ViewModel() {
     fun selector(data: ResultData): Int {
         return data.iconId
     }
+
+
+
+    data class CalculationValues(
+        var timeSumUser: Double,
+        var correctSumUser: Double,
+        var timeSumAll: Double,
+        var correctSumAll: Double
+    ) {
+        constructor() : this(0.0, 0.0, 0.0, 0.0)
+    }
+
+    data class StatisticsData(
+        var timeUser: Double,
+        var correctPercentageUser: Double,
+        var timeAll: Double,
+        var correctPercentageAll: Double
+    ) {
+        constructor() : this(0.0, 0.0, 0.0, 0.0)
+    }
 }

@@ -32,7 +32,7 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
-    <!-- Style for the text in the head of the table in result_fragment.xml. -->
+    <!-- Style for text in the head of the tables in result_ and statistics_fragment.xml. -->
     <style name="IconFinder.TableHeadText" parent="Widget.MaterialComponents.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">center</item>
@@ -41,7 +41,7 @@
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
-    <!-- Style for text in the table in result_fragment.xml. -->
+    <!-- Style for text in the tables in result_ and statistics_fragment.xml. -->
     <style name="IconFinder.TableText" parent="Widget.MaterialComponents.TextView">
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>

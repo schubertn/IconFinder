@@ -79,56 +79,23 @@
     <string name="table_head_5">Phase 4</string>
 
     <!-- Strings used in statistics_fragment.xml -->
+    <string name="phase">Phase</string>
+    <string name="user_statistics">Ihre Ergebnisse</string>
+    <string name="other_participants_statistics">Ergebnisse anderer Teilnehmer</string>
+
+    <string name="One">1</string>
+    <string name="Two">2</string>
+    <string name="Three">3</string>
+    <string name="Four">4</string>
+
+    <string name="seconds">%1$.2f Sekunden</string>
+    <string name="percent">%1$.2f Prozent</string>
 
     <string name="statistics_general">
-        Generelle Statistiken \n
         Insgesamt haben Sie durchschnittlich %1$.2f Sekunden benötigt,
         um ein Icon zu erkennen, wobei Sie %2$.2f Prozent der Icons richtig erkannt haben. \n
         Andere Teilnehmer haben durchschnittlich in %3$.2f Sekunden
         %4$.2f Prozent der Icons erkannt.
     </string>
-
-    <string name="statistics_phase1">
-        Phase 1 Statistiken \n
-        In der ersten Phase der Studie haben Sie durchschnittlich %1$.2f Sekunden benötigt,
-        um ein Icon zu erkennen, wobei Sie %2$.2f Prozent der Icons richtig erkannt haben. \n
-        Andere Teilnehmer haben in der ersten Phase durchschnittlich in %3$.2f Sekunden
-        %4$.2f Prozent der Icons richtig erkannt.
-    </string>
-
-    <string name="statistics_phase2">
-        Phase 2 Statistiken \n
-        In der zweiten Phase der Studie haben Sie durchschnittlich %1$.2f Sekunden benötigt,
-        um ein Icon zu erkennen, wobei Sie %2$.2f Prozent der Icons richtig erkannt haben. \n
-        Andere Teilnehmer haben in der zweiten Phase durchschnittlich in %3$.2f Sekunden
-        %4$.2f Prozent der Icons richtig erkannt.
-    </string>
-
-    <string name="statistics_phase3">
-        Phase 3 Statistiken \n
-        In der dritten Phase der Studie haben Sie durchschnittlich %1$.2f Sekunden benötigt,
-        um ein Icon zu erkennen, wobei Sie %2$.2f Prozent der Icons richtig erkannt haben. \n
-        Andere Teilnehmer haben in der dritten Phase durchschnittlich in %3$.2f Sekunden
-        %4$.2f Prozent der Icons richtig erkannt.
-    </string>
-
-    <string name="statistics_phase4">
-        Phase 4 Statistiken \n
-        In der vierten Phase der Studie haben Sie durchschnittlich %1$.2f Sekunden benötigt,
-        um ein Icon zu erkennen, wobei Sie %2$.2f Prozent der Icons richtig erkannt haben. \n
-        Andere Teilnehmer haben in der vierten Phase durchschnittlich in %3$.2f Sekunden
-        %4$.2f Prozent der Icons richtig erkannt.
-    </string>
-
-    <string name="seconds">%1$.2f Sekunden</string>
-    <string name="percent">%1$.2f Prozent</string>
     <string name="back">Zurück zum vorherigen Bildschirm</string>
-    <string name="One">1</string>
-    <string name="Two">2</string>
-    <string name="Three">3</string>
-    <string name="Four">4</string>
-    <string name="other_participants_statistics">Ergebnisse anderer Teilnehmer</string>
-    <string name="user_statistics">Ihre Ergebnisse</string>
-    <string name="phase">Phase</string>
-
 </resources>

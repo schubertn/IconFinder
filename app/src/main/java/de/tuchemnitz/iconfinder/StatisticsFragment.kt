@@ -6,32 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import de.tuchemnitz.iconfinder.databinding.StatisticsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+/**
+ * This study consists of 36 individual iterations, in which the user sees an icon or its name
+ * and has to click the corresponding icon.
+ */
+private const val NUM_OF_ITERATIONS = 36
 
 class StatisticsFragment : Fragment() {
-
-    // TODO: Put this in sharedviewmodel?
-    data class CalculationValues(
-        var timeSumUser: Double,
-        var correctSumUser: Double,
-        var timeSumAll: Double,
-        var correctSumAll: Double
-    ) {
-        constructor() : this(0.0, 0.0, 0.0, 0.0)
-    }
-
-    data class StatisticsData(
-        var timeUser: Double,
-        var correctPercentageUser: Double,
-        var timeAll: Double,
-        var correctPercentageAll: Double
-    ) {
-        constructor() : this(0.0, 0.0, 0.0, 0.0)
-    }
 
     // binding object instance corresponding to the result_fragment.xml layout
     private var binding: StatisticsFragmentBinding? = null
@@ -41,12 +28,21 @@ class StatisticsFragment : Fragment() {
     // creating a variable for firebase firestore
     private var db: FirebaseFirestore? = null
 
-    private val numberOfIterations = 36
-    private val iterationsPerPhase = 9
-    private var docCounter = 0
+    /**
+     * An Array with five [IconViewModel.CalculationValues] elements.
+     * For each element the values needed to later calculate the statistics are stored.
+     * The element at index zero corresponds to the general data, indices 1-4 correspond to
+     * the equivalent phases.
+     */
+    private var calcValues = Array(5) { IconViewModel.CalculationValues() }
 
-    private var calcValues = Array(5) { CalculationValues() }
-    private var statisticValues = Array(5) { StatisticsData() }
+    /**
+     * An Array with five [IconViewModel.StatisticsData] elements.
+     * For each element the statistical values relevant to the user are stored.
+     * The element at index zero corresponds to the general data, indices 1-4 correspond to
+     * the equivalent phases.
+     */
+    private var statisticValues = Array(5) { IconViewModel.StatisticsData() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +57,6 @@ class StatisticsFragment : Fragment() {
         return fragmentBinding.root
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // getting our instance from firebase firestore
@@ -69,23 +64,121 @@ class StatisticsFragment : Fragment() {
     }
 
     /**
-     * Get statistics related to all users from the database.
+     * Get values related to all users from the database.
+     * Once the queries are completed, the statistics are calculated and set to be used in the
+     * statistics table.
      */
     private fun getAllStatistics() {
+        var docCounter = 0 // counts the number of documents in the database
+
         db!!.collection("IconFinder")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    setStatisticsGeneral(document)
-                    setStatisticsPhases(document, document.getLong("phase")!!.toInt())
+                    docCounter++
+                    setCalculationValuesDatabase(document, document.getLong("phase")!!.toInt())
                 }
             }
             .addOnCompleteListener {
-                bindUserStatistics()
-                bindUserStatisticsPhaseOne()
+                // set values needed for calculations related to the user
+                setCalculationValuesUser()
+                // set values needed for calculation of the general statistics
+                setCalculationValuesGeneral()
+
+                // set the statistics for phases 1-4
+                val numDocsPerPhase = docCounter / 4
+                setStatisticsPhases(numDocsPerPhase)
+
+                // set the general statistics and bind them to the xml
+                setStatisticsGeneral(docCounter)
                 bindGeneralStatistics()
+
+                // after the calculations are done, display the statistics
                 binding?.statisticsFragment = this
+                showStatistics()
             }
+    }
+
+    /**
+     * For every [document] in the database this method is called.
+     * For every [phase] the times needed to click the icon are added, as well as the number of
+     * correct icons.
+     */
+    private fun setCalculationValuesDatabase(document: QueryDocumentSnapshot, phase: Int) {
+        calcValues[phase].timeSumAll += document.getDouble("timeNeeded")!!
+        if (document.getBoolean("correctness") == true) {
+            calcValues[phase].correctSumAll++
+        }
+    }
+
+    /**
+     * Set the values needed for the calculations related to the user.
+     * For each phase the times needed and the number of correct icons are added up.
+     */
+    private fun setCalculationValuesUser(){
+        for (data in sharedViewModel.getData()) {
+            calcValues[data.phase].timeSumUser += data.timeNeeded
+            if (data.correctness) {
+                calcValues[data.phase].correctSumUser++
+            }
+        }
+    }
+
+    /**
+     * Set the values for the calculation of the general statistics.
+     * The sum of the times needed and correct icons from each phase are added up.
+     */
+    private fun setCalculationValuesGeneral(){
+        for(i in 1..4){
+            // set general calculation values for database data
+            calcValues[0].timeSumAll += calcValues[i].timeSumAll
+            calcValues[0].correctSumAll += calcValues[i].correctSumAll
+
+            // set general calculation values for user data
+            calcValues[0].timeSumUser += calcValues[i].timeSumUser
+            calcValues[0].correctSumUser += calcValues[i].correctSumUser
+        }
+    }
+
+    /**
+     * Set the statistics for the phases 1-4.
+     * For each phase the average time the user needed and the percentage of correct icons are
+     * calculated with the calculation values.
+     * The average time and percentage of correct icons per phase from all users from the database
+     * are also calculated using the [numDocsPerPhase].
+     */
+    private fun setStatisticsPhases(numDocsPerPhase: Int) {
+        // for each phase there exist docCounter/4 documents
+        //val numDocsPerPhase = docCounter / 4
+
+        for (i in 1..4) {
+            // set the statistic values for the data from the user
+            statisticValues[i].timeUser = calcValues[i].timeSumUser / (NUM_OF_ITERATIONS / 4) //iterationsPerPhase
+            statisticValues[i].correctPercentageUser =
+                (calcValues[i].correctSumUser / (NUM_OF_ITERATIONS / 4)) * 100
+
+            // set the statistic values for the data from the database
+            statisticValues[i].timeAll = calcValues[i].timeSumAll / numDocsPerPhase
+            statisticValues[i].correctPercentageAll =
+                (calcValues[i].correctSumAll / numDocsPerPhase) * 100
+        }
+    }
+
+    /**
+     * Set the general statistics for user and database data.
+     * For the user and the database the average time and the percentage of correct icons
+     * are calculated. For the calculations related to the database the [docCounter] containing
+     * the number of documents is needed.
+     */
+    private fun setStatisticsGeneral(docCounter: Int){
+        // set the general statistics for the user
+        statisticValues[0].timeUser = calcValues[0].timeSumUser / NUM_OF_ITERATIONS
+        statisticValues[0].correctPercentageUser =
+            (calcValues[0].correctSumUser / NUM_OF_ITERATIONS) * 100
+
+        // set general statistics for the database
+        statisticValues[0].timeAll = calcValues[0].timeSumAll / docCounter
+        statisticValues[0].correctPercentageAll = (calcValues[0].correctSumAll / docCounter) * 100
     }
 
     /**
@@ -102,76 +195,27 @@ class StatisticsFragment : Fragment() {
     }
 
     /**
-     * Set values for the statistics for each document in the database.
+     * Returns [statisticValues] to be used in the statistics table in statistics_fragment.xml.
      */
-    private fun setStatisticsGeneral(document: QueryDocumentSnapshot) {
-        calcValues[0].timeSumAll += document.getDouble("timeNeeded")!!
-        docCounter++
-        if (document.getBoolean("correctness") == true) {
-            calcValues[0].correctSumAll++
-        }
+    fun getStatistics(): Array<IconViewModel.StatisticsData> {
+        return statisticValues
     }
-
-    private fun setStatisticsPhases(document: QueryDocumentSnapshot, phase: Int) {
-        calcValues[phase].timeSumAll += document.getDouble("timeNeeded")!!
-        if (document.getBoolean("correctness") == true) {
-            calcValues[phase].correctSumAll++
-        }
-    }
-
 
     /**
-     * Get statistics related to the user from the shared view model
-     * and bind them to statistics_fragment.xml.
+     * Hide the previously displayed progessbar and
+     * display the statistics in a table after they are calculated.
      */
-    private fun bindUserStatistics() {
-        for (data in sharedViewModel.getData()) {
-            calcValues[0].timeSumUser += data.timeNeeded
-            if (data.correctness) {
-                calcValues[0].correctSumUser++
-            }
-        }
-
-        // average time (user)
-        statisticValues[0].timeUser = calcValues[0].timeSumUser / numberOfIterations
-
-        // average correctness (user)
-        statisticValues[0].correctPercentageUser =
-            (calcValues[0].correctSumUser / numberOfIterations) * 100
-
-        // general statistics
-        statisticValues[0].timeAll = calcValues[0].timeSumAll / docCounter
-        statisticValues[0].correctPercentageAll = (calcValues[0].correctSumAll / docCounter) * 100
+    private fun showStatistics() {
+        binding!!.progressBar.visibility = View.GONE
+        binding!!.linearLayout.visibility = View.VISIBLE
     }
 
-
-    private fun bindUserStatisticsPhaseOne() {
-
-        for (data in sharedViewModel.getData()) {
-            calcValues[data.phase].timeSumUser += data.timeNeeded
-            if (data.correctness) {
-                calcValues[data.phase].correctSumUser++
-            }
-        }
-
-        for (i in 1..4) {
-            statisticValues[i].timeUser = calcValues[i].timeSumUser / iterationsPerPhase
-            statisticValues[i].correctPercentageUser =
-                (calcValues[i].correctSumUser / iterationsPerPhase) * 100
-        }
-
-
-        val docCounterPhases = docCounter / 4
-        for (i in 1..4) {
-            statisticValues[i].timeAll = calcValues[i].timeSumAll / docCounterPhases
-            statisticValues[i].correctPercentageAll =
-                (calcValues[i].correctSumAll / docCounterPhases) * 100
-        }
-
-    }
-
-    fun getStatistics(): Array<StatisticsData> {
-        return statisticValues
+    /**
+     * On button click navigate back to the previous screen, where the user can decide what to do after
+     * reaching the end of the study.
+     */
+    fun backToPreviousScreen() {
+        findNavController().navigate(R.id.action_statisticsFragment_to_thankYouFragment)
     }
 
     override fun onDestroyView() {
