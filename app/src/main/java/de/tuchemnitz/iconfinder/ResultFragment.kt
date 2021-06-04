@@ -10,6 +10,7 @@ import de.tuchemnitz.iconfinder.databinding.ResultFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 import kotlin.math.round
 
+// TODO
 /**
  * This is one of the two last screens of the IconFinder app.
  * The user will see the study results in a table.

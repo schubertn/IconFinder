@@ -18,7 +18,21 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
  */
 private const val NUM_OF_ITERATIONS = 36
 
+/**
+ * This is one of the two last screens of the IconFinder app.
+ * The user will see statistics related to the study in a table and a text and button below.
+ * Each row contains the results concerning one phase of the study as displayed in the first column.
+ * The other two columns split the statistics in those related to the user and those related to
+ * all participants.
+ * The data from the other participants is loaded from the database. Until this process and the
+ * calculations are finished, the user sees are progressbar.
+ * The shown statistics are average time to click one icon and percentage of correctly clicked
+ * icons, classified by phase and user or all participants.
+ * The text below the table sums up those statistics over all phases.
+ * The button below the text allows the user to navigate back to the previous screen.
+ */
 class StatisticsFragment : Fragment() {
+
 
     // binding object instance corresponding to the result_fragment.xml layout
     private var binding: StatisticsFragmentBinding? = null
@@ -115,7 +129,7 @@ class StatisticsFragment : Fragment() {
      * Set the values needed for the calculations related to the user.
      * For each phase the times needed and the number of correct icons are added up.
      */
-    private fun setCalculationValuesUser(){
+    private fun setCalculationValuesUser() {
         for (data in sharedViewModel.getData()) {
             calcValues[data.phase].timeSumUser += data.timeNeeded
             if (data.correctness) {
@@ -128,8 +142,8 @@ class StatisticsFragment : Fragment() {
      * Set the values for the calculation of the general statistics.
      * The sum of the times needed and correct icons from each phase are added up.
      */
-    private fun setCalculationValuesGeneral(){
-        for(i in 1..4){
+    private fun setCalculationValuesGeneral() {
+        for (i in 1..4) {
             // set general calculation values for database data
             calcValues[0].timeSumAll += calcValues[i].timeSumAll
             calcValues[0].correctSumAll += calcValues[i].correctSumAll
@@ -153,13 +167,14 @@ class StatisticsFragment : Fragment() {
 
         for (i in 1..4) {
             // set the statistic values for the data from the user
-            statisticValues[i].timeUser = calcValues[i].timeSumUser / (NUM_OF_ITERATIONS / 4) //iterationsPerPhase
-            statisticValues[i].correctPercentageUser =
+            statisticValues[i].timeUser =
+                calcValues[i].timeSumUser / (NUM_OF_ITERATIONS / 4) //iterationsPerPhase
+            statisticValues[i].correctPercentUser =
                 (calcValues[i].correctSumUser / (NUM_OF_ITERATIONS / 4)) * 100
 
             // set the statistic values for the data from the database
             statisticValues[i].timeAll = calcValues[i].timeSumAll / numDocsPerPhase
-            statisticValues[i].correctPercentageAll =
+            statisticValues[i].correctPercentAll =
                 (calcValues[i].correctSumAll / numDocsPerPhase) * 100
         }
     }
@@ -170,15 +185,15 @@ class StatisticsFragment : Fragment() {
      * are calculated. For the calculations related to the database the [docCounter] containing
      * the number of documents is needed.
      */
-    private fun setStatisticsGeneral(docCounter: Int){
+    private fun setStatisticsGeneral(docCounter: Int) {
         // set the general statistics for the user
         statisticValues[0].timeUser = calcValues[0].timeSumUser / NUM_OF_ITERATIONS
-        statisticValues[0].correctPercentageUser =
+        statisticValues[0].correctPercentUser =
             (calcValues[0].correctSumUser / NUM_OF_ITERATIONS) * 100
 
         // set general statistics for the database
         statisticValues[0].timeAll = calcValues[0].timeSumAll / docCounter
-        statisticValues[0].correctPercentageAll = (calcValues[0].correctSumAll / docCounter) * 100
+        statisticValues[0].correctPercentAll = (calcValues[0].correctSumAll / docCounter) * 100
     }
 
     /**
@@ -188,9 +203,9 @@ class StatisticsFragment : Fragment() {
         binding?.generalStatistics?.text = resources.getString(
             R.string.statistics_general,
             statisticValues[0].timeUser,
-            statisticValues[0].correctPercentageUser,
+            statisticValues[0].correctPercentUser,
             statisticValues[0].timeAll,
-            statisticValues[0].correctPercentageAll
+            statisticValues[0].correctPercentAll
         )
     }
 

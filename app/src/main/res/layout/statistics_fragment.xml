@@ -103,13 +103,13 @@
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageUser)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentUser)}" />
 
                     <TextView
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentageAll)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentAll)}" />
                 </TableRow>
 
                 <!-- Phase 2 -->
@@ -146,13 +146,13 @@
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageUser)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentUser)}" />
 
                     <TextView
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentageAll)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentAll)}" />
                 </TableRow>
 
                 <!-- Phase 3 -->
@@ -189,13 +189,13 @@
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageUser)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentUser)}" />
 
                     <TextView
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentageAll)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentAll)}" />
                 </TableRow>
 
                 <!-- Phase 4 -->
@@ -232,13 +232,13 @@
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageUser)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentUser)}" />
 
                     <TextView
                         style="@style/IconFinder.TableText"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentageAll)}" />
+                        android:text="@{@string/percent(statisticsFragment.getStatistics()[4].correctPercentAll)}" />
                 </TableRow>
             </TableLayout>
 

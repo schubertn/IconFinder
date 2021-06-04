@@ -229,8 +229,16 @@ class IconViewModel : ViewModel() {
         return data.iconId
     }
 
-
-
+    /**
+     * Values needed for the calculation of the statistics can be grouped so that related values
+     * can be stored as one object. The values stored are
+     * the [timeSumUser] containing the sum of the times needed to click an icon by the user,
+     * the [correctSumUser] corresponding to the sum of correctly clicked icons by the user,
+     * the [timeSumAll] containing the sum of the times needed to click an icon by all users, as
+     * stored in the database,
+     * and the [correctSumAll] corresponding to the sum of correctly clicked icons by all users, as
+     * stored in the database.
+     */
     data class CalculationValues(
         var timeSumUser: Double,
         var correctSumUser: Double,
@@ -240,11 +248,20 @@ class IconViewModel : ViewModel() {
         constructor() : this(0.0, 0.0, 0.0, 0.0)
     }
 
+    /**
+     * The values as used in the statistics relevant to the user.
+     * The [timeUser] containing the average time the user needed to click one icon,
+     * the [correctPercentUser] corresponding to the percentage of correct icons clicked by the user,
+     * the [timeAll] containing the average time all participants of the study needed to click
+     * one icon, as stored in the database,
+     * and the [correctPercentAll] corresponding to the percentage of correct icons clicked by
+     * all participants of the study, as stored in the database.
+     * */
     data class StatisticsData(
         var timeUser: Double,
-        var correctPercentageUser: Double,
+        var correctPercentUser: Double,
         var timeAll: Double,
-        var correctPercentageAll: Double
+        var correctPercentAll: Double
     ) {
         constructor() : this(0.0, 0.0, 0.0, 0.0)
     }
