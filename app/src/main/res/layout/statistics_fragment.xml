@@ -67,7 +67,7 @@
                     android:layout_width="2dp"
                     android:layout_height="1dp"
                     android:layout_marginTop="4dp"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@color/gray_dark" />
 
                 <!-- Phase One -->
                 <TableRow android:layout_marginTop="10dp">
@@ -112,6 +112,13 @@
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentAll)}" />
                 </TableRow>
 
+                <!-- horizontal line -->
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/gray_light" />
+
                 <!-- Phase 2 -->
                 <TableRow android:layout_marginTop="10dp">
 
@@ -155,6 +162,13 @@
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentAll)}" />
                 </TableRow>
 
+                <!-- horizontal line -->
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/gray_light" />
+
                 <!-- Phase 3 -->
                 <TableRow android:layout_marginTop="10dp">
 
@@ -197,6 +211,13 @@
                         android:layout_weight="1"
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentAll)}" />
                 </TableRow>
+
+                <!-- horizontal line -->
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/gray_light" />
 
                 <!-- Phase 4 -->
                 <TableRow android:layout_marginTop="10dp">
@@ -247,7 +268,7 @@
                 style="@style/IconFinder.AppText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="25dp"
                 app:layout_constraintTop_toBottomOf="@id/statistics_table" />
 
             <Button

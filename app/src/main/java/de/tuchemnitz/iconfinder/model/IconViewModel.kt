@@ -27,7 +27,7 @@ class IconViewModel : ViewModel() {
     /**
      * Changes the value of [studyAlreadyDone] to true to indicate that the user has already
      * done the study (completed all four phases).
-    */
+     */
     fun setStudyAlreadyDone() {
         studyAlreadyDone = true
     }
@@ -161,7 +161,12 @@ class IconViewModel : ViewModel() {
      * the Boolean value [correctness] indicating whether the user clicked the right icon and
      * the Double [timeNeeded] containing the time the user needed to click the icon.
      */
-    data class StudyData(val phase: Int, val iconId: Int, val correctness: Boolean, val timeNeeded: Double)
+    data class StudyData(
+        val phase: Int,
+        val iconId: Int,
+        val correctness: Boolean,
+        val timeNeeded: Double
+    )
 
     /**
      * MutableList of [StudyData]. Needed to save the data to the database.
@@ -183,6 +188,33 @@ class IconViewModel : ViewModel() {
     }
 
     /**
+     * List of [StudyData] to be sorted ascending by the icon ids and phases.
+     */
+    private var sortedDataList = listOf<StudyData>()
+
+    /**
+     * Fills [sortedDataList] with a [sortedList] of [StudyData].
+     */
+    fun setSortedData(sortedList: List<StudyData>) {
+        sortedDataList = sortedList
+    }
+
+    /**
+     * Returns [sortedDataList] containing [StudyData] sorted by the icon ids and phases.
+     */
+    fun getSortedData(): List<StudyData> {
+        return sortedDataList
+    }
+
+    /**
+     * Selector function needed to sort [sortedDataList] ascending by icon ids.
+     */
+    fun selector(data: StudyData): Int {
+        return data.iconId
+    }
+
+
+    /**
      * Deletes the collected data.
      * Clears [shownIconsList] and [dataList].
      * Sets [shownIcon] and [phase] back to their default values.
@@ -194,40 +226,6 @@ class IconViewModel : ViewModel() {
         phase = 1
     }
 
-
-    /**
-     * Data as used in table with results in ResultFragment. Every data-set consists of
-     * an Integer containing the [iconId] of the icon the user saw,
-     * the Boolean [correct] indicating whether the user clicked the right icon and
-     * the String [time] representing the time the user needed to click the icon.
-     */
-    data class ResultData(val iconId: Int, val correct: Boolean, val time: String)
-
-    /**
-     * MutableList of [ResultData]. Needed to display results in table.
-     */
-    private val resultDataList = mutableListOf<ResultData>()
-
-    /**
-     * Returns a list containing [ResultData]. Used in table with results.
-     */
-    fun getResultData(): MutableList<ResultData> {
-        return resultDataList
-    }
-
-    /**
-     * Adds new [data] of the type [ResultData] to [resultDataList].
-     */
-    fun addResultData(data: ResultData) {
-        resultDataList.add(data)
-    }
-
-    /**
-     * Selector function needed to sort [resultDataList] ascending by icon ids.
-     */
-    fun selector(data: ResultData): Int {
-        return data.iconId
-    }
 
     /**
      * Values needed for the calculation of the statistics can be grouped so that related values

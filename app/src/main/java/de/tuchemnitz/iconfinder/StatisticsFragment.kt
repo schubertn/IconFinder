@@ -226,8 +226,8 @@ class StatisticsFragment : Fragment() {
     }
 
     /**
-     * On button click navigate back to the previous screen, where the user can decide what to do after
-     * reaching the end of the study.
+     * On button click navigate back to the previous screen, where the user can decide what to do
+     * after reaching the end of the study.
      */
     fun backToPreviousScreen() {
         findNavController().navigate(R.id.action_statisticsFragment_to_thankYouFragment)

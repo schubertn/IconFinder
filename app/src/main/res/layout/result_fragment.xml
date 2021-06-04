@@ -7,16 +7,24 @@
         <variable
             name="iconViewModel"
             type="de.tuchemnitz.iconfinder.model.IconViewModel" />
+
+        <variable
+            name="resultFragment"
+            type="de.tuchemnitz.iconfinder.ResultFragment" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
         <TableLayout
             android:id="@+id/myTable"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:padding="5dp">
 
             <TableRow android:layout_marginTop="10dp">
@@ -53,6 +61,13 @@
 
             </TableRow>
 
+            <!-- horizontal line -->
+            <View
+                android:layout_width="2dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gray_dark" />
+
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -68,30 +83,30 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[0].time}"
-                    android:textColor="@{iconViewModel.getResultData[0].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[0].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[0].correctness ? @color/green : @color/red}" />
 
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[1].time}"
-                    android:textColor="@{iconViewModel.getResultData[1].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[1].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[1].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[2].time}"
-                    android:textColor="@{iconViewModel.getResultData[2].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[2].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[2].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[3].time}"
-                    android:textColor="@{iconViewModel.getResultData[3].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[3].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[3].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -109,29 +124,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[4].time}"
-                    android:textColor="@{iconViewModel.getResultData[4].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[4].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[4].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[5].time}"
-                    android:textColor="@{iconViewModel.getResultData[5].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[5].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[5].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[6].time}"
-                    android:textColor="@{iconViewModel.getResultData[6].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[6].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[6].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[7].time}"
-                    android:textColor="@{iconViewModel.getResultData[7].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[7].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[7].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -149,29 +164,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[8].time}"
-                    android:textColor="@{iconViewModel.getResultData[8].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[8].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[8].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[9].time}"
-                    android:textColor="@{iconViewModel.getResultData[9].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[9].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[9].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[10].time}"
-                    android:textColor="@{iconViewModel.getResultData[10].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[10].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[10].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[11].time}"
-                    android:textColor="@{iconViewModel.getResultData[11].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[11].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[11].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -189,29 +204,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[12].time}"
-                    android:textColor="@{iconViewModel.getResultData[12].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[12].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[12].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[13].time}"
-                    android:textColor="@{iconViewModel.getResultData[13].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[13].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[13].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[14].time}"
-                    android:textColor="@{iconViewModel.getResultData[14].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[14].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[14].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[15].time}"
-                    android:textColor="@{iconViewModel.getResultData[15].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[15].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[15].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -229,29 +244,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[16].time}"
-                    android:textColor="@{iconViewModel.getResultData[16].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[16].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[16].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[17].time}"
-                    android:textColor="@{iconViewModel.getResultData[17].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[17].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[17].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[18].time}"
-                    android:textColor="@{iconViewModel.getResultData[18].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[18].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[18].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[19].time}"
-                    android:textColor="@{iconViewModel.getResultData[19].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[19].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[19].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -269,29 +284,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[20].time}"
-                    android:textColor="@{iconViewModel.getResultData[20].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[20].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[20].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[21].time}"
-                    android:textColor="@{iconViewModel.getResultData[21].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[21].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[21].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[22].time}"
-                    android:textColor="@{iconViewModel.getResultData[22].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[22].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[22].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[23].time}"
-                    android:textColor="@{iconViewModel.getResultData[23].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[23].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[23].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -309,29 +324,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[24].time}"
-                    android:textColor="@{iconViewModel.getResultData[24].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[24].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[24].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[25].time}"
-                    android:textColor="@{iconViewModel.getResultData[25].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[25].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[25].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[26].time}"
-                    android:textColor="@{iconViewModel.getResultData[26].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[26].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[26].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[27].time}"
-                    android:textColor="@{iconViewModel.getResultData[27].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[27].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[27].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -349,29 +364,29 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[28].time}"
-                    android:textColor="@{iconViewModel.getResultData[28].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[28].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[28].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[29].time}"
-                    android:textColor="@{iconViewModel.getResultData[29].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[29].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[29].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[30].time}"
-                    android:textColor="@{iconViewModel.getResultData[30].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[30].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[30].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[31].time}"
-                    android:textColor="@{iconViewModel.getResultData[31].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[31].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[31].correctness ? @color/green : @color/red}" />
             </TableRow>
 
             <TableRow
@@ -389,31 +404,41 @@
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[32].time}"
-                    android:textColor="@{iconViewModel.getResultData[32].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[32].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[32].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[33].time}"
-                    android:textColor="@{iconViewModel.getResultData[33].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[33].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[33].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[34].time}"
-                    android:textColor="@{iconViewModel.getResultData[34].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[34].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[34].correctness ? @color/green : @color/red}" />
 
                 <TextView
                     style="@style/IconFinder.TableText"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="@{iconViewModel.getResultData[35].time}"
-                    android:textColor="@{iconViewModel.getResultData[35].correct ? @color/green : @color/red}" />
+                    android:text="@{@string/sec(iconViewModel.getSortedData()[35].timeNeeded)}"
+                    android:textColor="@{iconViewModel.getSortedData[35].correctness ? @color/green : @color/red}" />
             </TableRow>
 
         </TableLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/back_button"
+            style="@style/IconFinder.AppButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> resultFragment.backToPreviousScreen()}"
+            android:text="@string/back" />
+
+    </LinearLayout>
 </layout>
