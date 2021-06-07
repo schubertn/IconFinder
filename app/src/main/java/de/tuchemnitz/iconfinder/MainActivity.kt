@@ -34,11 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 // To do stuff
 // TODO: Design shown icons
 // TODO: Rename icons and fragments
-// TODO: Remove functions from onCreateView()?
-
-// Additional stuff
 // TODO: Nicer layout
-// TODO: Remove global variables?
 
 // Final stuff
 // TODO: Set time for delay (2 seconds in BA)

@@ -32,10 +32,8 @@ class AllIconsFragment : Fragment() {
     // creating a variable for firebase firestore
     private var db: FirebaseFirestore? = null
 
-    // values needed for study with default values
+    // start time needed to calculate the total time the user needed to click an icon
     private var startTime: Long = 0
-    private var timeInSeconds: Double = 0.0
-    private var correctIconClicked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -131,14 +129,14 @@ class AllIconsFragment : Fragment() {
     fun onIconClicked(buttonNumber: Int) {
         // calculate the time until the user clicked the icon
         val elapsedTime = System.nanoTime() - startTime
-        timeInSeconds = elapsedTime / 1_000_000_000.0 // conversion from nanoseconds to seconds
+        val timeInSeconds = elapsedTime / 1_000_000_000.0 // conversion from nanoseconds to seconds
 
         // check if user clicked the right icon (the one shown before)
-        correctIconClicked =
+        val correctIconClicked =
             sharedViewModel.getShuffleList()[buttonNumber].imgId == sharedViewModel.getShownIcon()
 
         // save data in a list
-        addDataToList()
+        addDataToList(timeInSeconds, correctIconClicked)
 
         // next fragment to be shown is either OneIconFragment or ResultFragment
         navigateToNextFragment()
@@ -149,7 +147,7 @@ class AllIconsFragment : Fragment() {
      * For each element of the list the current phase, the id of the shown icon, the correctness
      * and needed time in seconds are saved.
      */
-    private fun addDataToList() {
+    private fun addDataToList(timeInSeconds: Double, correctIconClicked: Boolean) {
         val data = IconViewModel.StudyData(
             sharedViewModel.getPhase(),
             sharedViewModel.getShownIcon(),
