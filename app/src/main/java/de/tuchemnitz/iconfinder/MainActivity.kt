@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 // To do stuff
-// TODO: Design shown icons
-// TODO: Rename icons and fragments
+// TODO: Rename icons
 // TODO: Nicer layout
 
 // Final stuff
