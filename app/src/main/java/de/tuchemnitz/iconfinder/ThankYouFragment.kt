@@ -15,11 +15,11 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
  * This is the fourth screen of the IconFinder app.
  * The user sees a thank you message and can click on one of three buttons.
  * The first one shows the results of the user, the second one statistics to compare the user
- * to other participants and the last one brings the user back to the first screen.
+ * to other participants of the study and the last one brings the user back to the first screen.
  */
 class ThankYouFragment : Fragment() {
 
-    // Binding object instance corresponding to the thank_you_fragment.xml layout
+    // binding object instance corresponding to the thank_you_fragment.xml layout
     private var binding: ThankYouFragmentBinding? = null
 
     private val sharedViewModel: IconViewModel by activityViewModels()
@@ -39,14 +39,12 @@ class ThankYouFragment : Fragment() {
         binding?.thankYouFragment = this
     }
 
-    /**
-     * Handles back button press. If not handled, the user would see previous fragment again,
-     * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the InstructionFragment
-     * and clears all data. This enables the user to do the study again.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // handle back button press correctly
+        // the user will see the InstructionFragment again and not the previous fragment to
+        // avoid falsifying the study data
+        // previously collected data is deleted and the user can start the study again
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // reset data
@@ -58,8 +56,9 @@ class ThankYouFragment : Fragment() {
     }
 
     /**
-     * Navigation back to the InstructionFragment and clears data if the user wants to go back to
-     * the first screen (and do the study again).
+     * Navigation back to the InstructionFragment and clear data if the user wants to go back to
+     * the first screen (and do the study again). If the study is done a second time, no data
+     * will be saved to the database.
      */
     fun navigateToStart() {
         sharedViewModel.clearData()
@@ -75,7 +74,7 @@ class ThankYouFragment : Fragment() {
     }
 
     /**
-     * Shows some statistics to compare the user with other participants.
+     * Show some statistics to compare the user to other participants.
      */
     fun navigateToStatistics() {
         findNavController().navigate(R.id.action_thankYouFragment_to_statisticsFragment)

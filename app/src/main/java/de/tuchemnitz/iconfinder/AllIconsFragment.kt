@@ -12,7 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import de.tuchemnitz.iconfinder.databinding.AllIconsFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
-
 /**
  * This is the third screen of the IconFinder app.
  * The user sees a 3x3 grid with nine different icons and has to click on the one shown before,
@@ -24,7 +23,7 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
  */
 class AllIconsFragment : Fragment() {
 
-    // Binding object instance corresponding to the all_icons_fragment.xml layout
+    // binding object instance corresponding to the all_icons_fragment.xml layout
     private var binding: AllIconsFragmentBinding? = null
 
     private val sharedViewModel: IconViewModel by activityViewModels()
@@ -43,25 +42,22 @@ class AllIconsFragment : Fragment() {
         val fragmentBinding = AllIconsFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
+        // display the grid of icons
         showRandomOrderIcons()
 
         return fragmentBinding.root
     }
 
-    /**
-     * Handles back button press. If not handled, the user would see previous fragment again,
-     * which would falsify the study data.
-     * Therefore, a back button press navigates the user back to the InstructionFragment
-     * and clear all data.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // getting our instance from firebase firestore
+        // get instance from firebase firestore
         db = FirebaseFirestore.getInstance()
 
+        // handle back button press correctly
+        // the user will see the InstructionFragment again and not the previous fragment to
+        // avoid falsifying the study data
+        // previously collected data is deleted and the user has to start the study again
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            // pressing the back button deletes all progress
             override fun handleOnBackPressed() {
                 // reset data
                 sharedViewModel.clearData()
@@ -73,14 +69,14 @@ class AllIconsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // used to bind button click listeners in this class to xml
+        // bind button click listeners in this class to xml
         binding?.allIconsFragment = this
-        // used to calculate the time the user needs to click the icon
+        // calculate the time the user needs to click the icon
         startTime = System.nanoTime()
     }
 
     /**
-     * Shows all nine icons as clickable buttons in random order on the 3x3 grid.
+     * Show all nine icons as clickable buttons in random order on the 3x3 grid.
      * If the study is in phase 1 or 3, colorful icons are shown,
      * if the study is in phase 2 or 4, black and white icons are shown.
      */
@@ -123,8 +119,11 @@ class AllIconsFragment : Fragment() {
     }
 
     /**
-     * Tests if the clicked icon is the same as the shown icon.
-     * For now only prints the result to the LogCat.
+     * Calculate the time (in seconds) the user needed to click an icon and
+     * check if the clicked icon is the same as the one shown in the previous fragment/
+     * corresponds to the shown icon name.
+     * The time in seconds and a boolean value to indicate the correctness are saved to a list
+     * containing all study data. Afterwards the navigation to the next fragment follows.
      */
     fun onIconClicked(buttonNumber: Int) {
         // calculate the time until the user clicked the icon
@@ -143,7 +142,7 @@ class AllIconsFragment : Fragment() {
     }
 
     /**
-     * Save data in every iteration to one list.
+     * Save data in every iteration to a list.
      * For each element of the list the current phase, the id of the shown icon, the correctness
      * and needed time in seconds are saved.
      */
@@ -182,7 +181,7 @@ class AllIconsFragment : Fragment() {
                 }
                 4 -> {
                     // only when the last phase is completed and the study has not been done before
-                    // the data is added
+                    // the data is added to the database to avoid incomplete datasets
                     if (!sharedViewModel.getStudyAlreadyDone()) {
                         addDataToFirebase()
                         sharedViewModel.setStudyAlreadyDone()
@@ -196,16 +195,16 @@ class AllIconsFragment : Fragment() {
     }
 
     /**
-     * Adds all data that was collected in the study to the FireStore Database.
+     * Add all data that was collected in the study to the FireStore database.
      * Each added document contains the phase of the study, the id of the icon the user saw,
      * the correctness of the clicked icon and the needed time.
      * The function is only called after the last phase is finished, so no incomplete data is added.
      */
     private fun addDataToFirebase() {
-        // creating a collection reference for our Firebase Firetore database.
+        // create a collection reference for the Firebase Firetore database.
         val dbIconFinder = db!!.collection("IconFinder")
 
-        // adds each dataset of the type StudyData to the database
+        // add each dataset of the type StudyData to the database
         for (dataSet in sharedViewModel.getData()) {
             dbIconFinder.add(dataSet)
         }

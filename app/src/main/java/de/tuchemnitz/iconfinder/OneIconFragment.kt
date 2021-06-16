@@ -22,12 +22,12 @@ import de.tuchemnitz.iconfinder.model.IconViewModel
  */
 class OneIconFragment : Fragment() {
 
-    // Binding object instance corresponding to the one_icon_fragment.xml layout
+    // binding object instance corresponding to the one_icon_fragment.xml layout
     private var binding: OneIconFragmentBinding? = null
 
     private val sharedViewModel: IconViewModel by activityViewModels()
 
-    // handler needed to show the next fragment after a certain time
+    // handler needed to navigate to the next fragment after a certain time
     private val iconHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
@@ -42,18 +42,18 @@ class OneIconFragment : Fragment() {
         showRandomIcon(sharedViewModel.getPhase())
 
         // navigation to next fragment after delay
+        // TODO: Set delay to 2000ms
         iconHandler.postDelayed({ showAllIcons() }, 500)
 
         return fragmentBinding.root
     }
 
-    /**
-     * Handles back button press. If not handled, the user would see previous fragment again,
-     * which would falsify the study data. Therefore, a back button press navigates the user
-     * back to the InstructionFragment, stops the delay and deletes all data.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // handle back button press correctly
+        // the user will see the InstructionFragment again and not the previous fragment to
+        // avoid falsifying the study data
+        // previously collected data is deleted and the user has to start the study again
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // stop delay
@@ -67,13 +67,14 @@ class OneIconFragment : Fragment() {
     }
 
     /**
-     * Shows a random icon or its name depending on the [phase]. Every icon is only shown once.
-     * If this is in the first [phase] of the study the icon will be colorful,
-     * if this is in the second [phase] of the study the icon will be black and white.
-     * If this is the third or fourth [phase] of the study the name of an icon will be displayed
+     * Show a random icon or its name depending on the [phase]. Every icon is only shown once.
+     * If this is in the first phase of the study the icon will be colorful,
+     * if this is in the second phase of the study the icon will be black and white.
+     * If this is the third or fourth phase of the study the name of an icon will be displayed.
      */
     private fun showRandomIcon(phase: Int) {
-        // generate new number if icon associated with generated number was already shown
+        // generate a random number until the icon associated with this number is one that
+        // has not already been shown
         var rnd = (0..8).random()
         while (sharedViewModel.getShownIcons().contains(rnd)) {
             rnd = (0..8).random()

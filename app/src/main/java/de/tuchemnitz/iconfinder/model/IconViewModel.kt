@@ -4,21 +4,21 @@ import androidx.lifecycle.ViewModel
 import de.tuchemnitz.iconfinder.R
 
 /**
- * [IconViewModel] holds information about the study, including a list of all icons, the icons the
- * user already saw and data classes used to represent and save the collected data.
+ * The [IconViewModel] holds information about the study, including a list of all icons,
+ * the icons the user already saw and data classes used to represent and save the collected data.
  * It also contains the needed methods to work with these informations.
  */
 class IconViewModel : ViewModel() {
 
     /**
-     * If data is saved to the database after all four phases, [studyAlreadyDone] is set to
+     * If data is saved to the database after all four phases, this value is set to
      * true, so the user is not able to do the study again (without closing the app completely).
      */
     private var studyAlreadyDone = false
 
     /**
      * Returns the Boolean value of [studyAlreadyDone] to indicate whether the study was already
-     * done once (all four phases completed and data saved to the database).
+     * done once (all four phases completed and data saved to the database) or not.
      */
     fun getStudyAlreadyDone(): Boolean {
         return studyAlreadyDone
@@ -65,7 +65,7 @@ class IconViewModel : ViewModel() {
     data class Icon(val imgId: Int, val colorIcon: Int, val blackWhiteIcon: Int, val name: String)
 
     /**
-     * List of all [Icon] objects.
+     * [List] of all [Icon] objects.
      */
     private val iconList = listOf(
         Icon(0, R.drawable.icon_0, R.drawable.icon_0_bw, "Design"),
@@ -88,7 +88,7 @@ class IconViewModel : ViewModel() {
 
 
     /**
-     * MutableList of Integer ids of already shown icons.
+     * [MutableList] of Integer ids of already shown icons.
      */
     private val shownIconsList = mutableListOf<Int>()
 
@@ -115,7 +115,7 @@ class IconViewModel : ViewModel() {
 
 
     /**
-     * MutableList that can be shuffled to contain all icons in random order.
+     * [MutableList] that can be shuffled to contain all icons in random order.
      */
     private var shuffleList = mutableListOf<Icon>()
 
@@ -127,7 +127,7 @@ class IconViewModel : ViewModel() {
     }
 
     /**
-     * Sets a [shuffledList]. Used for random layout of icons.
+     * Sets a [shuffleList]. Used for random layout of icons.
      */
     fun setShuffleList(shuffledList: MutableList<Icon>) {
         shuffleList = shuffledList
@@ -147,7 +147,7 @@ class IconViewModel : ViewModel() {
     }
 
     /**
-     * Sets the value of the [iconId] the user just saw.
+     * Sets the value of the [shownIcon] the user just saw.
      */
     fun setShownIcon(iconId: Int) {
         shownIcon = iconId
@@ -169,7 +169,7 @@ class IconViewModel : ViewModel() {
     )
 
     /**
-     * MutableList of [StudyData]. Needed to save the data to the database.
+     * [MutableList] of [StudyData]. Needed to save the data to the database.
      */
     private val dataList = mutableListOf<StudyData>()
 
@@ -188,7 +188,7 @@ class IconViewModel : ViewModel() {
     }
 
     /**
-     * List of [StudyData] to be sorted ascending by the icon ids and phases.
+     * [List] of [StudyData] to be sorted ascending by the icon ids and phases.
      */
     private var sortedDataList = listOf<StudyData>()
 

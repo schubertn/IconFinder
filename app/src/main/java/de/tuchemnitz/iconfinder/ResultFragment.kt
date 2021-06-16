@@ -34,7 +34,6 @@ class ResultFragment : Fragment() {
         binding = fragmentBinding
 
         sortStudyData()
-        printMyData()
 
         return fragmentBinding.root
     }
@@ -54,15 +53,6 @@ class ResultFragment : Fragment() {
     private fun sortStudyData() {
         sharedViewModel.setSortedData(
             sharedViewModel.getData().sortedBy { sharedViewModel.selector(it) })
-    }
-
-    private fun printMyData() {
-        for (data in sharedViewModel.getSortedData()) {
-            println("Phase: " + data.phase)
-            println("Icon shown: " + (sharedViewModel.getIcons()[data.iconId].imgId))
-            println("Icon was correct: " + (data.correctness).toString())
-            println("Time needed: " + (data.timeNeeded).toString())
-        }
     }
 
     /**

@@ -25,14 +25,13 @@ private const val NUM_OF_ITERATIONS = 36
  * The other two columns split the statistics in those related to the user and those related to
  * all participants.
  * The data from the other participants is loaded from the database. Until this process and the
- * calculations are finished, the user sees are progressbar.
- * The shown statistics are average time to click one icon and percentage of correctly clicked
- * icons, classified by phase and user or all participants.
+ * calculations are finished, the user sees a progressbar.
+ * The shown statistics are the average time to click one icon and the percentage of correctly
+ * clicked icons, classified by phase and user or all participants.
  * The text below the table sums up those statistics over all phases.
  * The button below the text allows the user to navigate back to the previous screen.
  */
 class StatisticsFragment : Fragment() {
-
 
     // binding object instance corresponding to the result_fragment.xml layout
     private var binding: StatisticsFragmentBinding? = null
@@ -73,7 +72,7 @@ class StatisticsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // getting our instance from firebase firestore
+        // get instance from firebase firestore
         db = FirebaseFirestore.getInstance()
     }
 
@@ -114,7 +113,7 @@ class StatisticsFragment : Fragment() {
     }
 
     /**
-     * For every [document] in the database this method is called.
+     * For each [document] in the database this method is called.
      * For every [phase] the times needed to click the icon are added, as well as the number of
      * correct icons.
      */
@@ -127,7 +126,8 @@ class StatisticsFragment : Fragment() {
 
     /**
      * Set the values needed for the calculations related to the user.
-     * For each phase the times needed and the number of correct icons are added up.
+     * For each phase the times needed and the number of correct icons as stored in the
+     * [IconViewModel] are added up.
      */
     private fun setCalculationValuesUser() {
         for (data in sharedViewModel.getData()) {
@@ -140,7 +140,8 @@ class StatisticsFragment : Fragment() {
 
     /**
      * Set the values for the calculation of the general statistics.
-     * The sum of the times needed and correct icons from each phase are added up.
+     * The sum of the times needed and correct icons from each phase previously extracted from the
+     * database are added up.
      */
     private fun setCalculationValuesGeneral() {
         for (i in 1..4) {
@@ -162,9 +163,6 @@ class StatisticsFragment : Fragment() {
      * are also calculated using the [numDocsPerPhase].
      */
     private fun setStatisticsPhases(numDocsPerPhase: Int) {
-        // for each phase there exist docCounter/4 documents
-        //val numDocsPerPhase = docCounter / 4
-
         for (i in 1..4) {
             // set the statistic values for the data from the user
             statisticValues[i].timeUser =

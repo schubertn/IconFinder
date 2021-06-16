@@ -10,16 +10,15 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.InstructionFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
-
 /**
  * This is the first screen of the IconFinder app.
  * The user is introduced to the app and instructed on how to use it.
  * A button can be pressed to start the study.
- * This screen is also shown with a different instruction text at the beginning of every phase.
+ * This screen is also shown with a different instruction text at the beginning of each phase.
  */
 class InstructionFragment : Fragment() {
 
-    // Binding object instance corresponding to the instruction_fragment.xml layout
+    // binding object instance corresponding to the instruction_fragment.xml layout
     private var binding: InstructionFragmentBinding? = null
 
     private val sharedViewModel: IconViewModel by activityViewModels()
@@ -32,7 +31,7 @@ class InstructionFragment : Fragment() {
         val fragmentBinding = InstructionFragmentBinding.inflate(inflater, container, false)
         binding = fragmentBinding
 
-        // instructions for the user
+        // display the instructions for the user depending on the current phase
         showInstructions()
 
         return fragmentBinding.root
@@ -48,7 +47,7 @@ class InstructionFragment : Fragment() {
      * of the phase.
      */
     private fun showInstructions() {
-        when(sharedViewModel.getPhase()) {
+        when (sharedViewModel.getPhase()) {
             1 -> binding?.instructionText?.setText(R.string.phase1_text)
             2 -> binding?.instructionText?.setText(R.string.phase2_text)
             3 -> binding?.instructionText?.setText(R.string.phase3_text)
@@ -57,7 +56,7 @@ class InstructionFragment : Fragment() {
     }
 
     /**
-     * Navigation to next fragment. User will there see one icon for a few seconds.
+     * Navigation to next fragment. The user will see one icon for a few seconds.
      */
     fun startStudy() {
         findNavController().navigate(R.id.action_instructionFragment_to_oneIconFragment)
