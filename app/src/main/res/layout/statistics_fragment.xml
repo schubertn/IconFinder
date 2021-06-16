@@ -41,6 +41,7 @@
                 android:layout_weight="1"
                 android:padding="5dp">
 
+                <!-- Table head -->
                 <TableRow android:layout_marginTop="10dp">
 
                     <TextView
@@ -62,7 +63,6 @@
                         android:text="@string/other_participants_statistics" />
                 </TableRow>
 
-                <!-- horizontal line -->
                 <View
                     android:layout_width="2dp"
                     android:layout_height="1dp"
@@ -112,7 +112,6 @@
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[1].correctPercentAll)}" />
                 </TableRow>
 
-                <!-- horizontal line -->
                 <View
                     android:layout_width="2dp"
                     android:layout_height="1dp"
@@ -162,7 +161,6 @@
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[2].correctPercentAll)}" />
                 </TableRow>
 
-                <!-- horizontal line -->
                 <View
                     android:layout_width="2dp"
                     android:layout_height="1dp"
@@ -212,7 +210,6 @@
                         android:text="@{@string/percent(statisticsFragment.getStatistics()[3].correctPercentAll)}" />
                 </TableRow>
 
-                <!-- horizontal line -->
                 <View
                     android:layout_width="2dp"
                     android:layout_height="1dp"

@@ -36,20 +36,22 @@
         app:destination="@id/instructionFragment"
         app:popUpTo="@id/instructionFragment"
         app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/resultFragment"
         android:name="de.tuchemnitz.iconfinder.ResultFragment"
-        android:label="ResultFragment" >
+        android:label="ResultFragment">
         <action
             android:id="@+id/action_resultFragment_to_thankYouFragment"
             app:destination="@id/thankYouFragment"
             app:popUpTo="@id/thankYouFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/thankYouFragment"
         android:name="de.tuchemnitz.iconfinder.ThankYouFragment"
-        android:label="ThankYouFragment" >
+        android:label="ThankYouFragment">
         <action
             android:id="@+id/action_thankYouFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
@@ -60,15 +62,15 @@
             android:id="@+id/action_thankYouFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="de.tuchemnitz.iconfinder.StatisticsFragment"
-        android:label="StatisticsFragment" >
+        android:label="StatisticsFragment">
         <action
             android:id="@+id/action_statisticsFragment_to_thankYouFragment"
             app:destination="@id/thankYouFragment"
             app:popUpTo="@id/thankYouFragment"
             app:popUpToInclusive="true" />
     </fragment>
-
 </navigation>

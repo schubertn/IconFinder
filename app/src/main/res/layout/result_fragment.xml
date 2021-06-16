@@ -27,6 +27,7 @@
             android:layout_weight="1"
             android:padding="5dp">
 
+            <!-- Table head -->
             <TableRow android:layout_marginTop="10dp">
 
                 <TextView
@@ -61,13 +62,13 @@
 
             </TableRow>
 
-            <!-- horizontal line -->
             <View
                 android:layout_width="2dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="4dp"
                 android:background="@color/gray_dark" />
 
+            <!-- Icon 1 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -85,7 +86,6 @@
                     android:layout_weight="1"
                     android:text="@{@string/sec(iconViewModel.getSortedData()[0].timeNeeded)}"
                     android:textColor="@{iconViewModel.getSortedData[0].correctness ? @color/green : @color/red}" />
-
 
                 <TextView
                     style="@style/IconFinder.TableText"
@@ -109,6 +109,7 @@
                     android:textColor="@{iconViewModel.getSortedData[3].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 2 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -149,6 +150,7 @@
                     android:textColor="@{iconViewModel.getSortedData[7].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 3 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -189,6 +191,7 @@
                     android:textColor="@{iconViewModel.getSortedData[11].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 4 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -229,6 +232,7 @@
                     android:textColor="@{iconViewModel.getSortedData[15].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 5 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -269,6 +273,7 @@
                     android:textColor="@{iconViewModel.getSortedData[19].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 6 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -309,6 +314,7 @@
                     android:textColor="@{iconViewModel.getSortedData[23].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 7 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -349,6 +355,7 @@
                     android:textColor="@{iconViewModel.getSortedData[27].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 8 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -389,6 +396,7 @@
                     android:textColor="@{iconViewModel.getSortedData[31].correctness ? @color/green : @color/red}" />
             </TableRow>
 
+            <!-- Icon 9 -->
             <TableRow
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
@@ -428,7 +436,6 @@
                     android:text="@{@string/sec(iconViewModel.getSortedData()[35].timeNeeded)}"
                     android:textColor="@{iconViewModel.getSortedData[35].correctness ? @color/green : @color/red}" />
             </TableRow>
-
         </TableLayout>
 
         <Button
