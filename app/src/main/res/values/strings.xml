@@ -4,26 +4,26 @@
     <!-- Strings used in instruction_fragment.xml -->
     <string name="phase1_text">
         Herzlich willkommen zu meiner Studie! \n
-        Es soll ermittelt werden, wie schnell Icons erkannt werden.
+        Es soll ermittelt werden, wie schnell Icons in Abhängigkeit von ihrer Farbe erkannt werden.
         \n\n
         Bitte stellen Sie sicher, dass Sie eine Internet-Verbindung haben, da sonst die
-        Ergebnisse der Studie nicht gespeichert werden können. Bitte führen Sie außerdem die
-        Studie nur einmal durch, um die Ergebnisse nicht zu verfälschen.
+        Ergebnisse der Studie nicht gespeichert werden können. Bitte betätigen Sie auch nicht den
+        Home-Button oder den Zurück-Button Ihres Gerätes, da Sie sonst zu diesem Bildschirm
+        zurückgelangen und jeglicher Fortschritt gelöscht wird.
         \n\n
         Nachdem der START Button betätigt wurde, beginnt die erste Phase dieser Studie und Ihnen
         wird ein einzelnes buntes Icon für einige Sekunden lang angezeigt.
-        Bitte merken Sie sich das gezeigte Icon. \n
+        Bitte merken Sie sich das gezeigte Icon. \n\n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
         Ihre Aufgabe ist es, das zuvor gesehene Icon so schnell wie möglich zu finden
         und auszuwählen. \n
         Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
-        \n\n
-        Wenn Sie den Home-Button oder den Zurück-Button Ihres Gerätes betätigen, gelangen Sie
-        zu diesem Bildschirm zurück und jeglicher Fortschritt wird gelöscht.
     </string>
 
     <string name="phase2_text">
+        Sie haben die erste Phase der Studie erfolgreich abgeschlossen, vielen Dank!
+        \n\n
         Nachdem der START Button betätigt wurde, beginnt die zweite Phase dieser Studie und Ihnen
         wird ein einzelnes schwarz-weißes Icon für einige Sekunden lang angezeigt.
         Bitte merken Sie sich das gezeigte Icon. \n\n
@@ -35,24 +35,28 @@
     </string>
 
     <string name="phase3_text">
+        Sie haben die zweite Phase der Studie erfolgreich abgeschlossen, vielen Dank!
+        \n\n
         Nachdem der START Button betätigt wurde, beginnt die dritte Phase dieser Studie und Ihnen
         wird der Name eines Icons für einige Sekunden lang angezeigt.
-        Bitte merken Sie sich das gezeigte Wort. \n\n
+        Bitte merken Sie sich das gezeigte Wort.\n\n
         Anschließend wird eine Gruppe bestehend aus neun verschiedenen bunten Icons angezeigt.
         Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
-        finden und auszuwählen. \n\n
-        Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
+        finden und auszuwählen.\n\n
+        Sobald Sie dies getan haben, wird Ihnen erneut der Name eines Icons angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
 
     <string name="phase4_text">
+        Sie haben die dritte Phase der Studie erfolgreich abgeschlossen, vielen Dank!
+        \n\n
         Nachdem der START Button betätigt wurde, beginnt die vierte und letzte Phase dieser Studie
         und Ihnen wird erneut der Name eines Icons für einige Sekunden lang angezeigt.
-        Bitte merken Sie sich das gezeigte Wort. \n\n
-        Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weiß Icons angezeigt.
-        Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie möglich zu
-        finden und auszuwählen. \n\n
-        Sobald Sie dies getan haben, wird Ihnen erneut ein einzelnes Icon angezeigt
+        Bitte merken Sie sich das gezeigte Wort.\n\n
+        Anschließend wird eine Gruppe bestehend aus neun verschiedenen schwarz-weißen Icons
+        angezeigt. Ihre Aufgabe ist es, das dem gezeigten Wort entsprechende Icon so schnell wie
+        möglich zu finden und auszuwählen.\n\n
+        Sobald Sie dies getan haben, wird Ihnen erneut der Name eines Icons angezeigt
         und der Ablauf wiederholt sich insgesamt neun Mal.
     </string>
 
@@ -60,11 +64,13 @@
 
     <!-- Strings used in thank_you_fragment.xml -->
     <string name="thank_you_text">
-        Vielen Dank für Ihre Teilnahme! \n
+        Sie haben die letzte Phase der Studie abgeschlossen. Vielen Dank für Ihre Teilnahme!
+        \n\n
         Unterhalb können Sie sich entscheiden, ob Sie sich Ihre Ergebnisse anzeigen lassen möchten,
         Ihre Ergebnisse im Vergleich zu anderen Teilnehmern der Studie sehen möchten,
-        oder zum Start der App zurückkehren möchten. \n
-        Bitte führen Sie die Studie nicht erneut durch, um die Ergebnisse nicht zu verfälschen.
+        oder zum Start der App zurückkehren möchten.\n\n
+        Sie können die Studie gern erneut durchführen, allerdings werden diese Daten dann
+        nicht gespeichert, um die Ergebnisse der Studie nicht zu verfälschen.
     </string>
 
     <string name="show_results">Ergebnisse anzeigen</string>

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 // To do stuff
-// TODO: Rewrite texts
+// TODO: Add new fragment/warning when database save not successful?
 // TODO: Rename icons
 // TODO: Nicer layout
 
