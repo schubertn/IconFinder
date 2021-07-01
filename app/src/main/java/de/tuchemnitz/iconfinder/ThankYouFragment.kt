@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import de.tuchemnitz.iconfinder.databinding.ThankYouFragmentBinding
 import de.tuchemnitz.iconfinder.model.IconViewModel
 
+
 /**
  * This is the fourth screen of the IconFinder app.
  * The user sees a thank you message and can click on one of three buttons.

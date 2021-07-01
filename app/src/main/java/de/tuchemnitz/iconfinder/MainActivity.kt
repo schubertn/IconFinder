@@ -29,12 +29,3 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .navigate(R.id.action_global_to_instruction_fragment)
     }
 }
-
-// To do stuff
-// TODO: Add new fragment/warning when database save not successful?
-// TODO: Rename icons
-// TODO: Nicer layout
-
-// Final stuff
-// TODO: Set time for delay (2 seconds in BA)
-// TODO: Redo app icon with final icon images
