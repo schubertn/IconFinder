@@ -68,13 +68,13 @@ class IconViewModel : ViewModel() {
      * [List] of all [Icon] objects.
      */
     private val iconList = listOf(
-        Icon(0, R.drawable.icon_0, R.drawable.icon_0_bw, "Design"),
+        Icon(0, R.drawable.icon_0, R.drawable.icon_0_bw, "Zeichnen"),
         Icon(1, R.drawable.icon_1, R.drawable.icon_1_bw, "Browser"),
         Icon(2, R.drawable.icon_2, R.drawable.icon_2_bw, "Wetter"),
         Icon(3, R.drawable.icon_3, R.drawable.icon_3_bw, "Einstellungen"),
         Icon(4, R.drawable.icon_4, R.drawable.icon_4_bw, "Galerie"),
         Icon(5, R.drawable.icon_5, R.drawable.icon_5_bw, "E-Mail"),
-        Icon(6, R.drawable.icon_6, R.drawable.icon_6_bw, "Maps"),
+        Icon(6, R.drawable.icon_6, R.drawable.icon_6_bw, "Karten"),
         Icon(7, R.drawable.icon_7, R.drawable.icon_7_bw, "Nachrichten"),
         Icon(8, R.drawable.icon_8, R.drawable.icon_8_bw, "Telefon"),
     )
